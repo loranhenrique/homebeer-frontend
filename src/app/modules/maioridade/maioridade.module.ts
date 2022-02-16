@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaioridadePageComponent } from './pages/maioridade-page.component';
-import { MaioridadeRoutingModule } from './maioridade-routing.module';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { MaioridadePageComponent } from '@maioridade/pages/maioridade-page.component';
+import { MaioridadeRoutingModule } from '@maioridade/maioridade-routing.module';
+import { InformativoMaioridadeComponent } from '@maioridade/components/informativo-maioridade/informativo-maioridade.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { InformativoMaioridadeComponent } from './components/informativo-maioridade/informativo-maioridade.component';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [MaioridadePageComponent, InformativoMaioridadeComponent],

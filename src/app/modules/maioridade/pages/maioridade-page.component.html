@@ -11,7 +11,8 @@
   </div>
 
   <div class="maioridade__grupo-botao">
-    <bra-button [texto]="viewModel.textoBotaoPrimary"></bra-button>
+    <bra-button [texto]="viewModel.textoBotaoPrimary"
+      (clickAction)="clickBotaoSim()"></bra-button>
     <div class="maioridade__botao-secondary">
       <bra-button [texto]="viewModel.textoBotaoSecondary"
         [tipo]="viewModel.tipoBotaoSecondary"

@@ -23,6 +23,7 @@
       "@home/*": ["src/app/modules/home/*"],
       "@maioridade/*": ["src/app/modules/maioridade/*"],
       "@onboarding/*": ["src/app/modules/onboarding/*"],
+      "@parceiro/*": ["src/app/modules/parceiro/*"],
       "@service/*": ["src/app/core/services/*"],
       "@env/*": ["src/environments/*"],
       "@config/*": ["src/app/config/*"],

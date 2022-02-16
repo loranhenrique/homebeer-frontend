@@ -9,4 +9,8 @@ export const productionRoutes = [
     path: 'maioridade',
     loadChildren: () => import('./modules/maioridade/maioridade.module').then(module => module.MaioridadeModule),
   },
+  {
+    path: 'parceiro',
+    loadChildren: () => import('./modules/parceiro/parceiro.module').then(module => module.ParceiroModule),
+  },
 ];
