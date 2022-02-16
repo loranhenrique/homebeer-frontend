@@ -1,3 +1,8 @@
+const urlBff = '/api';
+
 export const environment = {
-  production: true
+  production: true,
+  api: {
+    buscarParceiros: `${urlBff}/parceiro`,
+  },
 };
