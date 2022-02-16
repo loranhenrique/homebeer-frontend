@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HomePageComponent } from './pages/home-page.component';
+import { HomePageComponent } from '@home/pages/home-page.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [

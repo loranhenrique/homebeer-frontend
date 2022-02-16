@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { OnboardingViewModel } from '../models/onboarding-view.model';
+import { OnboardingViewModel } from '@onboarding/models/onboarding-view.model';
 
 @Component({
   selector: 'bra-onboarding-page',

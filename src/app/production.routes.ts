@@ -5,4 +5,8 @@ export const productionRoutes = [
     path: 'onboarding',
     loadChildren: () => import('./modules/onboarding/onboarding.module').then(module => module.OnboardingModule),
   },
+  {
+    path: 'maioridade',
+    loadChildren: () => import('./modules/maioridade/maioridade.module').then(module => module.MaioridadeModule),
+  },
 ];

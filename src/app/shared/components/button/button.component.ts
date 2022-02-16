@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TipoBotaoConstantes } from 'src/app/config/tipo-botao.const';
+import { TipoBotaoConstantes } from '@config/tipo-botao.const';
 
 @Component({
   selector: 'bra-button',

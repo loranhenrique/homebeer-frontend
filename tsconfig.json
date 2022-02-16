@@ -18,6 +18,15 @@
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "removeComments": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "@home/*": ["src/app/modules/home/*"],
+      "@maioridade/*": ["src/app/modules/maioridade/*"],
+      "@onboarding/*": ["src/app/modules/onboarding/*"],
+      "@env/*": ["src/environments/*"],
+      "@config/*": ["src/app/config/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@app/*": ["src/app/*"]
+    }
   }
 }
