@@ -3,7 +3,7 @@ import { TipoBotaoConstantes } from '@config/tipo-botao.const';
 import { MaioridadeViewModel } from '@maioridade/models/maioridade-view.model';
 
 @Component({
-  selector: 'app-maioridade-page',
+  selector: 'bra-maioridade-page',
   templateUrl: './maioridade-page.component.html',
   styleUrls: ['./maioridade-page.component.scss'],
 })
