@@ -14,7 +14,17 @@
     <bra-button [texto]="viewModel.textoBotaoPrimary"></bra-button>
     <div class="maioridade__botao-secondary">
       <bra-button [texto]="viewModel.textoBotaoSecondary"
-        [tipo]="viewModel.tipoBotaoSecondary"></bra-button>
+        [tipo]="viewModel.tipoBotaoSecondary"
+        (clickAction)="clickBotaoNao()"></bra-button>
     </div>
   </div>
 </div>
+
+<bra-modal class="interesses-page__modal-confirmacao"
+  *ngIf="viewModel.modalInformativo.mostrar"
+  [modal]="viewModel.modalInformativo"
+  (clickActionFecharModal)="fecharModalConfirmacao()"
+  [@modalAnimation]>
+  <bra-informativo-maioridade (clickFecharHandler)="fecharModalConfirmacao()">
+  </bra-informativo-maioridade>
+</bra-modal>

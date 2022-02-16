@@ -5,5 +5,11 @@
   "MAIORIDADE__TITULO": "Antes de continuar...",
   "MAIORIDADE__SUBTITULO": "Você tem 18 anos ou mais?",
   "MAIORIDADE__BOTAO--SIM": "Sim",
-  "MAIORIDADE__BOTAO--NAO": "Não"
+  "MAIORIDADE__BOTAO--NAO": "Não",
+  "INFORMATIVO-MAIORIDADE__LABEL--TITULO": "Álcool para menores é proibido",
+  "INFORMATIVO-MAIORIDADE__LABEL-DESCRICAO": "Bebida alcoólica pode causar dependência química e, em excesso, prova graves males à saúde.",
+  "INFORMATIVO-MAIORIDADE__TEXTO--LEI": "É proibida a venda, oferta, fornecimento, entrega e permissão do consumo de bebidas alcoólicas, ainda que gratuitamente, aos menores de 18 anos de idade. Lei estadual nº 14.592 de 19 de outubro de 2011, artigo 243 da Lei federal n.8.069, de 13 de julho de 1990.",
+  "INFORMATIVO-MAIORIDADE__TEXTO--DENUNCIA": "Para informar o descumprimento de lei, ligue 0800 771 3541 ou acesse o site clicando",
+  "INFORMATIVO-MAIORIDADE__TEXTO--SITE": "https://www.alcoolparamenoreseproibido.sp.gov.br",
+  "INFORMATIVO-MAIORIDADE__TEXTO--BOTAO": "Fechar"
 }

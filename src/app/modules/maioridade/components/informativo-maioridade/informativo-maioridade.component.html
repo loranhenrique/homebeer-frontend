@@ -1,0 +1,14 @@
+<div class="informativo-maioridade">
+  <h1 class="informativo-maioridade__titulo">
+    {{ viewModel.titulo | translate }}</h1>
+
+  <p class="informativo-maioridade__descricao">
+    {{ viewModel.descricao | translate }}<br />
+    {{ viewModel.textoLei | translate }}<br />
+    {{ viewModel.textoDenuncia | translate }}
+    <a class="informativo-maioridade__site" href="{{ viewModel.site }}">aqui.</a>
+  </p>
+
+  <bra-button [texto]="viewModel.textoBotao"
+    (clickAction)="clickFechar()"></bra-button>
+</div>

@@ -1,0 +1,32 @@
+<div class="bra-overlay"
+  *ngIf="modal?.mostrar"
+  [@fadeInOut]
+  [@.disabled]="verificaSeModalIntegral()">
+  <div class="bra-overlay__background"
+    (click)="clickFecharModalHandler()"
+    *ngIf="verificaSeModalParcial()"></div>
+</div>
+
+<div *ngIf="modal?.mostrar"
+  class="bra-modal"
+  [ngClass]="getClassTipoModal()"
+  braControleModal
+  [@slideInOut]
+  [@.disabled]="verificaSeModalIntegral()">
+
+  <div class="bra-modal__conteudo">
+    <header class="bra-modal__header"
+      *ngIf="verificaSeModalIntegral()">
+      <button class="bra-modal__close-button"
+        role="button"
+        [attr.aria-label]="modal?.textoFecharAcessibilidade || 'Fechar'"
+        (click)="clickFecharModalHandler()"
+        tabindex="0"
+        braFocus></button>
+    </header>
+
+    <div class="bra-modal__body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

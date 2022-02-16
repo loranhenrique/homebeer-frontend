@@ -1,0 +1,21 @@
+@import 'base-styles';
+
+.informativo-maioridade {
+  display: flex;
+  flex-direction: column;
+
+  &__titulo {
+    font-size: to-vw(24px);
+    margin-bottom: $spacing-m;
+  }
+
+  &__descricao {
+    font-size: to-vw(18px);
+    margin-bottom: $spacing-m;
+    color: $color-cinza-claro;
+  }
+
+  &__site {
+    font-size: to-vw(18px);
+  }
+}
