@@ -8,7 +8,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
-import { registerLocaleData } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
+import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(ptBr);
 
@@ -17,9 +18,10 @@ export const HttpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     HttpClientModule,
+    SharedModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -30,7 +32,7 @@ export const HttpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
     FormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
+  providers: [DatePipe, { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

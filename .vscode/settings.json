@@ -17,5 +17,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "html.format.extraLiners": "",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "angular.enable-strict-mode-prompt": false
 }

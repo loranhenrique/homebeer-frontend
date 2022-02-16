@@ -3,25 +3,40 @@
 
 .onboarding {
   display: flex;
-  width: 100vw;
   height: 100vh;
+  flex-direction: column;
+  padding: $spacing-m;
   background-size: cover;
   background-repeat: no-repeat;
-  position: relative;
   background-position: center;
-  flex-direction: column;
-
-  &__body {
-    flex: 1;
-  }
-
   background-image: $imagem-onboarding;
 
-  @include md {
-    background-image: $imagem-onboarding;
+  &__titulo {
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-image: $titulo-onboarding;
   }
 
-  @include lg {
-    background-image: $imagem-onboarding;
+  &__body {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  &__body-descricao {
+    text-align: center;
+    font-size: to-vw(20px);
+    margin-bottom: $spacing-l;
+  }
+
+  &__body-linha {
+    margin: 0 auto;
+  }
+
+  &__footer-botao {
+    margin: $spacing-l 0 $spacing-xl;
   }
 }
