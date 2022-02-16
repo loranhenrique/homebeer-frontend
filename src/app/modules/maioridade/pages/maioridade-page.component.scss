@@ -1,0 +1,47 @@
+@import 'base-styles';
+@import 'base-64';
+
+.maioridade {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: $spacing-m;
+
+  &__logo {
+    height: 120px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: $logo-tipo-base64;
+  }
+
+  &__linha {
+    display: flex;
+    margin-top: $spacing-m;
+    justify-content: center;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__titulo,
+  &__subtitulo {
+    font-size: to-vw(20px);
+  }
+
+  &__subtitulo {
+    font-family: $font-roboto-bold;
+  }
+
+  &__grupo-botao {
+    margin-bottom: $spacing-xl;
+  }
+
+  &__botao-secondary {
+    margin-top: $spacing-m;
+  }
+}

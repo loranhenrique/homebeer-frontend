@@ -1,1 +1,20 @@
-<p>maioridade-page works!</p>
+<div class="maioridade">
+  <div>
+    <div class="maioridade__logo"></div>
+    <bra-linha class="maioridade__linha"></bra-linha>
+  </div>
+
+  <div class="maioridade__body">
+    <label class="maioridade__titulo">{{ viewModel.titulo | translate }}</label>
+    <label
+      class="maioridade__subtitulo">{{ viewModel.subtitulo| translate }}</label>
+  </div>
+
+  <div class="maioridade__grupo-botao">
+    <bra-button [texto]="viewModel.textoBotaoPrimary"></bra-button>
+    <div class="maioridade__botao-secondary">
+      <bra-button [texto]="viewModel.textoBotaoSecondary"
+        [tipo]="viewModel.tipoBotaoSecondary"></bra-button>
+    </div>
+  </div>
+</div>
