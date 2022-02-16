@@ -23,14 +23,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles/_base-styles.scss", "src/styles/_base-64.scss", "src/styles.scss"],
+            "scripts": ["./node_modules/modernizr-detectizr/libs/modernizr-detectizr.min.js"],
+            "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
@@ -87,42 +83,20 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
             "scripts": []
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "homebeer-frontend:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "homebeer-frontend:serve:production"
-            }
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
-    }},
-  "defaultProject": "homebeer-frontend"
+    }
+  },
+  "defaultProject": "homebeer-frontend",
+  "cli": {
+    "analytics": "a899b7d4-93ed-4356-b122-97bee0d880bd"
+  }
 }

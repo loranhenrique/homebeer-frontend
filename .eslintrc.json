@@ -1,0 +1,53 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json", "tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "plugins": ["prefer-arrow-functions"],
+      "rules": {
+        "prefer-arrow-functions/prefer-arrow-functions": [
+          "warn",
+          {
+            "classPropertiesAllowed": false,
+            "disallowPrototype": true,
+            "returnStyle": "unchanged",
+            "singleReturnOnly": false
+          }
+        ],
+        "@typescript-eslint/naming-convention": ["off"],
+        "@angular-eslint/directive-selector": ["error", { "type": "attribute", "prefix": "bra", "style": "camelCase" }],
+        "@angular-eslint/component-selector": ["error", { "type": "element", "prefix": "bra", "style": "kebab-case" }],
+        "@angular-eslint/no-input-rename": "off",
+        "@typescript-eslint/consistent-type-definitions": "error",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "off",
+          {
+            "accessibility": "explicit"
+          }
+        ],
+        "@typescript-eslint/no-unused-expressions": "off",
+        "@typescript-eslint/no-use-before-define": "error",
+        "arrow-parens": ["off", "always"],
+        "brace-style": ["error", "1tbs"],
+        "import/order": "off",
+        "object-shorthand": "off",
+        "curly": ["error", "multi-line"]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}
