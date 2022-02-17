@@ -21,10 +21,10 @@
     height: 36px;
     border: none;
     color: $color-preto-acinzentado;
-    padding-left: $spacing-s;
-    padding-right: $spacing-m;
+    background: $color-branco-default;
+    padding: 0 $spacing-s;
     font-size: to-vw(16px);
-    margin-left: -1px;
+    margin-left: -3px;
     border-top-right-radius: calc(16px + 1em / 2);
     border-bottom-right-radius: calc(16px + 1em / 2);
   }
@@ -48,5 +48,12 @@
     padding-left: $spacing-l;
     -webkit-appearance: none;
     background-image: $icon-excluir-preto;
+  }
+
+  &__input::-webkit-search-results-button,
+  &__input::-webkit-search-decoration,
+  &__input::-webkit-search-results-button,
+  &__input::-webkit-search-results-decoration {
+    -webkit-appearance: none;
   }
 }

@@ -5,9 +5,10 @@ import { ParceiroRoutingModule } from '@parceiro/parceiro-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { CardSugestaoComponent } from './components/card-sugestao/card-sugestao.component';
+import { SugestaoComponent } from './components/sugestao/sugestao.component';
 
 @NgModule({
-  declarations: [ParceiroPageComponent, CardSugestaoComponent],
+  declarations: [ParceiroPageComponent, CardSugestaoComponent, SugestaoComponent],
   imports: [CommonModule, ParceiroRoutingModule, SharedModule, TranslateModule],
 })
 export class ParceiroModule {}

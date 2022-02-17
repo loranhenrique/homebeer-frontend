@@ -2,16 +2,9 @@
   <div class="parceiro__container">
     <bra-menu-header></bra-menu-header>
     <div class="parceiro__content">
-      <h2 class="parceiro__titulo">Algumas sugestões da casa</h2>
-
-      <div class="parceiro__sugestao">
-        <bra-lista [orientacao]="'horizontal'">
-          <li *ngFor="let card of viewModel.parceirosSugeridos"
-            class="parceiro__card-item">
-            <bra-card-sugestao [card]="card"></bra-card-sugestao>
-          </li>
-        </bra-lista>
-      </div>
+      <bra-sugestao [parceirosSugeridos]="viewModel.parceirosSugeridos"
+        (clickAction)="cardSugestaoClick($event)">
+      </bra-sugestao>
 
       <div class="parceiro__teste"></div>
     </div>

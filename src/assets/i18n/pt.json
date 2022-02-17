@@ -13,5 +13,6 @@
   "INFORMATIVO-MAIORIDADE__TEXTO--SITE": "https://www.alcoolparamenoreseproibido.sp.gov.br",
   "INFORMATIVO-MAIORIDADE__TEXTO--BOTAO": "Fechar",
   "PESQUISA-INPUT-PLACEHOLDER": "Buscar no Home Beer",
-  "CARD-SUGESTAO__DESCRICAO--ACESSIBILIDADE": "{{titulo}}, {{descricao}}. Toque para mais detalhes"
+  "CARD-SUGESTAO__DESCRICAO--ACESSIBILIDADE": "{{titulo}}, {{descricao}}. Toque para mais detalhes",
+  "SUGESTAO__LABEL--TITULO": "Algumas sugestões da casa"
 }

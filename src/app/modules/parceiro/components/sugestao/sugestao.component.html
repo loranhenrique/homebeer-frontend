@@ -1,0 +1,11 @@
+<div class="sugestao">
+  <h2 class="sugestao__titulo">{{ viewModel.titulo | translate }}</h2>
+
+  <bra-lista [orientacao]="'horizontal'">
+    <li *ngFor="let card of viewModel.parceirosSugeridos"
+      class="sugestao__card-item">
+      <bra-card-sugestao [card]="card"
+        (clickAction)="selecionarCard($event)"></bra-card-sugestao>
+    </li>
+  </bra-lista>
+</div>

@@ -1,0 +1,7 @@
+@import 'base-styles';
+
+.sugestao {
+  &__titulo {
+    padding: $spacing-l $spacing-m $spacing-s;
+  }
+}

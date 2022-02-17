@@ -48,6 +48,10 @@ export class ParceiroPageComponent implements OnInit {
     this.construirViewModel();
   }
 
+  public cardSugestaoClick(id: string): void {
+    console.log(id);
+  }
+
   private construirViewModel(): void {
     this.viewModel = {
       orientacaoLista: 'horizontal',

@@ -11,7 +11,7 @@ import { CardSugestaoModel } from '@parceiro/models/card-sugestao.model';
 })
 export class CardSugestaoComponent implements OnInit {
   @Input() card: CardSugestaoModel;
-  @Output() clickAction = new EventEmitter();
+  @Output() clickAction = new EventEmitter<string>();
 
   public viewModel: CardSugestaoViewModel;
 
@@ -22,9 +22,7 @@ export class CardSugestaoComponent implements OnInit {
   }
 
   public selecionarCard(): void {
-    this.clickAction.emit({
-      id: this.card.id,
-    });
+    this.clickAction.emit(this.card.id);
   }
 
   private construirViewModel(): void {
