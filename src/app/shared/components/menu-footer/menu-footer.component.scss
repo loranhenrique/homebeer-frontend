@@ -6,6 +6,7 @@
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   background: $color-preto-claro;
 
   &__home,
@@ -17,12 +18,12 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 4px 0 30px;
+    margin: $spacing-l 0 $spacing-l;
   }
 
   &__home {
     background-image: $icon-home-preto;
-    margin-left: 24px;
+    margin-left: $spacing-m;
   }
 
   &__carrinho {
@@ -35,7 +36,7 @@
 
   &__perfil {
     background-image: $icon-perfil-preto;
-    margin-right: 24px;
+    margin-right: $spacing-m;
   }
 
   &--home & {
@@ -60,15 +61,5 @@
     &__perfil {
       background-image: $icon-perfil-amarelo;
     }
-  }
-
-  &::before {
-    content: '';
-    //background: transparent linear-gradient(0deg, #181a20 0%, #0b0e15 60%, #0b0e15 84%) 0% 0% no-repeat padding-box;
-    background: transparent linear-gradient(180deg, #ffffff00 0%, #0b0e15 43%, #181a20 100%) 0% 0% no-repeat padding-box;
-    width: 100vw;
-    height: 30px;
-    transform: translateY(-28px);
-    position: absolute;
   }
 }

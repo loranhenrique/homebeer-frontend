@@ -8,9 +8,17 @@ import { CardSugestaoComponent } from './components/card-sugestao/card-sugestao.
 import { SugestaoComponent } from './components/sugestao/sugestao.component';
 import { DestaqueComponent } from './components/destaque/destaque.component';
 import { IconeDestaqueComponent } from './components/icone-destaque/icone-destaque.component';
+import { ListaParceirosComponent } from './components/lista-parceiros/lista-parceiros.component';
 
 @NgModule({
-  declarations: [ParceiroPageComponent, CardSugestaoComponent, SugestaoComponent, DestaqueComponent, IconeDestaqueComponent],
+  declarations: [
+    ParceiroPageComponent,
+    CardSugestaoComponent,
+    SugestaoComponent,
+    DestaqueComponent,
+    IconeDestaqueComponent,
+    ListaParceirosComponent,
+  ],
   imports: [CommonModule, ParceiroRoutingModule, SharedModule, TranslateModule],
 })
 export class ParceiroModule {}

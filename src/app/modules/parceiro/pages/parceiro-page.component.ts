@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardSugestaoModel } from '@parceiro/models/card-sugestao.model';
 import { IconeDestaqueModel } from '@parceiro/models/icone-destaque.model';
 import { ParceiroViewModel } from '@parceiro/models/parceiro-view.model';
+import { CardParceiroModel } from '@shared/models/card-parceiro.model';
 
 @Component({
   selector: 'bra-parceiro-page',
@@ -71,6 +72,49 @@ export class ParceiroPageComponent implements OnInit {
     },
   ];
 
+  private parceiros: CardParceiroModel[] = [
+    {
+      id: '1',
+      nomeLoja: 'Nome teste 1 Nome teste 1 Nome teste 1 Nome teste 1 Nome teste 1',
+      descricaoLoja: 'Descricao teste 1',
+      imagemLoja: '',
+      frete: 'Frete grátis',
+      descricaoAcessibilidade: '',
+    },
+    {
+      id: '2',
+      nomeLoja: 'Nome teste 2',
+      descricaoLoja: 'Descricao teste 2',
+      imagemLoja: '',
+      frete: 'Frete grátis',
+      descricaoAcessibilidade: '',
+    },
+    {
+      id: '3',
+      nomeLoja: 'Nome teste 3',
+      descricaoLoja: 'Descricao teste 3',
+      imagemLoja: '',
+      frete: 'Frete grátis',
+      descricaoAcessibilidade: '',
+    },
+    {
+      id: '4',
+      nomeLoja: 'Nome teste 4',
+      descricaoLoja: 'Descricao teste 4',
+      imagemLoja: '',
+      frete: 'Frete grátis',
+      descricaoAcessibilidade: '',
+    },
+    {
+      id: '5',
+      nomeLoja: 'Nome teste 5',
+      descricaoLoja: 'Descricao teste 5',
+      imagemLoja: '',
+      frete: 'Frete grátis',
+      descricaoAcessibilidade: '',
+    },
+  ];
+
   constructor() {}
 
   ngOnInit(): void {
@@ -85,6 +129,10 @@ export class ParceiroPageComponent implements OnInit {
     console.log(id);
   }
 
+  public parceiroClick(id: string): void {
+    console.log(id);
+  }
+
   private construirViewModel(): void {
     this.viewModel = {
       orientacaoLista: 'horizontal',
@@ -93,6 +141,7 @@ export class ParceiroPageComponent implements OnInit {
       },
       parceirosSugeridos: this.listaParceiro,
       parceirosDestaque: this.listaDestaque,
+      parceiros: this.parceiros,
     };
   }
 }

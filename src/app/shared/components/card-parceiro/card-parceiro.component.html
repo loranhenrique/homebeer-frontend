@@ -1,0 +1,23 @@
+<div class="card-parceiro"
+  role="button"
+  [attr.aria-label]="viewModel.descricaoAcessibilidade"
+  (click)="clickHandler()">
+
+  <div class="card-parceiro__icone-container">
+    <div class="card-parceiro__icone"
+      [style.background-image]="viewModel.imagemLoja"
+      [style.background-position]="'center top'"
+      [style.background-size]="'cover'"></div>
+  </div>
+
+  <div class="card-parceiro__detalhes">
+    <label aria-hidden="true"
+      class="card-parceiro__titulo">{{ viewModel.nomeLoja }}</label>
+
+    <label aria-hidden="true"
+      class="card-parceiro__descricao">{{ viewModel.descricaoLoja }}</label>
+
+    <label aria-hidden="true"
+      class="card-parceiro__frete">{{ viewModel.frete }}</label>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { MenuFooterComponent } from './components/menu-footer/menu-footer.compon
 import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
 import { PesquisaComponent } from './components/pesquisa/pesquisa.component';
 import { ListaComponent } from './components/lista/lista.component';
+import { CardParceiroComponent } from './components/card-parceiro/card-parceiro.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ListaComponent } from './components/lista/lista.component';
     MenuHeaderComponent,
     PesquisaComponent,
     ListaComponent,
+    CardParceiroComponent,
   ],
   imports: [CommonModule, TranslateModule, FormsModule],
   exports: [
@@ -29,6 +31,7 @@ import { ListaComponent } from './components/lista/lista.component';
     MenuHeaderComponent,
     PesquisaComponent,
     ListaComponent,
+    CardParceiroComponent,
   ],
 })
 export class SharedModule {}

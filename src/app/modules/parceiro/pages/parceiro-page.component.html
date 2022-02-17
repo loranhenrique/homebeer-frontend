@@ -9,6 +9,10 @@
       <bra-destaque [parceirosDestaque]="viewModel.parceirosDestaque"
         (clickAction)="cardSugestaoClick($event)">
       </bra-destaque>
+
+      <bra-lista-parceiros [parceiros]="viewModel.parceiros"
+        (clickAction)="parceiroClick($event)">
+      </bra-lista-parceiros>
     </div>
     <bra-menu-footer [conteudoFooter]="viewModel.menuFooter"></bra-menu-footer>
   </div>
