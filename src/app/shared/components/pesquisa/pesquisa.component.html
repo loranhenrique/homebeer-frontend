@@ -1,0 +1,12 @@
+<div class="pesquisa">
+  <div class="pesquisa__container-botao">
+    <div class="pesquisa__botao-pesquisar"
+      role="button"
+      (click)="clickPesquisar()"></div>
+  </div>
+  <input class="pesquisa__input"
+    #campoBusca
+    type="search"
+    placeholder="{{ viewModel.placeholder | translate }}"
+    [(ngModel)]="valorInput" />
+</div>
