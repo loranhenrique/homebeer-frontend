@@ -1,0 +1,25 @@
+<div class="card-sugestao"
+  ontouchstart=""
+  role="button"
+  tabindex="0"
+  [style.background-image]="viewModel.imagem"
+  [style.background-position]="'center top'"
+  [style.background-size]="'cover'"
+  [attr.aria-label]="viewModel.descricaoAcessibilidade"
+  (click)="selecionarCard()">
+
+  <div class="card-sugestao__degrade"></div>
+
+  <div class="card-sugestao__quadrado-1"></div>
+
+  <div class="card-sugestao__detalhes">
+    <label aria-hidden="true"
+      class="card-sugestao__titulo">{{ viewModel.titulo }}</label>
+
+    <label aria-hidden="true"
+      class="card-sugestao__beneficio">{{ viewModel.descricao }}</label>
+  </div>
+
+  <div class="card-sugestao__fade"></div>
+
+</div>

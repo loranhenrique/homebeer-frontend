@@ -12,5 +12,6 @@
   "INFORMATIVO-MAIORIDADE__TEXTO--DENUNCIA": "Para informar o descumprimento de lei, ligue 0800 771 3541 ou acesse o site clicando",
   "INFORMATIVO-MAIORIDADE__TEXTO--SITE": "https://www.alcoolparamenoreseproibido.sp.gov.br",
   "INFORMATIVO-MAIORIDADE__TEXTO--BOTAO": "Fechar",
-  "PESQUISA-INPUT-PLACEHOLDER": "Buscar no Home Beer"
+  "PESQUISA-INPUT-PLACEHOLDER": "Buscar no Home Beer",
+  "CARD-SUGESTAO__DESCRICAO--ACESSIBILIDADE": "{{titulo}}, {{descricao}}. Toque para mais detalhes"
 }

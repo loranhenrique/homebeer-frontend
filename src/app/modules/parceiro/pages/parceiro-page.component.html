@@ -3,8 +3,18 @@
     <bra-menu-header></bra-menu-header>
     <div class="parceiro__content">
       <h2 class="parceiro__titulo">Algumas sugestões da casa</h2>
-      <div class="parceiro__card"></div>
+
+      <div class="parceiro__sugestao">
+        <bra-lista [orientacao]="'horizontal'">
+          <li *ngFor="let card of viewModel.parceirosSugeridos"
+            class="parceiro__card-item">
+            <bra-card-sugestao [card]="card"></bra-card-sugestao>
+          </li>
+        </bra-lista>
+      </div>
+
+      <div class="parceiro__teste"></div>
     </div>
-    <bra-menu-footer [conteudoFooter]="viewModel"></bra-menu-footer>
+    <bra-menu-footer [conteudoFooter]="viewModel.menuFooter"></bra-menu-footer>
   </div>
 </div>

@@ -1,0 +1,37 @@
+@import 'base-styles';
+
+.list {
+  display: flex;
+  @include reset-scroll;
+
+  &--horizontal {
+    padding: 0 $spacing-m;
+    display: -webkit-box;
+    flex-direction: row;
+    width: 100%;
+    overflow-x: scroll;
+    padding-bottom: 8px;
+    margin-bottom: -8px;
+
+    ::ng-deep {
+      & > * {
+        &:not(:first-child) {
+          padding-left: $spacing-s;
+        }
+      }
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+    padding: 0 $spacing-m;
+
+    ::ng-deep {
+      & > * {
+        &:not(:last-child) {
+          padding-bottom: $spacing-s;
+        }
+      }
+    }
+  }
+}

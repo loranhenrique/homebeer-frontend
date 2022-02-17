@@ -8,6 +8,7 @@ import { ModalComponent } from '@shared/components/modal/modal.component';
 import { MenuFooterComponent } from './components/menu-footer/menu-footer.component';
 import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
 import { PesquisaComponent } from './components/pesquisa/pesquisa.component';
+import { ListaComponent } from './components/lista/lista.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { PesquisaComponent } from './components/pesquisa/pesquisa.component';
     MenuFooterComponent,
     MenuHeaderComponent,
     PesquisaComponent,
+    ListaComponent,
   ],
   imports: [CommonModule, TranslateModule, FormsModule],
   exports: [
@@ -26,6 +28,7 @@ import { PesquisaComponent } from './components/pesquisa/pesquisa.component';
     MenuFooterComponent,
     MenuHeaderComponent,
     PesquisaComponent,
+    ListaComponent,
   ],
 })
 export class SharedModule {}
