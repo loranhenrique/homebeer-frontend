@@ -1,0 +1,30 @@
+@import 'base-styles';
+
+.icone-destaque {
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  height: 100px;
+  color: $color-branco-default;
+  position: relative;
+
+  &__icone {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-color: $color-preto-acinzentado;
+  }
+
+  &__titulo {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    font-size: to-vw(13px);
+    font-family: $font-roboto-default;
+    max-height: calc(1 * 1.25em);
+    margin-top: $spacing-xs;
+    text-align: center;
+  }
+}

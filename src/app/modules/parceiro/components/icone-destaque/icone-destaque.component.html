@@ -1,0 +1,16 @@
+<div class="icone-destaque"
+  ontouchstart=""
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="viewModel.descricaoAcessibilidade"
+  (click)="selecionarCard()">
+
+  <div class="icone-destaque__icone"
+    [style.background-image]="viewModel.imagem"
+    [style.background-position]="'center top'"
+    [style.background-size]="'cover'"></div>
+
+  <label aria-hidden="true"
+    class="icone-destaque__titulo">{{ viewModel.titulo }}</label>
+
+</div>

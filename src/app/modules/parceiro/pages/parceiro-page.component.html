@@ -6,7 +6,9 @@
         (clickAction)="cardSugestaoClick($event)">
       </bra-sugestao>
 
-      <div class="parceiro__teste"></div>
+      <bra-destaque [parceirosDestaque]="viewModel.parceirosDestaque"
+        (clickAction)="cardSugestaoClick($event)">
+      </bra-destaque>
     </div>
     <bra-menu-footer [conteudoFooter]="viewModel.menuFooter"></bra-menu-footer>
   </div>

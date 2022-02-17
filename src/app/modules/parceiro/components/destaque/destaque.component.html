@@ -1,0 +1,11 @@
+<div class="destaque">
+  <label class="destaque__titulo">{{ viewModel.titulo | translate }}</label>
+
+  <bra-lista [orientacao]="'horizontal'">
+    <li *ngFor="let icone of viewModel.parceirosDestaque"
+      class="destaque__icone-item">
+      <bra-icone-destaque [icone]="icone"
+        (clickAction)="selecionarIcone($event)"></bra-icone-destaque>
+    </li>
+  </bra-lista>
+</div>

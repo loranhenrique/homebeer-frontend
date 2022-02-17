@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CardSugestaoModel } from '@parceiro/models/card-sugestao.model';
+import { IconeDestaqueModel } from '@parceiro/models/icone-destaque.model';
 import { ParceiroViewModel } from '@parceiro/models/parceiro-view.model';
 
 @Component({
@@ -9,7 +10,7 @@ import { ParceiroViewModel } from '@parceiro/models/parceiro-view.model';
 })
 export class ParceiroPageComponent implements OnInit {
   public viewModel: ParceiroViewModel;
-  public listaParceiro: CardSugestaoModel[] = [
+  private listaParceiro: CardSugestaoModel[] = [
     {
       id: '1',
       nomeLoja: 'Nome teste',
@@ -42,6 +43,34 @@ export class ParceiroPageComponent implements OnInit {
     },
   ];
 
+  private listaDestaque: IconeDestaqueModel[] = [
+    {
+      id: '1',
+      imagemLoja: '',
+      nomeLoja: 'Nome teste teste teste 1',
+    },
+    {
+      id: '2',
+      imagemLoja: '',
+      nomeLoja: 'Nome teste 2',
+    },
+    {
+      id: '3',
+      imagemLoja: '',
+      nomeLoja: 'Nome teste 3',
+    },
+    {
+      id: '4',
+      imagemLoja: '',
+      nomeLoja: 'Nome teste 4',
+    },
+    {
+      id: '5',
+      imagemLoja: '',
+      nomeLoja: 'Nome teste 1',
+    },
+  ];
+
   constructor() {}
 
   ngOnInit(): void {
@@ -52,6 +81,10 @@ export class ParceiroPageComponent implements OnInit {
     console.log(id);
   }
 
+  public iconeDestaqueClick(id: string): void {
+    console.log(id);
+  }
+
   private construirViewModel(): void {
     this.viewModel = {
       orientacaoLista: 'horizontal',
@@ -59,6 +92,7 @@ export class ParceiroPageComponent implements OnInit {
         selecionado: 'home',
       },
       parceirosSugeridos: this.listaParceiro,
+      parceirosDestaque: this.listaDestaque,
     };
   }
 }

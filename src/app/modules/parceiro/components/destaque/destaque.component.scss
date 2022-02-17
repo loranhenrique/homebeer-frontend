@@ -1,11 +1,11 @@
 @import 'base-styles';
 
-.sugestao {
+.destaque {
   display: flex;
   flex-direction: column;
 
   &__titulo {
     font-size: to-vw(20px);
-    padding: $spacing-l $spacing-m $spacing-s;
+    padding: $spacing-m $spacing-m $spacing-s;
   }
 }

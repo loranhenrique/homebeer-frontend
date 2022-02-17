@@ -14,5 +14,7 @@
   "INFORMATIVO-MAIORIDADE__TEXTO--BOTAO": "Fechar",
   "PESQUISA-INPUT-PLACEHOLDER": "Buscar no Home Beer",
   "CARD-SUGESTAO__DESCRICAO--ACESSIBILIDADE": "{{titulo}}, {{descricao}}. Toque para mais detalhes",
-  "SUGESTAO__LABEL--TITULO": "Algumas sugestões da casa"
+  "SUGESTAO__LABEL--TITULO": "Algumas sugestões da casa",
+  "DESTAQUE__LABEL--TITULO": "Parceiros famosos no Home Beer",
+  "ICONE-DESTAQUE__DESCRICAO--ACESSIBILIDADE": "{{titulo}}. Toque para mais detalhes"
 }
