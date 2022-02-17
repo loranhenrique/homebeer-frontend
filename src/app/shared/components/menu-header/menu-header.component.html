@@ -1,0 +1,15 @@
+<div class="menu-header">
+
+  <label *ngIf="titulo"
+    class="menu-header__titulo">{{ titulo | translate }}</label>
+
+  <div *ngIf="!titulo"
+    class="menu-header__pesquisa">
+    <div class="menu-header__icon-pesquisa">
+      <div class="menu-header__botao-pesquisar"></div>
+    </div>
+    <input class="menu-header__input"
+      type="search"
+      placeholder="Buscar no Home Beer" />
+  </div>
+</div>

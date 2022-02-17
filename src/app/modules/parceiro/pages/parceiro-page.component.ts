@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuFooterModel } from '@shared/models/menu-footer.model';
 
 @Component({
-  selector: 'app-parceiro-page',
+  selector: 'bra-parceiro-page',
   templateUrl: './parceiro-page.component.html',
   styleUrls: ['./parceiro-page.component.scss'],
 })

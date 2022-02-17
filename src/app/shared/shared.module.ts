@@ -6,10 +6,11 @@ import { ButtonComponent } from '@shared/components/button/button.component';
 import { LinhaComponent } from '@shared/components/linha/linha.component';
 import { ModalComponent } from '@shared/components/modal/modal.component';
 import { MenuFooterComponent } from './components/menu-footer/menu-footer.component';
+import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
 
 @NgModule({
-  declarations: [ButtonComponent, LinhaComponent, ModalComponent, MenuFooterComponent],
+  declarations: [ButtonComponent, LinhaComponent, ModalComponent, MenuFooterComponent, MenuHeaderComponent],
   imports: [CommonModule, TranslateModule, FormsModule],
-  exports: [ButtonComponent, LinhaComponent, ModalComponent, MenuFooterComponent],
+  exports: [ButtonComponent, LinhaComponent, ModalComponent, MenuFooterComponent, MenuHeaderComponent],
 })
 export class SharedModule {}
