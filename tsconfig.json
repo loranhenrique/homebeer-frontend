@@ -25,6 +25,7 @@
       "@onboarding/*": ["src/app/modules/onboarding/*"],
       "@parceiro/*": ["src/app/modules/parceiro/*"],
       "@erro/*": ["src/app/modules/erro/*"],
+      "@interceptors/*": ["src/app/core/interceptors/*"],
       "@service/*": ["src/app/core/services/*"],
       "@env/*": ["src/environments/*"],
       "@config/*": ["src/app/config/*"],
