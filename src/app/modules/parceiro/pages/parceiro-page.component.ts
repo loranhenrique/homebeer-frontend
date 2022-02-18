@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CardSugestaoModel } from '@parceiro/models/card-sugestao.model';
 import { IconeDestaqueModel } from '@parceiro/models/icone-destaque.model';
 import { ParceiroViewModel } from '@parceiro/models/parceiro-view.model';
@@ -115,7 +116,7 @@ export class ParceiroPageComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.construirViewModel();
@@ -143,5 +144,8 @@ export class ParceiroPageComponent implements OnInit {
       parceirosDestaque: this.listaDestaque,
       parceiros: this.parceiros,
     };
+
+    const parceiroBff = this.activatedRoute.snapshot.data.parceiros;
+    console.log(parceiroBff);
   }
 }

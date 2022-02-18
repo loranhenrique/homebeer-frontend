@@ -20,5 +20,6 @@
   "LISTA-PARCEIROS__LABEL--TITULO": "Viva todas as experiências",
   "ERRO__LABEL-TITULO": "Ops! Algo deu errado",
   "ERRO__LABEL-DESCRICAO": "Não foi possível realizar o processo desejado. Por favor, tente de novo em alguns instantes.",
-  "ERRO__LABEL-BOTAO": "Ok, entendi"
+  "ERRO__LABEL-BOTAO": "Ok, entendi",
+  "PARCEIRO__LOADING-MENSAGEM--PARCEIROS": "Aproveite as experiências do Home Beer!"
 }

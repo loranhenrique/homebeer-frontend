@@ -1,9 +1,13 @@
 <div class="erro">
-  <div class="erro__body">
-    <div class="erro__imagem"></div>
-    <h2 class="erro__titulo">{{ viewModel.titulo | translate }}</h2>
-    <p class="erro__descricao">{{ viewModel.descricao | translate }}</p>
-    <p class="erro__codigo">{{ viewModel.codigoErro | translate }}</p>
+  <div class="erro__container">
+    <bra-menu-header [titulo]="'Home Beer'"></bra-menu-header>
+
+    <div class="erro__body">
+      <div class="erro__imagem"></div>
+      <h2 class="erro__titulo">{{ viewModel.titulo | translate }}</h2>
+      <p class="erro__descricao">{{ viewModel.descricao | translate }}</p>
+      <p class="erro__codigo">{{ viewModel.codigoErro | translate }}</p>
+    </div>
   </div>
 
   <div class="erro__footer-botao">
