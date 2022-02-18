@@ -1,0 +1,9 @@
+<div class="lista-favoritos">
+  <bra-lista>
+    <li *ngFor="let favorito of viewModel.favoritos"
+      class="lista-favoritos__card-favorito">
+      <bra-card-parceiro [cardParceiro]="favorito"
+        (clickAction)="selecionarCard($event)"></bra-card-parceiro>
+    </li>
+  </bra-lista>
+</div>

@@ -17,4 +17,8 @@ export const productionRoutes = [
     path: 'erro',
     loadChildren: () => import('./modules/erro/erro.module').then(module => module.ErroModule),
   },
+  {
+    path: 'favorito',
+    loadChildren: () => import('./modules/favorito/favorito.module').then(module => module.FavoritoModule),
+  },
 ];

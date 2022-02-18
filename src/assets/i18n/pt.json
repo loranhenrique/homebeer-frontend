@@ -21,5 +21,9 @@
   "ERRO__LABEL-TITULO": "Ops! Algo deu errado",
   "ERRO__LABEL-DESCRICAO": "Não foi possível realizar o processo desejado. Por favor, tente de novo em alguns instantes.",
   "ERRO__LABEL-BOTAO": "Ok, entendi",
-  "PARCEIRO__LOADING-MENSAGEM--PARCEIROS": "Aproveite as experiências do Home Beer!"
+  "PARCEIRO__LOADING-MENSAGEM--PARCEIROS": "Aproveite as experiências do Home Beer!",
+  "FAVORITO__LABEL--TITULO-PRINCIPAL": "Favoritos",
+  "FAVORITO__LABEL--TITULO-ERRO": "Área de favoritos vazia",
+  "FAVORITO__LABEL--DESCRICAO-ERRO": "Toque no coração para salvar e encontrar aqui seus parceiros favoritos",
+  "FAVORITO__LABEL--BOTAO-ERRO": "Ok, entendi"
 }
