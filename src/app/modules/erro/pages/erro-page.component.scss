@@ -1,0 +1,46 @@
+@import 'base-styles';
+@import 'base-64';
+
+.erro {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: $spacing-m;
+
+  &__imagem {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    background-image: $erro-base-64;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__titulo {
+    font-family: $font-roboto-medium;
+    text-align: center;
+    font-size: to-vw(20px);
+    margin-bottom: $spacing-xs;
+  }
+
+  &__descricao {
+    font-family: $font-roboto-light;
+    text-align: center;
+    font-size: to-vw(16px);
+    margin-bottom: $spacing-m;
+  }
+
+  &__codigo {
+    text-align: center;
+    font-size: to-vw(20px);
+    color: $color-preto-acinzentado;
+  }
+}

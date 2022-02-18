@@ -13,4 +13,8 @@ export const productionRoutes = [
     path: 'parceiro',
     loadChildren: () => import('./modules/parceiro/parceiro.module').then(module => module.ParceiroModule),
   },
+  {
+    path: 'erro',
+    loadChildren: () => import('./modules/erro/erro.module').then(module => module.ErroModule),
+  },
 ];
