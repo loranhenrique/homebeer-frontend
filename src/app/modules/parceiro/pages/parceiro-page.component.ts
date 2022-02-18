@@ -134,6 +134,10 @@ export class ParceiroPageComponent implements OnInit {
     console.log(id);
   }
 
+  public menuFooterClick(value: string): void {
+    console.log(value);
+  }
+
   private construirViewModel(): void {
     this.viewModel = {
       orientacaoLista: 'horizontal',

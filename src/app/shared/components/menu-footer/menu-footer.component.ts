@@ -8,17 +8,12 @@ import { MenuFooterModel } from '@shared/models/menu-footer.model';
 })
 export class MenuFooterComponent {
   @Input() conteudoFooter: MenuFooterModel;
-  @Output() clickActionBotao = new EventEmitter();
-  @Output() clickActionLink = new EventEmitter();
+  @Output() clickAction = new EventEmitter<string>();
 
   constructor() {}
 
-  public clickHandlerBotao(): void {
-    this.clickActionBotao.emit();
-  }
-
-  public clickHandlerLink(): void {
-    this.clickActionLink.emit();
+  public clickHandlerBotao(value: string): void {
+    this.clickAction.emit(value);
   }
 
   public getClass(): string {

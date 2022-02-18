@@ -1,6 +1,18 @@
 <footer [ngClass]="getClass()">
-  <div class="menu-footer__home"></div>
-  <div class="menu-footer__carrinho"></div>
-  <div class="menu-footer__favorito"></div>
-  <div class="menu-footer__perfil"></div>
+  <div class="menu-footer__home"
+    role="button"
+    [attr.aria-label]="'Home'"
+    (click)="clickHandlerBotao('Home')"></div>
+  <div class="menu-footer__carrinho"
+    role="button"
+    [attr.aria-label]="'Carrinho'"
+    (click)="clickHandlerBotao('Carrinho')"></div>
+  <div class="menu-footer__favorito"
+    role="button"
+    [attr.aria-label]="'Favorito'"
+    (click)="clickHandlerBotao('Favorito')"></div>
+  <div class="menu-footer__perfil"
+    role="button"
+    [attr.aria-label]="'Perfil'"
+    (click)="clickHandlerBotao('Perfil')"></div>
 </footer>
