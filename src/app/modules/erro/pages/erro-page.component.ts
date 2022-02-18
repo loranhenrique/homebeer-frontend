@@ -9,11 +9,11 @@ import { ErroModel } from '@erro/models/erro.model';
   styleUrls: ['./erro-page.component.scss'],
 })
 export class ErroPageComponent implements OnInit {
+  public viewModel: ErroViewModel;
+
   private erroModel: ErroModel;
   private navigation: Navigation | null;
   private SEM_INTERNET_MOMENTO_FRONT = 'SIMF-400';
-
-  public viewModel: ErroViewModel;
 
   constructor(private router: Router) {
     this.navigation = this.router.getCurrentNavigation();
