@@ -1,1 +1,5 @@
-<router-outlet></router-outlet>
+<div [attr.aria-hidden]="ariaHidden">
+  <router-outlet></router-outlet>
+</div>
+<bra-loading [loading]="isLoading"
+  [mensagem]="loadingMensagem | translate"></bra-loading>

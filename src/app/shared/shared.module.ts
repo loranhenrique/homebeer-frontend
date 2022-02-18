@@ -10,6 +10,7 @@ import { MenuHeaderComponent } from './components/menu-header/menu-header.compon
 import { PesquisaComponent } from './components/pesquisa/pesquisa.component';
 import { ListaComponent } from './components/lista/lista.component';
 import { CardParceiroComponent } from './components/card-parceiro/card-parceiro.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CardParceiroComponent } from './components/card-parceiro/card-parceiro.
     PesquisaComponent,
     ListaComponent,
     CardParceiroComponent,
+    LoadingComponent,
   ],
   imports: [CommonModule, TranslateModule, FormsModule],
   exports: [
@@ -32,6 +34,7 @@ import { CardParceiroComponent } from './components/card-parceiro/card-parceiro.
     PesquisaComponent,
     ListaComponent,
     CardParceiroComponent,
+    LoadingComponent,
   ],
 })
 export class SharedModule {}

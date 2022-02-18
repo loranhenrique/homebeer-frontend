@@ -1,0 +1,42 @@
+@import 'base-styles';
+@import 'base-64';
+
+.loading {
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-color: $color-preto-escuro;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+
+  &__icon {
+    background-image: $loading-base-64;
+    width: 100vw;
+    height: 250px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__paragrafo {
+    font-family: $font-roboto-light;
+    font-size: to-vw(20px);
+    line-height: to-vw(18px);
+    margin-top: $spacing-s;
+    text-align: center;
+  }
+
+  &--fixo {
+    position: fixed;
+  }
+
+  &--absoluto {
+    position: absolute;
+  }
+}
