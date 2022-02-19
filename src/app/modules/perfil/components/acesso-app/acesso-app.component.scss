@@ -1,0 +1,29 @@
+@import 'base-styles';
+@import 'base-64';
+
+.acesso-app {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-l $spacing-m 0;
+
+  &__imagem {
+    width: 100%;
+    height: 260px;
+    background-image: $tela-acesso-base-64;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100%;
+  }
+
+  &__descricao {
+    font-family: $font-roboto-light;
+    text-align: center;
+    font-size: to-vw(16px);
+    margin: $spacing-l 0;
+  }
+
+  &__botao-secondary {
+    margin-top: $spacing-m;
+  }
+}

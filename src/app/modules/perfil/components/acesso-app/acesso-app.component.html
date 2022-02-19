@@ -1,0 +1,14 @@
+<div class="acesso-app">
+  <div class="acesso-app__imagem"></div>
+  <p class="acesso-app__descricao">{{ viewModel.descricao | translate }}</p>
+
+  <div class="acesso-app__grupo-botao">
+    <bra-button [texto]="viewModel.textoBotaoPrimario"
+      (clickAction)="clickHandler('Entrar')"></bra-button>
+    <div class="acesso-app__botao-secondary">
+      <bra-button [texto]="viewModel.textoBotaoSecundario"
+        [tipo]="'secondary'"
+        (clickAction)="clickHandler('Registrar')"></bra-button>
+    </div>
+  </div>
+</div>

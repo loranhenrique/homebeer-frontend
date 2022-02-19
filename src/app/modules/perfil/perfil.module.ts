@@ -4,9 +4,10 @@ import { PerfilPageComponent } from '@perfil/pages/perfil-page.component';
 import { PerfilRoutingModule } from '@perfil/perfil-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { AcessoAppComponent } from './components/acesso-app/acesso-app.component';
 
 @NgModule({
-  declarations: [PerfilPageComponent],
+  declarations: [PerfilPageComponent, AcessoAppComponent],
   imports: [CommonModule, PerfilRoutingModule, SharedModule, TranslateModule],
 })
 export class PerfilModule {}

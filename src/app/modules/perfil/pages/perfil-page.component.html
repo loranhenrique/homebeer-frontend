@@ -1,1 +1,12 @@
-<p>perfil-page works!</p>
+<div class="perfil">
+  <div class="perfil__container">
+    <bra-menu-header [titulo]="viewModel.tituloPrincipal"></bra-menu-header>
+
+    <div class="perfil__content">
+      <bra-acesso-app (clickAction)="clickAcesso($event)"></bra-acesso-app>
+    </div>
+
+    <bra-menu-footer [conteudoFooter]="viewModel.menuFooter"
+      (clickAction)="menuFooterClick($event)"></bra-menu-footer>
+  </div>
+</div>

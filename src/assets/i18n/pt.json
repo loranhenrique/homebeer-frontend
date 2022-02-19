@@ -31,5 +31,8 @@
   "CARRINHO__LABEL--DESCRICAO-ERRO": "Navegue pelas nossas ofertas incríveis agora mesmo, para encontrar novos produtos",
   "CARRINHO__LABEL--BOTAO-ERRO": "Ok, entendi",
   "CARD-PRODUTO__LABEL--BOTAO-EXCLUIR": "Remover",
-  "TOTAL-COMPRA__LABEL--BOTAO": "Continuar a compra"
+  "TOTAL-COMPRA__LABEL--BOTAO": "Continuar a compra",
+  "ACESSO-APP__LABEL--DESCRICAO": "Conheça nossas vantagens e boas compras!",
+  "ACESSO-APP__LABEL--BOTAO-PRIMARIO": "Entrar",
+  "ACESSO-APP__LABEL--BOTAO-SECUNDARIO": "Registrar"
 }
