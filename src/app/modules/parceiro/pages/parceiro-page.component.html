@@ -1,6 +1,6 @@
 <div class="parceiro">
   <div class="parceiro__container">
-    <bra-menu-header></bra-menu-header>
+    <bra-menu-header [menuHeader]="viewModel.menuHeader"></bra-menu-header>
     <div class="parceiro__content">
       <bra-sugestao [parceirosSugeridos]="viewModel.parceirosSugeridos"
         (clickAction)="cardSugestaoClick($event)">

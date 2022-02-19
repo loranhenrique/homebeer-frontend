@@ -42,6 +42,10 @@ export class ErroPageComponent implements OnInit {
       descricao: 'ERRO__LABEL-DESCRICAO',
       codigoErro: this.definirCodigoErro(),
       textoBotao: 'ERRO__LABEL-BOTAO',
+      menuHeader: {
+        tipo: 'default',
+        titulo: 'APP__LABEL-TITULO',
+      },
     };
   }
 

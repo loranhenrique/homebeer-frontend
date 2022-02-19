@@ -76,14 +76,17 @@ export class FavoritoPageComponent implements OnInit {
 
   private construirViewModel(): void {
     this.viewModel = {
-      tituloPrincipal: 'FAVORITO__LABEL--TITULO-PRINCIPAL',
       tituloErro: 'FAVORITO__LABEL--TITULO-ERRO',
       descricaoErro: 'FAVORITO__LABEL--DESCRICAO-ERRO',
       textoBotaoErro: 'FAVORITO__LABEL--BOTAO-ERRO',
+      favoritos: this.favoritosVazio,
       menuFooter: {
         selecionado: 'favorito',
       },
-      favoritos: this.favoritosVazio,
+      menuHeader: {
+        tipo: 'default',
+        titulo: 'FAVORITO__LABEL--TITULO-PRINCIPAL',
+      },
     };
   }
 }

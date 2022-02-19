@@ -31,9 +31,12 @@ export class PerfilPageComponent implements OnInit {
       nomeCliente: 'Loran Henrique',
       dataInclusao: '18/02/2022',
       textoBotaoSair: 'Sair',
-      tituloPrincipal: 'Home Beer',
       menuFooter: {
         selecionado: 'perfil',
+      },
+      menuHeader: {
+        tipo: 'default',
+        titulo: 'APP__LABEL-TITULO',
       },
       modalModel: {
         mostrar: false,

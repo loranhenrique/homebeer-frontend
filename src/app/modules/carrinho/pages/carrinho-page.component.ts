@@ -106,17 +106,20 @@ export class CarrinhoPageComponent implements OnInit {
 
   private construirViewModel(): void {
     this.viewModel = {
-      tituloPrincipal: 'CARRINHO__LABEL--TITULO-PRINCIPAL',
       tituloErro: 'CARRINHO__LABEL--TITULO-ERRO',
       descricaoErro: 'CARRINHO__LABEL--DESCRICAO-ERRO',
       textoBotaoErro: 'CARRINHO__LABEL--BOTAO-ERRO',
-      menuFooter: {
-        selecionado: 'carrinho',
-      },
       compras: this.carrinho,
       valorTotalCompra: this.calcularValorTotalCompra(),
       carrinhoVazio: this.validarCarrinhoVazio(),
       exibeListaCompra: this.validarCarrinhoVazio(),
+      menuFooter: {
+        selecionado: 'carrinho',
+      },
+      menuHeader: {
+        tipo: 'default',
+        titulo: 'CARRINHO__LABEL--TITULO-PRINCIPAL',
+      },
     };
   }
 

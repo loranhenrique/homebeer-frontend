@@ -1,10 +1,14 @@
-<div class="menu-header">
+<div class="menu-header"
+  [ngSwitch]="menuHeader.tipo">
 
-  <label *ngIf="titulo"
-    class="menu-header__titulo">{{ titulo | translate }}</label>
+  <label *ngSwitchCase="'default'"
+    class="menu-header__titulo">{{ menuHeader.titulo | translate }}</label>
 
-  <div *ngIf="!titulo"
+  <div *ngSwitchCase="'pesquisa'"
     class="menu-header__pesquisa">
     <bra-pesquisa></bra-pesquisa>
   </div>
+
+  <div *ngSwitchCase="'perfil'"
+    class="menu-perfil"></div>
 </div>

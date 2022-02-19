@@ -147,12 +147,15 @@ export class ParceiroPageComponent implements OnInit {
   private construirViewModel(): void {
     this.viewModel = {
       orientacaoLista: 'horizontal',
-      menuFooter: {
-        selecionado: 'home',
-      },
       parceirosSugeridos: this.listaParceiro,
       parceirosDestaque: this.listaDestaque,
       parceiros: this.parceiros,
+      menuFooter: {
+        selecionado: 'home',
+      },
+      menuHeader: {
+        tipo: 'pesquisa',
+      },
     };
 
     const parceiroBff = this.activatedRoute.snapshot.data.parceiros;

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { MenuHeaderModel } from '@shared/models/menu-header.model';
 
 @Component({
   selector: 'bra-menu-header',
@@ -6,7 +7,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./menu-header.component.scss'],
 })
 export class MenuHeaderComponent {
-  @Input() titulo: string;
+  @Input() menuHeader: MenuHeaderModel;
 
   constructor() {}
 }
