@@ -15,7 +15,7 @@ export class RedirecionarMenuFooterService {
       case 'Favorito':
         return '/favorito';
       case 'Perfil':
-        return '/parceiro';
+        return '/perfil';
     }
   }
 }

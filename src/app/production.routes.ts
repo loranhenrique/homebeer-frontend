@@ -25,4 +25,8 @@ export const productionRoutes = [
     path: 'carrinho',
     loadChildren: () => import('./modules/carrinho/carrinho.module').then(module => module.CarrinhoModule),
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./modules/perfil/perfil.module').then(module => module.PerfilModule),
+  },
 ];
