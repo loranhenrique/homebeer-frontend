@@ -1,0 +1,10 @@
+<div class="lista-compras">
+  <bra-lista>
+    <li *ngFor="let produto of viewModel.compras"
+      class="lista-compras__card-produto"
+      [@cardAnimation]>
+      <bra-card-produto [cardProduto]="produto"
+        (clickAction)="selecionarCard($event)"></bra-card-produto>
+    </li>
+  </bra-lista>
+</div>

@@ -25,13 +25,5 @@
   &--vertical {
     flex-direction: column;
     padding: 0 $spacing-m;
-
-    ::ng-deep {
-      & > * {
-        &:not(:last-child) {
-          padding-bottom: $spacing-s;
-        }
-      }
-    }
   }
 }

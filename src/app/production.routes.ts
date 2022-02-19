@@ -21,4 +21,8 @@ export const productionRoutes = [
     path: 'favorito',
     loadChildren: () => import('./modules/favorito/favorito.module').then(module => module.FavoritoModule),
   },
+  {
+    path: 'carrinho',
+    loadChildren: () => import('./modules/carrinho/carrinho.module').then(module => module.CarrinhoModule),
+  },
 ];

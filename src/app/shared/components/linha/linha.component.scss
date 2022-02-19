@@ -1,7 +1,15 @@
 @import 'base-styles';
 
 .linha {
-  width: 76px;
-  background-color: $color-amarelo;
   height: 1px;
+
+  &--default {
+    width: 76px;
+    background-color: $color-amarelo;
+  }
+
+  &--completa {
+    width: 100%;
+    background-color: $color-preto-escuro;
+  }
 }

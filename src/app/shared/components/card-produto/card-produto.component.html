@@ -1,0 +1,37 @@
+<div *ngIf="viewModel.exibeCardProduto"
+  class="card-produto"
+  [@slideInOut]>
+
+  <div class="card-produto__icone-container">
+    <div class="card-produto__icone"
+      [style.background-image]="viewModel.imagem"
+      [style.background-position]="'center top'"
+      [style.background-size]="'cover'"></div>
+  </div>
+
+  <div class="card-produto__detalhes">
+    <label class="card-produto__titulo">{{ viewModel.nomeProduto }}</label>
+    <label class="card-produto__descricao">{{ viewModel.nomeParceiro }}</label>
+
+    <div class="card-produto__quantidade-item">
+      <div class="card-produto__menos"
+        role="button"
+        (click)="clickHandler('-')">-</div>
+      <div class="card-produto__valor-quantidade"
+        role="text">{{ viewModel.quantidade }}</div>
+      <div class="card-produto__mais"
+        role="button"
+        (click)="clickHandler('+')">+</div>
+    </div>
+
+    <div *ngIf="viewModel.exibeBotaoExcluirProduto"
+      class="card-produto__excluir-produto"
+      (click)="excluirProduto()">
+      {{ viewModel.textoBotaoExcluirProduto | translate }}</div>
+
+    <bra-linha [tipo]="'completa'"></bra-linha>
+
+    <label
+      class="card-produto__preco">{{ viewModel.valorTotal | braCurrency }}</label>
+  </div>
+</div>

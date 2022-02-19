@@ -25,5 +25,10 @@
   "FAVORITO__LABEL--TITULO-PRINCIPAL": "Favoritos",
   "FAVORITO__LABEL--TITULO-ERRO": "Área de favoritos vazia",
   "FAVORITO__LABEL--DESCRICAO-ERRO": "Toque no coração para salvar e encontrar aqui seus parceiros favoritos",
-  "FAVORITO__LABEL--BOTAO-ERRO": "Ok, entendi"
+  "FAVORITO__LABEL--BOTAO-ERRO": "Ok, entendi",
+  "CARRINHO__LABEL--TITULO-PRINCIPAL": "Carrinho",
+  "CARRINHO__LABEL--TITULO-ERRO": "O carrinho está vazio",
+  "CARRINHO__LABEL--DESCRICAO-ERRO": "Navegue pelas nossas ofertas incríveis agora mesmo, para encontrar novos produtos",
+  "CARRINHO__LABEL--BOTAO-ERRO": "Ok, entendi",
+  "CARD-PRODUTO__LABEL--BOTAO-EXCLUIR": "Remover"
 }
