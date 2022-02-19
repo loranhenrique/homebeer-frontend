@@ -6,6 +6,7 @@ export interface CarrinhoViewModel {
   tituloErro: string;
   descricaoErro: string;
   textoBotaoErro: string;
+  valorTotalCompra: number;
   menuFooter: MenuFooterModel;
   compras: CardProdutoModel[];
 }

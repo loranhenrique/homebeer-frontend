@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarrinhoViewModel } from '@carrinho/models/carrinho-view.model';
 import { CardProdutoModel } from '@shared/models/card-produto.model';
+import { InfoProdutoModel } from '@shared/models/info-produto.model';
 
 @Component({
   selector: 'bra-carrinho-page',
@@ -74,8 +75,14 @@ export class CarrinhoPageComponent implements OnInit {
     this.construirViewModel();
   }
 
-  public clickCardFavorito(id: string): void {
-    console.log(id);
+  public clickComprar(): void {
+    console.log('Click continuar comprando');
+  }
+
+  public infoProduto(infoProduto: InfoProdutoModel): void {
+    //salvar nova informacao do produto no banco
+    this.atualizarCarrinho(infoProduto);
+    this.viewModel.valorTotalCompra = this.calcularValorTotalCompra();
   }
 
   public clickBotaoErro(): void {
@@ -98,6 +105,28 @@ export class CarrinhoPageComponent implements OnInit {
         selecionado: 'carrinho',
       },
       compras: this.carrinho,
+      valorTotalCompra: this.calcularValorTotalCompra(),
     };
+  }
+
+  private calcularValorTotalCompra(): number {
+    let valorTotalCompra = 0;
+
+    this.carrinho.forEach((produto: CardProdutoModel) => {
+      valorTotalCompra += produto.quantidade * produto.valorUnitario;
+    });
+
+    return valorTotalCompra;
+  }
+
+  private atualizarCarrinho(infoProduto: InfoProdutoModel): void {
+    const produtoEncontrado = this.carrinho.find(
+      (produto: CardProdutoModel) =>
+        produto.idParceiro === infoProduto.idParceiro && produto.idProduto === infoProduto.idProduto
+    );
+
+    if (produtoEncontrado) {
+      produtoEncontrado.quantidade = infoProduto.quantidade;
+    }
   }
 }

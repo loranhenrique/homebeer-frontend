@@ -30,5 +30,6 @@
   "CARRINHO__LABEL--TITULO-ERRO": "O carrinho está vazio",
   "CARRINHO__LABEL--DESCRICAO-ERRO": "Navegue pelas nossas ofertas incríveis agora mesmo, para encontrar novos produtos",
   "CARRINHO__LABEL--BOTAO-ERRO": "Ok, entendi",
-  "CARD-PRODUTO__LABEL--BOTAO-EXCLUIR": "Remover"
+  "CARD-PRODUTO__LABEL--BOTAO-EXCLUIR": "Remover",
+  "TOTAL-COMPRA__LABEL--BOTAO": "Continuar a compra"
 }

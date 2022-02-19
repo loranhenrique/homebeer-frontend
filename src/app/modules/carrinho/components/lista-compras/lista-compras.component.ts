@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ListaComprasViewModel } from '@carrinho/models/lista-compras-view.model';
 import { cardAnimation } from '@shared/components/card-produto/card-produto-animation';
 import { CardProdutoModel } from '@shared/models/card-produto.model';
+import { InfoProdutoModel } from '@shared/models/info-produto.model';
 
 @Component({
   selector: 'bra-lista-compras',
@@ -11,7 +12,7 @@ import { CardProdutoModel } from '@shared/models/card-produto.model';
 })
 export class ListaComprasComponent implements OnInit {
   @Input() compras: CardProdutoModel[];
-  @Output() clickAction = new EventEmitter<string>();
+  @Output() clickAction = new EventEmitter<InfoProdutoModel>();
   public viewModel: ListaComprasViewModel;
 
   constructor() {}
@@ -20,8 +21,8 @@ export class ListaComprasComponent implements OnInit {
     this.construirViewModel();
   }
 
-  public selecionarCard(id: string): void {
-    this.clickAction.emit(id);
+  public infoProduto(infoProduto: InfoProdutoModel): void {
+    this.clickAction.emit(infoProduto);
   }
 
   private construirViewModel(): void {

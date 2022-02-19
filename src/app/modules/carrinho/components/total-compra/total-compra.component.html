@@ -1,0 +1,6 @@
+<div class="total-compra">
+  <p class="total-compra__valor">TOTAL: {{ viewModel.valorTotal| braCurrency }}
+  </p>
+  <bra-button [texto]="viewModel.textoBotao"
+    (clickAction)="clickHandler()"></bra-button>
+</div>

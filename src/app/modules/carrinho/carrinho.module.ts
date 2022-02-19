@@ -5,9 +5,10 @@ import { CarrinhoRoutingModule } from '@carrinho/carrinho-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ListaComprasComponent } from '@carrinho/components/lista-compras/lista-compras.component';
+import { TotalCompraComponent } from './components/total-compra/total-compra.component';
 
 @NgModule({
-  declarations: [CarrinhoPageComponent, ListaComprasComponent],
+  declarations: [CarrinhoPageComponent, ListaComprasComponent, TotalCompraComponent],
   imports: [CommonModule, CarrinhoRoutingModule, SharedModule, TranslateModule],
 })
 export class CarrinhoModule {}
