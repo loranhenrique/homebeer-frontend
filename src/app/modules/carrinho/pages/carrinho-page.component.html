@@ -3,13 +3,13 @@
     <bra-menu-header [titulo]="viewModel.tituloPrincipal"></bra-menu-header>
 
     <div class="carrinho__content">
-      <bra-lista-compras *ngIf="viewModel.compras.length > 0"
+      <bra-lista-compras *ngIf="!viewModel.exibeListaCompra"
         [compras]="viewModel.compras"
         (clickAction)="infoProduto($event)">
       </bra-lista-compras>
 
       <div class="carrinho__body"
-        *ngIf="viewModel.compras.length < 1">
+        *ngIf="viewModel.carrinhoVazio">
         <div class="carrinho__imagem"></div>
         <p class="carrinho__titulo">{{ viewModel.tituloErro| translate }}</p>
         <p class="carrinho__descricao">
@@ -23,7 +23,7 @@
 
     </div>
 
-    <bra-total-compra *ngIf="viewModel.compras.length > 0"
+    <bra-total-compra *ngIf="!viewModel.carrinhoVazio"
       [valorTotal]="viewModel.valorTotalCompra"
       (clickAction)="clickComprar()"></bra-total-compra>
 

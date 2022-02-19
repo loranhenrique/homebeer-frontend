@@ -7,6 +7,8 @@ export interface CarrinhoViewModel {
   descricaoErro: string;
   textoBotaoErro: string;
   valorTotalCompra: number;
+  carrinhoVazio: boolean;
+  exibeListaCompra: boolean;
   menuFooter: MenuFooterModel;
   compras: CardProdutoModel[];
 }

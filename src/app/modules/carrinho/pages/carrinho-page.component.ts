@@ -19,7 +19,7 @@ export class CarrinhoPageComponent implements OnInit {
       imagemProduto: '',
       nomeParceiro: 'Cervejaria dos amigos',
       nomeProduto: 'Cerveja artesanal 350ml',
-      quantidade: 3,
+      quantidade: 1,
       valorUnitario: 2.49,
     },
     {
@@ -28,7 +28,7 @@ export class CarrinhoPageComponent implements OnInit {
       imagemProduto: '',
       nomeParceiro: 'Cervejaria dos amigos',
       nomeProduto: 'Cerveja artesanal 350ml',
-      quantidade: 6,
+      quantidade: 1,
       valorUnitario: 3.49,
     },
     {
@@ -46,7 +46,7 @@ export class CarrinhoPageComponent implements OnInit {
       imagemProduto: '',
       nomeParceiro: 'Cervejaria dos amigos',
       nomeProduto: 'Cerveja artesanal 350ml',
-      quantidade: 10,
+      quantidade: 1,
       valorUnitario: 0.49,
     },
     {
@@ -55,7 +55,7 @@ export class CarrinhoPageComponent implements OnInit {
       imagemProduto: '',
       nomeParceiro: 'Cervejaria dos amigos',
       nomeProduto: 'Cerveja artesanal 350ml',
-      quantidade: 3,
+      quantidade: 1,
       valorUnitario: 2.49,
     },
     {
@@ -64,10 +64,11 @@ export class CarrinhoPageComponent implements OnInit {
       imagemProduto: '',
       nomeParceiro: 'Cervejaria dos amigos',
       nomeProduto: 'Cerveja artesanal 350ml',
-      quantidade: 4,
+      quantidade: 1,
       valorUnitario: 5.49,
     },
   ];
+  private TEMPO_ESPERA_CARRINHO_VAZIO = 600;
 
   constructor(private router: Router) {}
 
@@ -82,7 +83,15 @@ export class CarrinhoPageComponent implements OnInit {
   public infoProduto(infoProduto: InfoProdutoModel): void {
     //salvar nova informacao do produto no banco
     this.atualizarCarrinho(infoProduto);
-    this.viewModel.valorTotalCompra = this.calcularValorTotalCompra();
+    const carrinhoVazio: boolean = this.validarCarrinhoVazio();
+
+    if (carrinhoVazio) {
+      this.viewModel.exibeListaCompra = carrinhoVazio;
+
+      setTimeout(() => {
+        this.viewModel.carrinhoVazio = carrinhoVazio;
+      }, this.TEMPO_ESPERA_CARRINHO_VAZIO);
+    }
   }
 
   public clickBotaoErro(): void {
@@ -106,6 +115,8 @@ export class CarrinhoPageComponent implements OnInit {
       },
       compras: this.carrinho,
       valorTotalCompra: this.calcularValorTotalCompra(),
+      carrinhoVazio: this.validarCarrinhoVazio(),
+      exibeListaCompra: this.validarCarrinhoVazio(),
     };
   }
 
@@ -128,5 +139,9 @@ export class CarrinhoPageComponent implements OnInit {
     if (produtoEncontrado) {
       produtoEncontrado.quantidade = infoProduto.quantidade;
     }
+  }
+
+  private validarCarrinhoVazio(): boolean {
+    return this.carrinho.length < 1 || this.calcularValorTotalCompra() === 0;
   }
 }
