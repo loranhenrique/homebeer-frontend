@@ -10,5 +10,16 @@
   </div>
 
   <div *ngSwitchCase="'perfil'"
-    class="menu-perfil"></div>
+    class="menu-header__perfil">
+    <div class="menu-header__icone-container">
+      <div class="menu-header__icone"></div>
+    </div>
+
+    <div class="menu-header__detalhes">
+      <label
+        class="menu-header__nome-cliente">{{ menuHeader.titulo | translate }}</label>
+      <label class="menu-header__descricao">Membro desde
+        {{ menuHeader.descricao | translate }}</label>
+    </div>
+  </div>
 </div>

@@ -28,15 +28,14 @@ export class PerfilPageComponent implements OnInit {
 
   private construirViewModel(): void {
     this.viewModel = {
-      nomeCliente: 'Loran Henrique',
-      dataInclusao: '18/02/2022',
       textoBotaoSair: 'Sair',
       menuFooter: {
         selecionado: 'perfil',
       },
       menuHeader: {
-        tipo: 'default',
-        titulo: 'APP__LABEL-TITULO',
+        tipo: 'perfil',
+        titulo: 'Loran Henrique',
+        descricao: '18/02/2022',
       },
       modalModel: {
         mostrar: false,
