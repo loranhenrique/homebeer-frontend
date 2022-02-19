@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarrinhoViewModel } from '@carrinho/models/carrinho-view.model';
+import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
 import { CardProdutoModel } from '@shared/models/card-produto.model';
 import { InfoProdutoModel } from '@shared/models/info-produto.model';
 
@@ -70,7 +71,7 @@ export class CarrinhoPageComponent implements OnInit {
   ];
   private TEMPO_ESPERA_CARRINHO_VAZIO = 600;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private redirecionarMenuFooterService: RedirecionarMenuFooterService) {}
 
   ngOnInit(): void {
     this.construirViewModel();
@@ -99,9 +100,8 @@ export class CarrinhoPageComponent implements OnInit {
   }
 
   public menuFooterClick(value: string): void {
-    if (value === 'Home') {
-      this.router.navigate(['/parceiro']);
-    }
+    const rota = this.redirecionarMenuFooterService.execute(value);
+    this.router.navigate([rota]);
   }
 
   private construirViewModel(): void {

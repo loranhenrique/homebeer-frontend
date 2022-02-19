@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CardSugestaoModel } from '@parceiro/models/card-sugestao.model';
 import { IconeDestaqueModel } from '@parceiro/models/icone-destaque.model';
 import { ParceiroViewModel } from '@parceiro/models/parceiro-view.model';
+import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
 import { CardParceiroModel } from '@shared/models/card-parceiro.model';
 
 @Component({
@@ -116,7 +117,11 @@ export class ParceiroPageComponent implements OnInit {
     },
   ];
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private redirecionarMenuFooterService: RedirecionarMenuFooterService
+  ) {}
 
   ngOnInit(): void {
     this.construirViewModel();
@@ -135,9 +140,8 @@ export class ParceiroPageComponent implements OnInit {
   }
 
   public menuFooterClick(value: string): void {
-    if (value === 'Favorito') {
-      this.router.navigate(['/favorito']);
-    }
+    const rota = this.redirecionarMenuFooterService.execute(value);
+    this.router.navigate([rota]);
   }
 
   private construirViewModel(): void {

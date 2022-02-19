@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FavoritoViewModel } from '@favorito/models/favorito-view.model';
+import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
 import { CardParceiroModel } from '@shared/models/card-parceiro.model';
 
 @Component({
@@ -54,7 +55,7 @@ export class FavoritoPageComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private redirecionarMenuFooterService: RedirecionarMenuFooterService) {}
 
   ngOnInit(): void {
     this.construirViewModel();
@@ -69,9 +70,8 @@ export class FavoritoPageComponent implements OnInit {
   }
 
   public menuFooterClick(value: string): void {
-    if (value === 'Home') {
-      this.router.navigate(['/parceiro']);
-    }
+    const rota = this.redirecionarMenuFooterService.execute(value);
+    this.router.navigate([rota]);
   }
 
   private construirViewModel(): void {
