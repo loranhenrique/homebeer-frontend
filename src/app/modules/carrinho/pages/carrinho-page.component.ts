@@ -84,6 +84,7 @@ export class CarrinhoPageComponent implements OnInit {
   public infoProduto(infoProduto: InfoProdutoModel): void {
     //salvar nova informacao do produto no banco
     this.atualizarCarrinho(infoProduto);
+    this.viewModel.valorTotalCompra = this.calcularValorTotalCompra();
     const carrinhoVazio: boolean = this.validarCarrinhoVazio();
 
     if (carrinhoVazio) {

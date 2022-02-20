@@ -17,6 +17,10 @@ export class PerfilPageComponent implements OnInit {
     this.construirViewModel();
   }
 
+  public clickPedidosAndamento(): void {
+    console.log('Pedidos em andamento');
+  }
+
   public clickAcesso(valor: string): void {
     console.log(valor);
   }
@@ -29,6 +33,12 @@ export class PerfilPageComponent implements OnInit {
   private construirViewModel(): void {
     this.viewModel = {
       textoBotaoSair: 'Sair',
+      pedidos: {
+        pagamento: 1,
+        envio: 0,
+        recebimento: 0,
+        recebido: 1,
+      },
       menuFooter: {
         selecionado: 'perfil',
       },

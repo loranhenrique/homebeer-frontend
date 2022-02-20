@@ -3,7 +3,11 @@
     <bra-menu-header [menuHeader]="viewModel.menuHeader"></bra-menu-header>
 
     <div class="perfil__content">
-      <bra-acesso-app (clickAction)="clickAcesso($event)"></bra-acesso-app>
+      <bra-acesso-app *ngIf="false"
+        (clickAction)="clickAcesso($event)"></bra-acesso-app>
+
+      <bra-pedidos-andamento [icone]="viewModel.pedidos"
+        (clickAction)="clickPedidosAndamento()"></bra-pedidos-andamento>
     </div>
 
     <bra-menu-footer [conteudoFooter]="viewModel.menuFooter"

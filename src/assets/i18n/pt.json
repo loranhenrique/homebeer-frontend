@@ -35,5 +35,10 @@
   "TOTAL-COMPRA__LABEL--BOTAO": "Continuar a compra",
   "ACESSO-APP__LABEL--DESCRICAO": "Conheça nossas vantagens e boas compras!",
   "ACESSO-APP__LABEL--BOTAO-PRIMARIO": "Entrar",
-  "ACESSO-APP__LABEL--BOTAO-SECUNDARIO": "Registrar"
+  "ACESSO-APP__LABEL--BOTAO-SECUNDARIO": "Registrar",
+  "ICONE-PEDIDO__LABEL--PAGAMENTO": "Aguardando pagamento",
+  "ICONE-PEDIDO__LABEL--ENVIO": "Aguardando envio",
+  "ICONE-PEDIDO__LABEL--RECEBIMENTO": "Aguardando recebimento",
+  "ICONE-PEDIDO__LABEL--CONFIRMACAO": "Aguardando confirmação",
+  "PEDIDOS-ANDAMENTO__LABEL--TITULO": "Pedidos em andamento"
 }

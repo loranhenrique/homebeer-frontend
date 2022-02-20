@@ -1,0 +1,11 @@
+<div class="icone-pedido">
+  <div *ngFor="let icone of viewModel"
+    class="icone-pedido__container"
+    (click)="clickHandler()">
+    <div [ngClass]="'icone-pedido__icone--' + icone.identificador">
+      <div *ngIf="icone.quantidade > 0"
+        class="icone-pedido__indicador">{{ icone.quantidade }}</div>
+    </div>
+    <label class="icone-pedido__titulo">{{ icone.titulo | translate }}</label>
+  </div>
+</div>
