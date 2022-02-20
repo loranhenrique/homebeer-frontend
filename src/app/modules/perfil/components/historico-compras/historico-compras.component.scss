@@ -1,0 +1,30 @@
+@import 'base-styles';
+@import 'perfil-base-64';
+
+.historico-compras {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 $spacing-m;
+  margin-top: $spacing-s;
+  background-color: $color-amarelo;
+
+  &__icone {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: $color-preto-acinzentado;
+    background-position: center top;
+    background-size: cover;
+    background-image: $icone-historico;
+  }
+
+  &__descricao {
+    font-size: to-vw(16px);
+    color: $color-preto-escuro;
+    text-align: center;
+    margin-left: $spacing-m;
+  }
+}

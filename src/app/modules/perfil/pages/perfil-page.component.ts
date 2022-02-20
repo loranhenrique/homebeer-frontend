@@ -17,12 +17,20 @@ export class PerfilPageComponent implements OnInit {
     this.construirViewModel();
   }
 
+  public clickHistoricoCompras(): void {
+    console.log('Historico de compras');
+  }
+
   public clickPedidosAndamento(): void {
     console.log('Pedidos em andamento');
   }
 
   public clickAcesso(valor: string): void {
     console.log(valor);
+  }
+
+  public clickSair(): void {
+    console.log('Sair');
   }
 
   public menuFooterClick(value: string): void {
@@ -32,7 +40,7 @@ export class PerfilPageComponent implements OnInit {
 
   private construirViewModel(): void {
     this.viewModel = {
-      textoBotaoSair: 'Sair',
+      textoBotaoSair: 'PERFIL__LABEL--BOTAO-SAIR',
       pedidos: {
         pagamento: 1,
         envio: 0,

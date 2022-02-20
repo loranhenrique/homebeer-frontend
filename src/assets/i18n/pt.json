@@ -40,5 +40,7 @@
   "ICONE-PEDIDO__LABEL--ENVIO": "Aguardando envio",
   "ICONE-PEDIDO__LABEL--RECEBIMENTO": "Aguardando recebimento",
   "ICONE-PEDIDO__LABEL--CONFIRMACAO": "Aguardando confirmação",
-  "PEDIDOS-ANDAMENTO__LABEL--TITULO": "Pedidos em andamento"
+  "PEDIDOS-ANDAMENTO__LABEL--TITULO": "Pedidos em andamento",
+  "HISTORICO-COMPRAS__LABEL--TITULO": "Visualizar histórico de compras",
+  "PERFIL__LABEL--BOTAO-SAIR": "Sair"
 }

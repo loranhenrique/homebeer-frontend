@@ -9,7 +9,7 @@ import { IconePedidoModel } from '@perfil/models/icone-pedido.model';
 export class PedidosAndamentoComponent {
   @Input() icone: IconePedidoModel;
   @Output() clickAction = new EventEmitter();
-  public titulo: string = 'PEDIDOS-ANDAMENTO__LABEL--TITULO';
+  public titulo = 'PEDIDOS-ANDAMENTO__LABEL--TITULO';
 
   constructor() {}
 

@@ -7,9 +7,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AcessoAppComponent } from './components/acesso-app/acesso-app.component';
 import { PedidosAndamentoComponent } from './components/pedidos-andamento/pedidos-andamento.component';
 import { IconePedidoComponent } from './components/icone-pedido/icone-pedido.component';
+import { HistoricoComprasComponent } from './components/historico-compras/historico-compras.component';
 
 @NgModule({
-  declarations: [PerfilPageComponent, AcessoAppComponent, PedidosAndamentoComponent, IconePedidoComponent],
+  declarations: [PerfilPageComponent, AcessoAppComponent, PedidosAndamentoComponent, IconePedidoComponent, HistoricoComprasComponent],
   imports: [CommonModule, PerfilRoutingModule, SharedModule, TranslateModule],
 })
 export class PerfilModule {}

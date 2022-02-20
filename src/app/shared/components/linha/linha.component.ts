@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./linha.component.scss'],
 })
 export class LinhaComponent {
-  @Input() tipo: string = 'default';
+  @Input() tipo = 'default';
 
   public getClass(): unknown {
     return this.tipo === 'default' ? 'linha linha--default' : 'linha linha--completa';

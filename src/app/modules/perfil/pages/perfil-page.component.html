@@ -2,12 +2,23 @@
   <div class="perfil__container">
     <bra-menu-header [menuHeader]="viewModel.menuHeader"></bra-menu-header>
 
-    <div class="perfil__content">
-      <bra-acesso-app *ngIf="false"
-        (clickAction)="clickAcesso($event)"></bra-acesso-app>
+    <div *ngIf="false"
+      class="perfil__content">
+      <bra-acesso-app (clickAction)="clickAcesso($event)"></bra-acesso-app>
+    </div>
 
+    <div class="perfil__content">
       <bra-pedidos-andamento [icone]="viewModel.pedidos"
         (clickAction)="clickPedidosAndamento()"></bra-pedidos-andamento>
+
+      <bra-historico-compras (clickAction)="clickHistoricoCompras()">
+      </bra-historico-compras>
+
+      <div class="perfil__container-sair">
+        <p class="perfil__sair"
+          role="button"
+          (click)="clickSair()">{{ viewModel.textoBotaoSair | translate }}</p>
+      </div>
     </div>
 
     <bra-menu-footer [conteudoFooter]="viewModel.menuFooter"
