@@ -1,0 +1,11 @@
+<div class="confirmar-sair">
+  <h1 class="confirmar-sair__titulo">
+    {{ viewModel.titulo | translate }}</h1>
+
+  <p class="confirmar-sair__descricao">
+    {{ viewModel.descricao | translate }}
+  </p>
+
+  <bra-button [texto]="viewModel.textoBotao"
+    (clickAction)="clickHandler()"></bra-button>
+</div>

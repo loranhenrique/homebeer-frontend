@@ -25,3 +25,11 @@
       (clickAction)="menuFooterClick($event)"></bra-menu-footer>
   </div>
 </div>
+
+<bra-modal *ngIf="viewModel.modalModel.mostrar"
+  [modal]="viewModel.modalModel"
+  (clickActionFecharModal)="fecharModal()"
+  [@modalAnimation]>
+  <bra-confirmar-sair (clickAction)="clickSair('Sair')">
+  </bra-confirmar-sair>
+</bra-modal>

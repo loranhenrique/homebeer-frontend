@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PerfilViewModel } from '@perfil/models/perfil-view.model';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
+import { modalAnimation } from '@shared/components/modal/modal-animation';
 
 @Component({
   selector: 'bra-perfil-page',
   templateUrl: './perfil-page.component.html',
   styleUrls: ['./perfil-page.component.scss'],
+  animations: [modalAnimation()],
 })
 export class PerfilPageComponent implements OnInit {
   public viewModel: PerfilViewModel;
@@ -29,8 +31,18 @@ export class PerfilPageComponent implements OnInit {
     console.log(valor);
   }
 
-  public clickSair(): void {
-    console.log('Sair');
+  public clickSair(sair?: string): void {
+    if (sair) {
+      this.fecharModal();
+      console.log('Confirmação sair');
+      return;
+    }
+
+    this.viewModel.modalModel.mostrar = true;
+  }
+
+  public fecharModal(): void {
+    this.viewModel.modalModel.mostrar = false;
   }
 
   public menuFooterClick(value: string): void {
