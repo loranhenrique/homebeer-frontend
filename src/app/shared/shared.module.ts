@@ -13,6 +13,7 @@ import { CardParceiroComponent } from '@shared/components/card-parceiro/card-par
 import { LoadingComponent } from '@shared/components/loading/loading.component';
 import { CardProdutoComponent } from '@shared/components/card-produto/card-produto.component';
 import { BraCurrencyPipe } from '@shared/pipes/bra-currency/bra-currency.pipe';
+import { CardPedidoComponent } from './components/card-pedido/card-pedido.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BraCurrencyPipe } from '@shared/pipes/bra-currency/bra-currency.pipe';
     LoadingComponent,
     CardProdutoComponent,
     BraCurrencyPipe,
+    CardPedidoComponent,
   ],
   imports: [CommonModule, TranslateModule, FormsModule],
   exports: [
@@ -41,6 +43,7 @@ import { BraCurrencyPipe } from '@shared/pipes/bra-currency/bra-currency.pipe';
     LoadingComponent,
     CardProdutoComponent,
     BraCurrencyPipe,
+    CardPedidoComponent,
   ],
 })
 export class SharedModule {}

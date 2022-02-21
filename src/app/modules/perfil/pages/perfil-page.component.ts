@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PerfilViewModel } from '@perfil/models/perfil-view.model';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
 import { modalAnimation } from '@shared/components/modal/modal-animation';
+import { CardPedidoModel } from '@shared/models/card-pedido.model';
 
 @Component({
   selector: 'bra-perfil-page',
@@ -12,6 +13,29 @@ import { modalAnimation } from '@shared/components/modal/modal-animation';
 })
 export class PerfilPageComponent implements OnInit {
   public viewModel: PerfilViewModel;
+  private cardsPedido: CardPedidoModel[] = [
+    {
+      nomeParceiro: 'Cervejaria dos amigos',
+      imagemParceiro: '',
+      totalProdutos: 4,
+      totalCompra: 129.99,
+      statusPedido: 'envio',
+    },
+    {
+      nomeParceiro: 'Cervejaria do Romeu',
+      imagemParceiro: '',
+      totalProdutos: 8,
+      totalCompra: 109.99,
+      statusPedido: 'confirmacao',
+    },
+    {
+      nomeParceiro: 'Paulaner',
+      imagemParceiro: '',
+      totalProdutos: 2,
+      totalCompra: 199.99,
+      statusPedido: 'pagamento',
+    },
+  ];
 
   constructor(private router: Router, private redirecionarMenuFooterService: RedirecionarMenuFooterService) {}
 
@@ -20,11 +44,13 @@ export class PerfilPageComponent implements OnInit {
   }
 
   public clickHistoricoCompras(): void {
-    console.log('Historico de compras');
+    this.viewModel.exibeModal = 'historico';
+    this.viewModel.modalModel.mostrar = true;
   }
 
   public clickPedidosAndamento(): void {
-    console.log('Pedidos em andamento');
+    this.viewModel.exibeModal = 'pedidos';
+    this.viewModel.modalModel.mostrar = true;
   }
 
   public clickAcesso(valor: string): void {
@@ -38,6 +64,7 @@ export class PerfilPageComponent implements OnInit {
       return;
     }
 
+    this.viewModel.exibeModal = 'sair';
     this.viewModel.modalModel.mostrar = true;
   }
 
@@ -70,6 +97,14 @@ export class PerfilPageComponent implements OnInit {
       modalModel: {
         mostrar: false,
         tipo: 'parcial',
+      },
+      pedidosAndamento: {
+        titulo: 'PERFIL__LABEL--TITULO-PEDIDOS-ANDAMENTO',
+        pedidos: this.cardsPedido,
+      },
+      historicoPedidos: {
+        titulo: 'PERFIL__LABEL--TITULO-HISTORICO-PEDIDOS',
+        pedidos: this.cardsPedido,
       },
     };
   }

@@ -26,10 +26,19 @@
   </div>
 </div>
 
-<bra-modal *ngIf="viewModel.modalModel.mostrar"
+<bra-modal [ngSwitch]="viewModel.exibeModal"
   [modal]="viewModel.modalModel"
   (clickActionFecharModal)="fecharModal()"
   [@modalAnimation]>
-  <bra-confirmar-sair (clickAction)="clickSair('Sair')">
+  <bra-confirmar-sair *ngSwitchCase="'sair'"
+    (clickAction)="clickSair('Sair')">
   </bra-confirmar-sair>
+
+  <bra-lista-pedidos *ngSwitchCase="'pedidos'"
+    [listaPedidos]="viewModel.pedidosAndamento">
+  </bra-lista-pedidos>
+
+  <bra-lista-pedidos *ngSwitchCase="'historico'"
+    [listaPedidos]="viewModel.historicoPedidos">
+  </bra-lista-pedidos>
 </bra-modal>

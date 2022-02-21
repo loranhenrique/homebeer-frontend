@@ -9,9 +9,18 @@ import { PedidosAndamentoComponent } from './components/pedidos-andamento/pedido
 import { IconePedidoComponent } from './components/icone-pedido/icone-pedido.component';
 import { HistoricoComprasComponent } from './components/historico-compras/historico-compras.component';
 import { ConfirmarSairComponent } from './components/confirmar-sair/confirmar-sair.component';
+import { ListaPedidosComponent } from './components/lista-pedidos/lista-pedidos.component';
 
 @NgModule({
-  declarations: [PerfilPageComponent, AcessoAppComponent, PedidosAndamentoComponent, IconePedidoComponent, HistoricoComprasComponent, ConfirmarSairComponent],
+  declarations: [
+    PerfilPageComponent,
+    AcessoAppComponent,
+    PedidosAndamentoComponent,
+    IconePedidoComponent,
+    HistoricoComprasComponent,
+    ConfirmarSairComponent,
+    ListaPedidosComponent,
+  ],
   imports: [CommonModule, PerfilRoutingModule, SharedModule, TranslateModule],
 })
 export class PerfilModule {}

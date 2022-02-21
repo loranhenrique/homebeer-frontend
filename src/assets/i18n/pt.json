@@ -43,6 +43,8 @@
   "PEDIDOS-ANDAMENTO__LABEL--TITULO": "Pedidos em andamento",
   "HISTORICO-COMPRAS__LABEL--TITULO": "Visualizar histórico de compras",
   "PERFIL__LABEL--BOTAO-SAIR": "Sair",
+  "PERFIL__LABEL--TITULO-HISTORICO-PEDIDOS": "Histórico de compras",
+  "PERFIL__LABEL--TITULO-PEDIDOS-ANDAMENTO": "Pedidos em andamento",
   "CONFIRMAR-SAIR__LABEL--TITULO": "Já está indo?",
   "CONFIRMAR-SAIR__LABEL--DESCRICAO": "Estaremos aguardando ansiosamente a sua volta, a Home Beer agradece o tempo em que se manteve conectado. Até mais!",
   "CONFIRMAR-SAIR__LABEL--BOTAO": "Sair"

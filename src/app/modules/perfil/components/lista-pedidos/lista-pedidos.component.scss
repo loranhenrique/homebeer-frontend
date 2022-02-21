@@ -1,0 +1,11 @@
+@import 'base-styles';
+
+.lista-pedidos {
+  display: flex;
+  flex-direction: column;
+
+  &__titulo {
+    font-size: to-vw(20px);
+    padding: 0 $spacing-m $spacing-xs;
+  }
+}

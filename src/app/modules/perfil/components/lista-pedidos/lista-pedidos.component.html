@@ -1,0 +1,9 @@
+<div class="lista-pedidos">
+  <p class="lista-pedidos__titulo">{{ viewModel.titulo | translate }}</p>
+  <bra-lista>
+    <li *ngFor="let pedido of viewModel.pedidos"
+      class="lista-pedidos__card-pedido">
+      <bra-card-pedido [cardPedido]="pedido"></bra-card-pedido>
+    </li>
+  </bra-lista>
+</div>

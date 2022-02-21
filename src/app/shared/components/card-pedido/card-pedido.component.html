@@ -1,0 +1,13 @@
+<div [ngClass]="getClass()">
+  <div class="card-pedido__imagem"
+    [style.background-image]="viewModel.imagemParceiro"></div>
+  <div class="card-pedido__detalhes">
+    <p class="card-pedido__titulo">{{ viewModel.titulo }}</p>
+    <p class="card-pedido__descricao">Total de produtos:
+      {{ viewModel.totalProdutos }}</p>
+    <bra-linha [tipo]="'completa'"></bra-linha>
+    <p class="card-pedido__preco">Total:
+      {{ viewModel.valorCompra | braCurrency }}</p>
+  </div>
+  <div class="card-pedido__icone"></div>
+</div>
