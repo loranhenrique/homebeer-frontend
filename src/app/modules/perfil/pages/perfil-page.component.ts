@@ -35,6 +35,27 @@ export class PerfilPageComponent implements OnInit {
       totalCompra: 199.99,
       statusPedido: 'pagamento',
     },
+    {
+      nomeParceiro: 'Cervejaria dos amigos',
+      imagemParceiro: '',
+      totalProdutos: 4,
+      totalCompra: 129.99,
+      statusPedido: 'envio',
+    },
+    {
+      nomeParceiro: 'Cervejaria do Romeu',
+      imagemParceiro: '',
+      totalProdutos: 8,
+      totalCompra: 109.99,
+      statusPedido: 'confirmacao',
+    },
+    {
+      nomeParceiro: 'Paulaner',
+      imagemParceiro: '',
+      totalProdutos: 2,
+      totalCompra: 199.99,
+      statusPedido: 'pagamento',
+    },
   ];
 
   constructor(private router: Router, private redirecionarMenuFooterService: RedirecionarMenuFooterService) {}

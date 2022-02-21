@@ -8,4 +8,9 @@
     font-size: to-vw(20px);
     padding: 0 $spacing-m $spacing-xs;
   }
+
+  &__container {
+    max-height: to-vw(400px);
+    overflow: auto;
+  }
 }

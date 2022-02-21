@@ -6,7 +6,7 @@
     {{ viewModel.descricao | translate }}<br />
     {{ viewModel.textoLei | translate }}<br />
     {{ viewModel.textoDenuncia | translate }}
-    <a class="informativo-maioridade__site" href="{{ viewModel.site }}">aqui.</a>
+    <a class="informativo-maioridade__site" href="{{ viewModel.site | translate }}">aqui.</a>
   </p>
 
   <bra-button [texto]="viewModel.textoBotao"

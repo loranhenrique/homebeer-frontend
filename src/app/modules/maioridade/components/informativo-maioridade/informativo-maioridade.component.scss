@@ -3,6 +3,7 @@
 .informativo-maioridade {
   display: flex;
   flex-direction: column;
+  padding: 0 $spacing-m;
 
   &__titulo {
     font-size: to-vw(24px);
