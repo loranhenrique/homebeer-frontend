@@ -31,3 +31,11 @@
       (clickAction)="menuFooterClick($event)"></bra-menu-footer>
   </div>
 </div>
+
+<bra-modal class="carrinho__modal-pagamento"
+  *ngIf="viewModel.modalPagamento.mostrar"
+  [modal]="viewModel.modalPagamento"
+  (clickActionFecharModal)="fecharModalPagamento()"
+  [@modalAnimation]>
+  <p>Teste!</p>
+</bra-modal>

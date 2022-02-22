@@ -5,4 +5,5 @@ export interface ModalModel {
   tipo?: 'parcial' | 'integral';
   textoFecharAcessibilidade?: string;
   focoElementRef?: ElementRef;
+  titulo?: string;
 }

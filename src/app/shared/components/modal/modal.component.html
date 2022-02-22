@@ -17,12 +17,13 @@
   <div class="bra-modal__conteudo">
     <header class="bra-modal__header"
       *ngIf="verificaSeModalIntegral()">
-      <button class="bra-modal__close-button"
+      <button class="bra-modal__button"
         role="button"
         [attr.aria-label]="modal?.textoFecharAcessibilidade || 'Fechar'"
         (click)="clickFecharModalHandler()"
-        tabindex="0"
-        braFocus></button>
+        tabindex="0"></button>
+
+      <p class="bra-modal__titulo">{{ modal?.titulo }}</p>
     </header>
 
     <div class="bra-modal__body">

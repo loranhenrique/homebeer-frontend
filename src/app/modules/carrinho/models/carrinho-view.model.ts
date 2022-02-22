@@ -1,6 +1,7 @@
 import { CardProdutoModel } from '@shared/models/card-produto.model';
 import { MenuFooterModel } from '@shared/models/menu-footer.model';
 import { MenuHeaderModel } from '@shared/models/menu-header.model';
+import { ModalModel } from '@shared/models/modal.model';
 
 export interface CarrinhoViewModel {
   tituloErro: string;
@@ -9,7 +10,8 @@ export interface CarrinhoViewModel {
   valorTotalCompra: number;
   carrinhoVazio: boolean;
   exibeListaCompra: boolean;
+  compras: CardProdutoModel[];
   menuHeader: MenuHeaderModel;
   menuFooter: MenuFooterModel;
-  compras: CardProdutoModel[];
+  modalPagamento: ModalModel;
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarrinhoViewModel } from '@carrinho/models/carrinho-view.model';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
+import { modalAnimation } from '@shared/components/modal/modal-animation';
 import { CardProdutoModel } from '@shared/models/card-produto.model';
 import { InfoProdutoModel } from '@shared/models/info-produto.model';
 
@@ -9,6 +10,7 @@ import { InfoProdutoModel } from '@shared/models/info-produto.model';
   selector: 'bra-carrinho-page',
   templateUrl: './carrinho-page.component.html',
   styleUrls: ['./carrinho-page.component.scss'],
+  animations: [modalAnimation()],
 })
 export class CarrinhoPageComponent implements OnInit {
   public viewModel: CarrinhoViewModel;
@@ -100,6 +102,10 @@ export class CarrinhoPageComponent implements OnInit {
     this.router.navigate(['/parceiro']);
   }
 
+  public fecharModalPagamento(): void {
+    this.viewModel.modalPagamento.mostrar = false;
+  }
+
   public menuFooterClick(value: string): void {
     const rota = this.redirecionarMenuFooterService.execute(value);
     this.router.navigate([rota]);
@@ -120,6 +126,10 @@ export class CarrinhoPageComponent implements OnInit {
       menuHeader: {
         tipo: 'default',
         titulo: 'CARRINHO__LABEL--TITULO-PRINCIPAL',
+      },
+      modalPagamento: {
+        mostrar: true,
+        tipo: 'integral',
       },
     };
   }
