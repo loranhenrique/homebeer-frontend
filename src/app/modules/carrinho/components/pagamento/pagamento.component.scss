@@ -1,0 +1,21 @@
+@import 'base-styles';
+
+.pagamento {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  &__container-titulo {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    background: $color-preto-claro-alternativo;
+    margin-bottom: 4px;
+  }
+
+  &__titulo {
+    font-size: to-vw(20px);
+    margin-left: $spacing-m;
+  }
+}

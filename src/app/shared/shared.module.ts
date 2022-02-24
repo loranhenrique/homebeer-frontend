@@ -15,6 +15,7 @@ import { CardProdutoComponent } from '@shared/components/card-produto/card-produ
 import { BraCurrencyPipe } from '@shared/pipes/bra-currency/bra-currency.pipe';
 import { CardPedidoComponent } from './components/card-pedido/card-pedido.component';
 import { ControleModalDirective } from './directives/controle-modal/controle-modal.directive';
+import { ButtonPagamentoComponent } from './components/button-pagamento/button-pagamento.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ControleModalDirective } from './directives/controle-modal/controle-mod
     BraCurrencyPipe,
     CardPedidoComponent,
     ControleModalDirective,
+    ButtonPagamentoComponent,
   ],
   imports: [CommonModule, TranslateModule, FormsModule],
   exports: [
@@ -46,6 +48,7 @@ import { ControleModalDirective } from './directives/controle-modal/controle-mod
     CardProdutoComponent,
     BraCurrencyPipe,
     CardPedidoComponent,
+    ButtonPagamentoComponent,
   ],
 })
 export class SharedModule {}

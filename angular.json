@@ -28,6 +28,7 @@
               "src/styles/_base-64.scss",
               "src/styles/_menu-base-64.scss",
               "src/styles/_perfil-base-64.scss",
+              "src/styles/_pagamento-base-64.scss",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {

@@ -1,0 +1,25 @@
+<div [ngClass]="getClass()">
+  <div class="button-pagamento__botao-cartao"
+    role="button"
+    (click)="clickHandler('cartao')">
+    <div class="button-pagamento__icone--cartao"></div>
+    <p class="button-pagamento__titulo">{{ viewModel.tituloCartao | translate }}
+    </p>
+  </div>
+
+  <div class="button-pagamento__botao-boleto"
+    role="button"
+    (click)="clickHandler('boleto')">
+    <div class="button-pagamento__icone--boleto"></div>
+    <p class="button-pagamento__titulo">{{ viewModel.tituloBoleto | translate }}
+    </p>
+  </div>
+
+  <div class="button-pagamento__botao-pix"
+    role="button"
+    (click)="clickHandler('pix')">
+    <div class="button-pagamento__icone--pix"></div>
+    <p class="button-pagamento__titulo">{{ viewModel.tituloPix | translate }}
+    </p>
+  </div>
+</div>

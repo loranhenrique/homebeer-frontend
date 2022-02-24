@@ -47,5 +47,17 @@
   "PERFIL__LABEL--TITULO-PEDIDOS-ANDAMENTO": "Pedidos em andamento",
   "CONFIRMAR-SAIR__LABEL--TITULO": "Já está indo?",
   "CONFIRMAR-SAIR__LABEL--DESCRICAO": "Estaremos aguardando ansiosamente a sua volta, a Home Beer agradece o tempo em que se manteve conectado. Até mais!",
-  "CONFIRMAR-SAIR__LABEL--BOTAO": "Sair"
+  "CONFIRMAR-SAIR__LABEL--BOTAO": "Sair",
+  "PAGAMENTO__LABEL--TITULO-FORMA-PAGAMENTO": "Forma de pagamento",
+  "PAGAMENTO__LABEL--TITULO-DADOS-PAGAMENTO": "Dados de pagamento",
+  "PAGAMENTO__LABEL--TITULO-TOTAL": "Total:",
+  "PAGAMENTO__LABEL--BOTAO": "Finalizar compra",
+  "PAGAMENTO__LABEL--CARTAO": "Cartão de crédito",
+  "PAGAMENTO__LABEL--BOLETO": "Boleto bancário",
+  "PAGAMENTO__LABEL--PIX": "Pix",
+  "PAGAMENTO__LABEL--NUMERO-CARTAO": "Número do cartão",
+  "PAGAMENTO__LABEL--DATA-VALIDADE": "Data de validade",
+  "PAGAMENTO__LABEL--CVV": "CVV",
+  "PAGAMENTO__LABEL--CPF": "CPF do titular",
+  "PAGAMENTO__LABEL--NOME": "Nome do titular"
 }

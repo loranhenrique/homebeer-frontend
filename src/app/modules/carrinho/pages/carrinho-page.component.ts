@@ -130,6 +130,7 @@ export class CarrinhoPageComponent implements OnInit {
       modalPagamento: {
         mostrar: true,
         tipo: 'integral',
+        titulo: 'Finalizar compra',
       },
     };
   }

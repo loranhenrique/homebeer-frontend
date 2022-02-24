@@ -1,0 +1,64 @@
+@import 'base-styles';
+@import 'pagamento-base-64';
+
+.button-pagamento {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  &__botao-cartao,
+  &__botao-boleto,
+  &__botao-pix {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    background: $color-amarelo;
+    flex-direction: row;
+    align-items: center;
+    color: $color-preto-escuro;
+    font-size: to-vw(20px);
+    margin-bottom: 4px;
+  }
+
+  &__icone--cartao,
+  &__icone--boleto,
+  &__icone--pix {
+    min-width: 50px;
+    height: 50px;
+    background-color: $color-preto-acinzentado;
+    margin: 0 $spacing-m;
+    border-radius: 100%;
+    background-position: center top;
+    background-size: cover;
+  }
+
+  &__icone--cartao {
+    background-image: $icone-cartao-amarelo;
+  }
+
+  &__icone--boleto {
+    background-image: $icone-boleto-amarelo;
+  }
+
+  &__icone--pix {
+    background-image: $icone-pix-amarelo;
+  }
+
+  &--cartao & {
+    &__botao-cartao {
+      background-color: $color-cinza-claro;
+    }
+  }
+
+  &--boleto & {
+    &__botao-boleto {
+      background-color: $color-cinza-claro;
+    }
+  }
+
+  &--pix & {
+    &__botao-pix {
+      background-color: $color-cinza-claro;
+    }
+  }
+}
