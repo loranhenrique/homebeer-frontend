@@ -80,7 +80,7 @@ export class CarrinhoPageComponent implements OnInit {
   }
 
   public clickComprar(): void {
-    console.log('Click continuar comprando');
+    this.viewModel.modalPagamento.mostrar = true;
   }
 
   public infoProduto(infoProduto: InfoProdutoModel): void {
@@ -128,7 +128,7 @@ export class CarrinhoPageComponent implements OnInit {
         titulo: 'CARRINHO__LABEL--TITULO-PRINCIPAL',
       },
       modalPagamento: {
-        mostrar: true,
+        mostrar: false,
         tipo: 'integral',
         titulo: 'Finalizar compra',
       },

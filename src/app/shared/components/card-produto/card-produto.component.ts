@@ -3,13 +3,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CardProdutoViewModel } from '@shared/models/card-produto-view.model';
 import { CardProdutoModel } from '@shared/models/card-produto.model';
 import { InfoProdutoModel } from '@shared/models/info-produto.model';
-import { slideInOut } from './card-produto-animation';
 
 @Component({
   selector: 'bra-card-produto',
   templateUrl: './card-produto.component.html',
   styleUrls: ['./card-produto.component.scss'],
-  animations: [slideInOut()],
 })
 export class CardProdutoComponent implements OnInit {
   @Input() cardProduto: CardProdutoModel;

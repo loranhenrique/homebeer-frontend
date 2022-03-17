@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ListaComprasViewModel } from '@carrinho/models/lista-compras-view.model';
-import { cardAnimation } from '@shared/components/card-produto/card-produto-animation';
 import { CardProdutoModel } from '@shared/models/card-produto.model';
 import { InfoProdutoModel } from '@shared/models/info-produto.model';
 
@@ -8,7 +7,6 @@ import { InfoProdutoModel } from '@shared/models/info-produto.model';
   selector: 'bra-lista-compras',
   templateUrl: './lista-compras.component.html',
   styleUrls: ['./lista-compras.component.scss'],
-  animations: [cardAnimation()],
 })
 export class ListaComprasComponent implements OnInit {
   @Input() compras: CardProdutoModel[];
