@@ -6,6 +6,7 @@ import { IconePedidoModel } from '@perfil/models/icone-pedido.model';
 import { ListaPedidosModel } from '@perfil/models/lista-pedidos.model';
 import { LoginModel } from '@perfil/models/login.model';
 import { PerfilViewModel } from '@perfil/models/perfil-view.model';
+import { LoadingService } from '@service/app/loading/loading.service';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
 import { StateService } from '@service/app/state/state.service';
 import { AuthenticationService } from '@service/http/authentication/authentication.service';
@@ -74,7 +75,8 @@ export class PerfilPageComponent implements OnInit {
     private readonly router: Router,
     private readonly redirecionarMenuFooterService: RedirecionarMenuFooterService,
     private readonly authenticationService: AuthenticationService,
-    private readonly stateService: StateService
+    private readonly stateService: StateService,
+    private readonly loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {
@@ -124,13 +126,17 @@ export class PerfilPageComponent implements OnInit {
   public clickLoginHandle(login: LoginModel): void {
     if (!(login.email && login.senha)) return;
     this.viewModel.exibeErroLogin = false;
+    this.definirPropriedadesLoading();
+    this.loadingService.ligar();
 
     this.authenticationService.login({ email: login.email, senha: login.senha }).subscribe(
       _ => {
         this.sucessoLogin();
+        this.loadingService.desligar();
       },
       _ => {
         this.viewModel.exibeErroLogin = true;
+        this.loadingService.desligar();
       }
     );
   }
@@ -138,6 +144,11 @@ export class PerfilPageComponent implements OnInit {
   public menuFooterClick(value: string): void {
     const rota = this.redirecionarMenuFooterService.execute(value);
     this.router.navigate([rota]);
+  }
+
+  private definirPropriedadesLoading(): void {
+    this.loadingService.atribuirMensagem('Autenticando...');
+    this.loadingService.atribuirTipo('fade');
   }
 
   private sucessoLogin(): void {

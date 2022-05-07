@@ -36,7 +36,8 @@
     position: fixed;
   }
 
-  &--absoluto {
-    position: absolute;
+  &--fade {
+    position: fixed;
+    opacity: 0.85;
   }
 }

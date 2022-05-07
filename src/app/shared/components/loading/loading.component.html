@@ -1,5 +1,4 @@
-<div class='loading'
-  [ngClass]="loadingStyle"
+<div [ngClass]="getClass()"
   *ngIf="loading">
   <div class="loading__icon"></div>
   <div class="loading__paragrafo">

@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   public ariaHidden = false;
   public isLoading = false;
   public loadingMensagem = '';
+  public loadingTipo = '';
 
   constructor(
     private translateService: TranslateService,
@@ -55,6 +56,10 @@ export class AppComponent implements OnInit {
   }
 
   private configurarLoading(): void {
+    this.loadingService.pegarTipoLoading().subscribe(tipo => {
+      this.loadingTipo = tipo;
+    });
+
     this.loadingService.pegarMensagem().subscribe(mensagem => {
       this.loadingMensagem = mensagem;
     });
