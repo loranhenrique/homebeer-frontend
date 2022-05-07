@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginComponent } from '@perfil/components/login/login.component';
+import { LoginModel } from '@perfil/models/login.model';
 import { PerfilViewModel } from '@perfil/models/perfil-view.model';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
 import { modalAnimation } from '@shared/components/modal/modal-animation';
@@ -12,6 +14,8 @@ import { CardPedidoModel } from '@shared/models/card-pedido.model';
   animations: [modalAnimation()],
 })
 export class PerfilPageComponent implements OnInit {
+  @ViewChild('paginaLogin', { static: false }) loginComponent: LoginComponent;
+
   public viewModel: PerfilViewModel;
   private cardsPedido: CardPedidoModel[] = [
     {
@@ -74,13 +78,16 @@ export class PerfilPageComponent implements OnInit {
     this.viewModel.modalParcialModel.mostrar = true;
   }
 
-  public clickAcesso(valor: string): void {
-    console.log(valor);
+  public clickAcesso(valor: 'Entrar' | 'Registrar'): void {
+    if (valor === 'Entrar') {
+      this.viewModel.modalIntegralModel.titulo = 'Login';
+      this.viewModel.modalIntegralModel.mostrar = true;
+    }
   }
 
   public clickSair(sair?: string): void {
     if (sair) {
-      this.fecharModal();
+      this.fecharModal('parcial');
       console.log('Confirmação sair');
       return;
     }
@@ -89,8 +96,16 @@ export class PerfilPageComponent implements OnInit {
     this.viewModel.modalParcialModel.mostrar = true;
   }
 
-  public fecharModal(): void {
-    this.viewModel.modalParcialModel.mostrar = false;
+  public fecharModal(tipo: 'parcial' | 'integral'): void {
+    tipo === 'parcial'
+      ? (this.viewModel.modalParcialModel.mostrar = false)
+      : (this.viewModel.modalIntegralModel.mostrar = false);
+  }
+
+  public clickLoginHandle(login: LoginModel): void {
+    if (!(login.email && login.senha)) return;
+
+    console.log(login);
   }
 
   public menuFooterClick(value: string): void {
@@ -127,9 +142,8 @@ export class PerfilPageComponent implements OnInit {
         tipo: 'parcial',
       },
       modalIntegralModel: {
-        mostrar: true,
+        mostrar: false,
         tipo: 'integral',
-        titulo: 'Login',
       },
     };
   }

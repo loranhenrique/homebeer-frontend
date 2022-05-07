@@ -10,6 +10,7 @@ import { IconePedidoComponent } from './components/icone-pedido/icone-pedido.com
 import { HistoricoComprasComponent } from './components/historico-compras/historico-compras.component';
 import { ConfirmarSairComponent } from './components/confirmar-sair/confirmar-sair.component';
 import { ListaPedidosComponent } from './components/lista-pedidos/lista-pedidos.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ListaPedidosComponent } from './components/lista-pedidos/lista-pedidos.
     HistoricoComprasComponent,
     ConfirmarSairComponent,
     ListaPedidosComponent,
+    LoginComponent,
   ],
   imports: [CommonModule, PerfilRoutingModule, SharedModule, TranslateModule],
 })

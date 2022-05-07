@@ -1,0 +1,18 @@
+<div class="login">
+  <div class="login__icone"></div>
+
+  <bra-input [inputControl]="viewModel.controlEmail"
+    [titulo]="viewModel.labelInpuEmail"
+    [inputType]="viewModel.inputTypeEmail"></bra-input>
+
+  <div class="login__senha">
+    <bra-input [inputControl]="viewModel.controlSenha"
+      [titulo]="viewModel.labelInpuSenha"
+      [inputType]="viewModel.inputTypeSenha"></bra-input>
+  </div>
+
+  <div class="login__botao">
+    <bra-button [texto]="viewModel.textoBotao"
+      (clickAction)="clickContinuarHandle()"></bra-button>
+  </div>
+</div>

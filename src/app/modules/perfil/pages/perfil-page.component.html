@@ -28,7 +28,7 @@
 
 <bra-modal [ngSwitch]="viewModel.exibeModal"
   [modal]="viewModel.modalParcialModel"
-  (clickActionFecharModal)="fecharModal()"
+  (clickActionFecharModal)="fecharModal('parcial')"
   [@modalAnimation]>
   <bra-confirmar-sair *ngSwitchCase="'sair'"
     (clickAction)="clickSair('Sair')">
@@ -43,6 +43,8 @@
   </bra-lista-pedidos>
 </bra-modal>
 
-<bra-modal [modal]="viewModel.modalIntegralModel">
-  Modal integral teste
+<bra-modal [modal]="viewModel.modalIntegralModel"
+  (clickActionFecharModal)="fecharModal('integral')">
+  <bra-login #paginaLogin
+    (clickAction)="clickLoginHandle($event)"></bra-login>
 </bra-modal>

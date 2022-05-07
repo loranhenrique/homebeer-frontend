@@ -59,5 +59,8 @@
   "PAGAMENTO__LABEL--DATA-VALIDADE": "Data de validade",
   "PAGAMENTO__LABEL--CVV": "CVV",
   "PAGAMENTO__LABEL--CPF": "CPF do titular",
-  "PAGAMENTO__LABEL--NOME": "Nome do titular"
+  "PAGAMENTO__LABEL--NOME": "Nome do titular",
+  "LOGIN__LABEL--EMAIL": "Digite seu e-mail:",
+  "LOGIN__LABEL--SENHA": "Digite sua senha:",
+  "LOGIN__LABEL--BOTAO": "Continuar"
 }

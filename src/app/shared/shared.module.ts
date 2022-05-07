@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonComponent } from '@shared/components/button/button.component';
 import { LinhaComponent } from '@shared/components/linha/linha.component';
@@ -16,6 +16,7 @@ import { BraCurrencyPipe } from '@shared/pipes/bra-currency/bra-currency.pipe';
 import { CardPedidoComponent } from './components/card-pedido/card-pedido.component';
 import { ControleModalDirective } from './directives/controle-modal/controle-modal.directive';
 import { ButtonPagamentoComponent } from './components/button-pagamento/button-pagamento.component';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +34,9 @@ import { ButtonPagamentoComponent } from './components/button-pagamento/button-p
     CardPedidoComponent,
     ControleModalDirective,
     ButtonPagamentoComponent,
+    InputComponent,
   ],
-  imports: [CommonModule, TranslateModule, FormsModule],
+  imports: [CommonModule, TranslateModule, FormsModule, ReactiveFormsModule],
   exports: [
     ButtonComponent,
     LinhaComponent,
@@ -49,6 +51,7 @@ import { ButtonPagamentoComponent } from './components/button-pagamento/button-p
     BraCurrencyPipe,
     CardPedidoComponent,
     ButtonPagamentoComponent,
+    InputComponent,
   ],
 })
 export class SharedModule {}

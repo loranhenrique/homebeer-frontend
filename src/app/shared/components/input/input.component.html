@@ -1,0 +1,15 @@
+<div class="input-text">
+  <div class="input-text__container">
+    <input #campoInput
+      [formControl]="viewModel.inputControl"
+      type="{{ viewModel.inputType }}"
+      class="input-text__text"
+      required />
+
+    <label (click)="clickInput()"
+      class="input-text__titulo">{{ viewModel.titulo | translate }}</label>
+  </div>
+
+  <small *ngIf="inputControl.errors?.required"
+    class="input-text__mensagemErro">{{ viewModel.textoCampoObrigatorio | translate }}</small>
+</div>

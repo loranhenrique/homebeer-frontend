@@ -1,0 +1,19 @@
+@import 'base-styles';
+
+.login {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-m $spacing-m;
+
+  &__senha,
+  &__botao {
+    margin-top: $spacing-m;
+  }
+
+  &__icone {
+    width: 100%;
+    height: 200px;
+    background-color: $color-amarelo;
+    margin-bottom: $spacing-l;
+  }
+}
