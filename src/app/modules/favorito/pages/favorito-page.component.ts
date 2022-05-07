@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FavoritoViewModel } from '@favorito/models/favorito-view.model';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
+import { BuscarParceiroModel } from '@service/models/buscar-parceiro.model';
 import { CardParceiroModel } from '@shared/models/card-parceiro.model';
 
 @Component({
@@ -11,53 +12,16 @@ import { CardParceiroModel } from '@shared/models/card-parceiro.model';
 })
 export class FavoritoPageComponent implements OnInit {
   public viewModel: FavoritoViewModel;
-  public favoritosVazio: CardParceiroModel[] = [];
-  public favoritos: CardParceiroModel[] = [
-    {
-      id: '1',
-      nomeLoja: 'Nome teste 1 Nome teste 1 Nome teste 1 Nome teste 1 Nome teste 1',
-      descricaoLoja: 'Descricao teste 1',
-      imagemLoja: '',
-      frete: 'Frete grátis',
-      descricaoAcessibilidade: '',
-    },
-    {
-      id: '2',
-      nomeLoja: 'Nome teste 2',
-      descricaoLoja: 'Descricao teste 2',
-      imagemLoja: '',
-      frete: 'Frete grátis',
-      descricaoAcessibilidade: '',
-    },
-    {
-      id: '3',
-      nomeLoja: 'Nome teste 3',
-      descricaoLoja: 'Descricao teste 3',
-      imagemLoja: '',
-      frete: 'Frete grátis',
-      descricaoAcessibilidade: '',
-    },
-    {
-      id: '4',
-      nomeLoja: 'Nome teste 4',
-      descricaoLoja: 'Descricao teste 4',
-      imagemLoja: '',
-      frete: 'Frete grátis',
-      descricaoAcessibilidade: '',
-    },
-    {
-      id: '5',
-      nomeLoja: 'Nome teste 5',
-      descricaoLoja: 'Descricao teste 5',
-      imagemLoja: '',
-      frete: 'Frete grátis',
-      descricaoAcessibilidade: '',
-    },
-  ];
+  private favoritos: BuscarParceiroModel[];
 
-  constructor(private router: Router, private redirecionarMenuFooterService: RedirecionarMenuFooterService) {}
+  constructor(
+    private readonly router: Router,
+    private readonly redirecionarMenuFooterService: RedirecionarMenuFooterService,
+    private readonly activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.obterParceirosResolver();
     this.construirViewModel();
   }
 
@@ -79,7 +43,7 @@ export class FavoritoPageComponent implements OnInit {
       tituloErro: 'FAVORITO__LABEL--TITULO-ERRO',
       descricaoErro: 'FAVORITO__LABEL--DESCRICAO-ERRO',
       textoBotaoErro: 'FAVORITO__LABEL--BOTAO-ERRO',
-      favoritos: this.favoritosVazio,
+      favoritos: this.construirFavoritos(),
       menuFooter: {
         selecionado: 'favorito',
       },
@@ -88,5 +52,22 @@ export class FavoritoPageComponent implements OnInit {
         titulo: 'FAVORITO__LABEL--TITULO-PRINCIPAL',
       },
     };
+  }
+
+  private construirFavoritos(): CardParceiroModel[] {
+    if (!this.favoritos) return [];
+
+    return this.favoritos.map((favorito: BuscarParceiroModel) => ({
+      id: favorito.id,
+      nomeLoja: favorito.nomeLoja,
+      descricaoLoja: favorito.descricaoLoja,
+      imagemLoja: favorito.imagemLoja,
+      frete: 'Frete grátis',
+      descricaoAcessibilidade: '',
+    }));
+  }
+
+  private obterParceirosResolver(): void {
+    this.favoritos = this.activatedRoute.snapshot.data.favoritos;
   }
 }

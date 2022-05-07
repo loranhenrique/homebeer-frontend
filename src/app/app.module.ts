@@ -12,6 +12,7 @@ import { registerLocaleData } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { ErroInterceptor } from '@interceptors/erro/erro.interceptor';
 import { GlobalErrorHandler } from './core/handler/global-erro-handler';
+import { JwtInterceptor } from '@interceptors/jwt/jwt.interceptor';
 
 registerLocaleData(ptBr);
 
@@ -35,6 +36,11 @@ export const HttpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
     BrowserAnimationsModule,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErroInterceptor,

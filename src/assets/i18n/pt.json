@@ -62,5 +62,6 @@
   "PAGAMENTO__LABEL--NOME": "Nome do titular",
   "LOGIN__LABEL--EMAIL": "Digite seu e-mail:",
   "LOGIN__LABEL--SENHA": "Digite sua senha:",
-  "LOGIN__LABEL--BOTAO": "Continuar"
+  "LOGIN__LABEL--BOTAO": "Continuar",
+  "FAVORITO__MENSAGEM--LOADING": "Estamos buscando seus parceiros favoritos!"
 }

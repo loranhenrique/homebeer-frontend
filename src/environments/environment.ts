@@ -5,5 +5,6 @@ export const environment = {
   api: {
     buscarParceiros: `${urlBff}/parceiro`,
     autenticar: `${urlBff}/usuario/autenticar`,
+    buscarFavoritos: `${urlBff}/favorito`,
   },
 };

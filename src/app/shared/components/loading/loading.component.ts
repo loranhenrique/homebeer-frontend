@@ -14,6 +14,7 @@ export class LoadingComponent implements OnInit {
 
   ngOnInit(): void {
     this.definirLoadingStyle();
+    console.log(this.mensagem);
   }
 
   private definirLoadingStyle(): void {
