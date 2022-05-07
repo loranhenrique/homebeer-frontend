@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginViewModel } from '@perfil/models/login-view.model';
 import { LoginModel } from '@perfil/models/login.model';
@@ -8,7 +8,8 @@ import { LoginModel } from '@perfil/models/login.model';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnChanges {
+  @Input() exibirErroLogin: boolean;
   @Output() clickAction = new EventEmitter<LoginModel>();
 
   public formGroup: FormGroup;
@@ -16,9 +17,16 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes.exibirErroLogin.firstChange) {
+      this.construirViewModel();
+    }
+  }
+
   ngOnInit(): void {
     this.criarFormulario();
     this.construirViewModel();
+    this.validarDigitacao();
   }
 
   public clickContinuarHandle(): void {
@@ -36,6 +44,8 @@ export class LoginComponent implements OnInit {
       inputTypeSenha: 'password',
       controlSenha: this.formGroup.controls.senha,
       textoBotao: 'LOGIN__LABEL--BOTAO',
+      mensagemErroLogin: 'Usuario/senha inválidos.',
+      exibirErroLogin: this.exibirErroLogin,
     } as LoginViewModel;
   }
 
@@ -43,6 +53,16 @@ export class LoginComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       email: this.formBuilder.control('', [Validators.required]),
       senha: this.formBuilder.control('', [Validators.required]),
+    });
+  }
+
+  private validarDigitacao(): void {
+    this.viewModel.controlEmail.valueChanges.subscribe(() => {
+      this.viewModel.exibirErroLogin = false;
+    });
+
+    this.viewModel.controlSenha.valueChanges.subscribe(() => {
+      this.viewModel.exibirErroLogin = false;
     });
   }
 }

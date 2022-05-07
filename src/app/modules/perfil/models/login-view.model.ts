@@ -8,4 +8,6 @@ export interface LoginViewModel {
   inputTypeEmail: string;
   inputTypeSenha: string;
   textoBotao: string;
+  mensagemErroLogin: string;
+  exibirErroLogin: boolean;
 }

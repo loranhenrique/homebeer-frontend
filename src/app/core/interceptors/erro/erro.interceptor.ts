@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { DeparaErroRotaService } from '@service/app/depara-erro-rota/depara-erro-rota.service';
 import { Router } from '@angular/router';
+import { MapRotasIgnoradas } from '@config/map-rotas-ignoradas';
 
 @Injectable()
 export class ErroInterceptor implements HttpInterceptor {
@@ -16,6 +17,12 @@ export class ErroInterceptor implements HttpInterceptor {
         let mensagemErro = '';
 
         const rotaAtual = this.tratarRota(request.url);
+        const rotaIgnorada = this.validarRota(rotaAtual);
+
+        if (rotaIgnorada) {
+          return next.handle(request);
+        }
+
         const erroModel = error.error ? this.deParaErro.execute(rotaAtual) : this.deParaErro.execute(request.url);
 
         mensagemErro =
@@ -28,6 +35,11 @@ export class ErroInterceptor implements HttpInterceptor {
         return throwError(mensagemErro);
       })
     );
+  }
+
+  private validarRota(rotaServico: string): unknown | undefined {
+    const rotasIgnoradas = MapRotasIgnoradas.buscarRotasIgnoradas();
+    return rotasIgnoradas.find(rotaIgnorada => rotaIgnorada.rota === rotaServico);
   }
 
   private tratarRota(rotaServico: string): string {

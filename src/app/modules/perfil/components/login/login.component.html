@@ -11,6 +11,11 @@
       [inputType]="viewModel.inputTypeSenha"></bra-input>
   </div>
 
+  <div *ngIf="viewModel.exibirErroLogin"
+    class="login__falha-login">
+    <small>{{ viewModel.mensagemErroLogin | translate }}</small>
+  </div>
+
   <div class="login__botao">
     <bra-button [texto]="viewModel.textoBotao"
       (clickAction)="clickContinuarHandle()"></bra-button>

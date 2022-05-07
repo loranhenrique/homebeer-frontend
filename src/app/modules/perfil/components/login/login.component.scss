@@ -16,4 +16,9 @@
     background-color: $color-amarelo;
     margin-bottom: $spacing-l;
   }
+
+  &__falha-login {
+    font-size: to-vw(16px);
+    color: red;
+  }
 }

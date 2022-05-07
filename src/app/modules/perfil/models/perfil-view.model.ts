@@ -14,4 +14,6 @@ export interface PerfilViewModel {
   menuFooter: MenuFooterModel;
   modalParcialModel: ModalModel;
   modalIntegralModel: ModalModel;
+  exibeErroLogin?: boolean;
+  exibirTelaLogada?: boolean;
 }

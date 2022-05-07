@@ -2,11 +2,12 @@
   <div class="perfil__container">
     <bra-menu-header [menuHeader]="viewModel.menuHeader"></bra-menu-header>
 
-    <div class="perfil__content">
+    <div *ngIf="!viewModel?.exibirTelaLogada"
+      class="perfil__content">
       <bra-acesso-app (clickAction)="clickAcesso($event)"></bra-acesso-app>
     </div>
 
-    <div *ngIf="false"
+    <div *ngIf="viewModel?.exibirTelaLogada"
       class="perfil__content">
       <bra-pedidos-andamento [icone]="viewModel.pedidos"
         (clickAction)="clickPedidosAndamento()"></bra-pedidos-andamento>
@@ -46,5 +47,6 @@
 <bra-modal [modal]="viewModel.modalIntegralModel"
   (clickActionFecharModal)="fecharModal('integral')">
   <bra-login #paginaLogin
+    [exibirErroLogin]="viewModel?.exibeErroLogin"
     (clickAction)="clickLoginHandle($event)"></bra-login>
 </bra-modal>

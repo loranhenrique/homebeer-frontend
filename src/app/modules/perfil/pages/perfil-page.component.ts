@@ -1,11 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { StateConstantes } from '@config/state-constantes.const';
 import { LoginComponent } from '@perfil/components/login/login.component';
 import { LoginModel } from '@perfil/models/login.model';
 import { PerfilViewModel } from '@perfil/models/perfil-view.model';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
+import { StateService } from '@service/app/state/state.service';
+import { LoginService } from '@service/http/login/login.service';
 import { modalAnimation } from '@shared/components/modal/modal-animation';
 import { CardPedidoModel } from '@shared/models/card-pedido.model';
+import { UsuarioResponse } from '@shared/models/usuario-response.model';
 
 @Component({
   selector: 'bra-perfil-page',
@@ -62,7 +66,12 @@ export class PerfilPageComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router, private redirecionarMenuFooterService: RedirecionarMenuFooterService) {}
+  constructor(
+    private readonly router: Router,
+    private readonly redirecionarMenuFooterService: RedirecionarMenuFooterService,
+    private readonly loginService: LoginService,
+    private readonly stateService: StateService
+  ) {}
 
   ngOnInit(): void {
     this.construirViewModel();
@@ -88,7 +97,12 @@ export class PerfilPageComponent implements OnInit {
   public clickSair(sair?: string): void {
     if (sair) {
       this.fecharModal('parcial');
-      console.log('Confirmação sair');
+      this.stateService.sessao.delete(StateConstantes.USUARIO_LOGADO);
+      this.viewModel.exibirTelaLogada = false;
+      this.viewModel.menuHeader = {
+        tipo: 'default',
+        titulo: 'APP__LABEL-TITULO',
+      };
       return;
     }
 
@@ -104,13 +118,30 @@ export class PerfilPageComponent implements OnInit {
 
   public clickLoginHandle(login: LoginModel): void {
     if (!(login.email && login.senha)) return;
+    this.viewModel.exibeErroLogin = false;
 
-    console.log(login);
+    this.loginService.execute({ email: login.email, senha: login.senha }).subscribe(
+      (usuario: UsuarioResponse) => {
+        this.sucessoLogin(usuario);
+      },
+      _ => {
+        this.viewModel.exibeErroLogin = true;
+      }
+    );
   }
 
   public menuFooterClick(value: string): void {
     const rota = this.redirecionarMenuFooterService.execute(value);
     this.router.navigate([rota]);
+  }
+
+  private sucessoLogin(usuario: UsuarioResponse): void {
+    this.stateService.sessao.set(StateConstantes.USUARIO_LOGADO, usuario);
+    this.viewModel.modalIntegralModel.mostrar = false;
+    this.viewModel.menuHeader.tipo = 'perfil';
+    this.viewModel.menuHeader.titulo = usuario.nomeCompleto;
+    this.viewModel.menuHeader.descricao = usuario.dataNascimento;
+    this.viewModel.exibirTelaLogada = true;
   }
 
   private construirViewModel(): void {
@@ -127,7 +158,7 @@ export class PerfilPageComponent implements OnInit {
       },
       menuHeader: {
         tipo: 'default',
-        titulo: 'Home Beer',
+        titulo: 'APP__LABEL-TITULO',
       },
       pedidosAndamento: {
         titulo: 'PERFIL__LABEL--TITULO-PEDIDOS-ANDAMENTO',
