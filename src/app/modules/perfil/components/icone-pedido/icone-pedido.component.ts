@@ -40,11 +40,6 @@ export class IconePedidoComponent implements OnInit {
         titulo: 'ICONE-PEDIDO__LABEL--RECEBIMENTO',
         quantidade: this.icone.recebimento,
       },
-      {
-        identificador: 'confirmacao',
-        titulo: 'ICONE-PEDIDO__LABEL--CONFIRMACAO',
-        quantidade: this.icone.recebido,
-      },
     ];
   }
 }

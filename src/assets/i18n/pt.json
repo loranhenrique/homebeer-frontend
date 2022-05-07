@@ -63,5 +63,6 @@
   "LOGIN__LABEL--EMAIL": "Digite seu e-mail:",
   "LOGIN__LABEL--SENHA": "Digite sua senha:",
   "LOGIN__LABEL--BOTAO": "Continuar",
-  "FAVORITO__MENSAGEM--LOADING": "Estamos buscando seus parceiros favoritos!"
+  "FAVORITO__MENSAGEM--LOADING": "Estamos buscando seus parceiros favoritos!",
+  "PERFIL__MENSAGEM--LOADING": "Estamos buscando suas informações!"
 }

@@ -20,6 +20,8 @@ export class DeparaErroRotaService {
         return this.construirErroBuscarParceiros();
       case environment.api.buscarFavoritos:
         return this.construirErroBuscarFavoritos();
+      case environment.api.buscarPedidos:
+        return this.construirErroBuscarPedidos();
       default:
         return this.erroModelPadrao;
     }
@@ -36,6 +38,13 @@ export class DeparaErroRotaService {
     return {
       ...this.erroModelPadrao,
       codigoErro: CodigoErroConstantes.ERRO_BUSCAR_FAVORITOS,
+    };
+  }
+
+  private construirErroBuscarPedidos(): ErroModel {
+    return {
+      ...this.erroModelPadrao,
+      codigoErro: CodigoErroConstantes.ERRO_BUSCAR_PEDIDOS,
     };
   }
 }

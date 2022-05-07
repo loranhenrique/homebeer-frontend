@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StateConstantes } from '@config/state-constantes.const';
 import { LoginComponent } from '@perfil/components/login/login.component';
 import { IconePedidoModel } from '@perfil/models/icone-pedido.model';
@@ -10,6 +10,7 @@ import { LoadingService } from '@service/app/loading/loading.service';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
 import { StateService } from '@service/app/state/state.service';
 import { AuthenticationService } from '@service/http/authentication/authentication.service';
+import { PedidosModel } from '@service/models/pedidos.model';
 import { modalAnimation } from '@shared/components/modal/modal-animation';
 import { CardPedidoModel } from '@shared/models/card-pedido.model';
 import { MenuHeaderModel } from '@shared/models/menu-header.model';
@@ -25,50 +26,7 @@ export class PerfilPageComponent implements OnInit {
   @ViewChild('paginaLogin', { static: false }) loginComponent: LoginComponent;
 
   public viewModel: PerfilViewModel;
-  private cardsPedido: CardPedidoModel[] = [
-    {
-      nomeParceiro: 'Cervejaria dos amigos',
-      imagemParceiro: '',
-      totalProdutos: 4,
-      totalCompra: 129.99,
-      statusPedido: 'envio',
-    },
-    {
-      nomeParceiro: 'Cervejaria do Romeu',
-      imagemParceiro: '',
-      totalProdutos: 8,
-      totalCompra: 109.99,
-      statusPedido: 'confirmacao',
-    },
-    {
-      nomeParceiro: 'Paulaner',
-      imagemParceiro: '',
-      totalProdutos: 2,
-      totalCompra: 199.99,
-      statusPedido: 'pagamento',
-    },
-    {
-      nomeParceiro: 'Cervejaria dos amigos',
-      imagemParceiro: '',
-      totalProdutos: 4,
-      totalCompra: 129.99,
-      statusPedido: 'envio',
-    },
-    {
-      nomeParceiro: 'Cervejaria do Romeu',
-      imagemParceiro: '',
-      totalProdutos: 8,
-      totalCompra: 109.99,
-      statusPedido: 'confirmacao',
-    },
-    {
-      nomeParceiro: 'Paulaner',
-      imagemParceiro: '',
-      totalProdutos: 2,
-      totalCompra: 199.99,
-      statusPedido: 'pagamento',
-    },
-  ];
+  private pedidos: PedidosModel[];
   private usuario: UsuarioResponse;
 
   constructor(
@@ -76,10 +34,12 @@ export class PerfilPageComponent implements OnInit {
     private readonly redirecionarMenuFooterService: RedirecionarMenuFooterService,
     private readonly authenticationService: AuthenticationService,
     private readonly stateService: StateService,
-    private readonly loadingService: LoadingService
+    private readonly loadingService: LoadingService,
+    private readonly activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.carregarPedidosResvoler();
     this.buscarUsuarioState();
     this.construirViewModel();
   }
@@ -131,8 +91,9 @@ export class PerfilPageComponent implements OnInit {
 
     this.authenticationService.login({ email: login.email, senha: login.senha }).subscribe(
       _ => {
-        this.sucessoLogin();
         this.loadingService.desligar();
+        this.viewModel.modalIntegralModel.mostrar = false;
+        this.recarregarPagina();
       },
       _ => {
         this.viewModel.exibeErroLogin = true;
@@ -149,22 +110,6 @@ export class PerfilPageComponent implements OnInit {
   private definirPropriedadesLoading(): void {
     this.loadingService.atribuirMensagem('Autenticando...');
     this.loadingService.atribuirTipo('fade');
-  }
-
-  private sucessoLogin(): void {
-    this.buscarUsuarioState();
-    this.setarViewModelSucessoLogin();
-  }
-
-  private setarViewModelSucessoLogin(): void {
-    this.viewModel.menuHeader = {
-      tipo: 'perfil',
-      titulo: this.usuario.nomeCompleto,
-      descricao: this.usuario.dataNascimento,
-    };
-
-    this.viewModel.exibirTelaLogada = this.construirExibirTelaLogada();
-    this.viewModel.modalIntegralModel.mostrar = false;
   }
 
   private construirViewModel(): void {
@@ -212,26 +157,92 @@ export class PerfilPageComponent implements OnInit {
     };
   }
 
-  private construirPedidos(): IconePedidoModel | undefined {
-    return {
-      pagamento: 1,
-      envio: 0,
-      recebimento: 1,
-      recebido: 0,
-    };
+  private construirPedidos(): IconePedidoModel {
+    let pagamento = 0;
+    let envio = 0;
+    let recebimento = 0;
+    let recebido = 0;
+
+    this.pedidos.map((pedidos: PedidosModel) => {
+      pedidos.itensPedido
+        .map(item => item.parceiro.status)
+        .map(status => {
+          if (status === 'Aguardando pagamento') pagamento++;
+          if (status === 'Aguardando envio') envio++;
+          if (status === 'Aguardando recebimento') recebimento++;
+          if (status === 'Recebido') recebido++;
+        });
+    });
+
+    return { pagamento, envio, recebimento, recebido };
   }
 
-  private construirHistoricoPedidos(): ListaPedidosModel | undefined {
+  private construirHistoricoPedidos(): ListaPedidosModel {
+    let cardsPedido: CardPedidoModel[] = [];
+
+    this.pedidos.map((pedidos: PedidosModel) => {
+      pedidos.itensPedido
+        .map(item => item.parceiro)
+        .map(parceiro => {
+          if (!(parceiro.status === 'Recebido')) return;
+
+          let totalCompra = 0;
+
+          parceiro.produtos.map(({ precoProduto }) => {
+            totalCompra += precoProduto;
+          });
+
+          cardsPedido.push({
+            nomeParceiro: parceiro.nomeParceiro,
+            imagemParceiro: parceiro.imagemParceiro,
+            statusPedido: parceiro.status,
+            totalProdutos: parceiro.produtos.length,
+            totalCompra,
+          });
+        });
+    });
+
     return {
       titulo: 'PERFIL__LABEL--TITULO-HISTORICO-PEDIDOS',
-      pedidos: this.cardsPedido,
+      pedidos: cardsPedido,
     };
   }
 
-  private construirPedidosAndamento(): ListaPedidosModel | undefined {
+  private construirPedidosAndamento(): ListaPedidosModel {
+    let cardsPedido: CardPedidoModel[] = [];
+
+    this.pedidos.map((pedidos: PedidosModel) => {
+      pedidos.itensPedido
+        .map(item => item.parceiro)
+        .map(parceiro => {
+          let totalCompra = 0;
+
+          parceiro.produtos.map(({ precoProduto }) => {
+            totalCompra += precoProduto;
+          });
+
+          cardsPedido.push({
+            nomeParceiro: parceiro.nomeParceiro,
+            imagemParceiro: parceiro.imagemParceiro,
+            statusPedido: parceiro.status,
+            totalProdutos: parceiro.produtos.length,
+            totalCompra,
+          });
+        });
+    });
+
     return {
       titulo: 'PERFIL__LABEL--TITULO-PEDIDOS-ANDAMENTO',
-      pedidos: this.cardsPedido,
+      pedidos: cardsPedido,
     };
+  }
+
+  private carregarPedidosResvoler(): void {
+    this.pedidos = this.activatedRoute.snapshot.data.pedidos;
+  }
+
+  private recarregarPagina(): void {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.navigate(['/perfil']);
   }
 }

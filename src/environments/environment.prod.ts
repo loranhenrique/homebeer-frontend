@@ -6,5 +6,6 @@ export const environment = {
     buscarParceiros: `${urlBff}/parceiro`,
     autenticar: `${urlBff}/usuario/autenticar`,
     buscarFavoritos: `${urlBff}/favorito`,
+    buscarPedidos: `${urlBff}/pedido`,
   },
 };
