@@ -3,16 +3,17 @@
 .icone-destaque {
   display: flex;
   flex-direction: column;
-  width: 80px;
-  height: 100px;
+  width: 92px;
+  height: 120px;
   color: $color-branco-default;
   position: relative;
 
   &__icone {
-    width: 100%;
-    height: 100%;
+    width: 70px;
+    height: 70px;
     border-radius: 100%;
     background-color: $color-preto-acinzentado;
+    margin: 0 auto;
   }
 
   &__titulo {
@@ -20,10 +21,10 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     font-size: to-vw(13px);
     font-family: $font-roboto-default;
-    max-height: calc(1 * 1.25em);
+    max-height: calc(2 * 1.25em);
     margin-top: $spacing-xs;
     text-align: center;
   }

@@ -6,4 +6,5 @@ export interface BuscarParceiroModel {
   imagemLoja: string;
   nomeLoja: string;
   descricaoLoja: string;
+  categoria: string;
 }

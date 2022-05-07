@@ -2,11 +2,13 @@
   <div class="parceiro__container">
     <bra-menu-header [menuHeader]="viewModel.menuHeader"></bra-menu-header>
     <div class="parceiro__content">
-      <bra-sugestao [parceirosSugeridos]="viewModel.parceirosSugeridos"
+      <bra-sugestao *ngIf="viewModel.parceirosSugeridos.length > 0"
+        [parceirosSugeridos]="viewModel.parceirosSugeridos"
         (clickAction)="cardSugestaoClick($event)">
       </bra-sugestao>
 
-      <bra-destaque [parceirosDestaque]="viewModel.parceirosDestaque"
+      <bra-destaque *ngIf="viewModel.parceirosDestaque.length > 0"
+        [parceirosDestaque]="viewModel.parceirosDestaque"
         (clickAction)="cardSugestaoClick($event)">
       </bra-destaque>
 

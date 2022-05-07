@@ -4,6 +4,7 @@ import { CardSugestaoModel } from '@parceiro/models/card-sugestao.model';
 import { IconeDestaqueModel } from '@parceiro/models/icone-destaque.model';
 import { ParceiroViewModel } from '@parceiro/models/parceiro-view.model';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
+import { BuscarParceiroModel } from '@service/models/buscar-parceiro.model';
 import { CardParceiroModel } from '@shared/models/card-parceiro.model';
 
 @Component({
@@ -13,109 +14,7 @@ import { CardParceiroModel } from '@shared/models/card-parceiro.model';
 })
 export class ParceiroPageComponent implements OnInit {
   public viewModel: ParceiroViewModel;
-  private listaParceiro: CardSugestaoModel[] = [
-    {
-      id: '1',
-      nomeLoja: 'Nome teste',
-      descricaoLoja: 'Descrição teste',
-      imagemLoja: '',
-    },
-    {
-      id: '2',
-      nomeLoja: 'Nome teste 2',
-      descricaoLoja: 'Descrição teste 2',
-      imagemLoja: '',
-    },
-    {
-      id: '3',
-      nomeLoja: 'Nome teste 3',
-      descricaoLoja: 'Descrição teste 3',
-      imagemLoja: '',
-    },
-    {
-      id: '4',
-      nomeLoja: 'Nome teste 4',
-      descricaoLoja: 'Descrição teste 4',
-      imagemLoja: '',
-    },
-    {
-      id: '5',
-      nomeLoja: 'Nome teste 5',
-      descricaoLoja: 'Descrição teste 5',
-      imagemLoja: '',
-    },
-  ];
-
-  private listaDestaque: IconeDestaqueModel[] = [
-    {
-      id: '1',
-      imagemLoja: '',
-      nomeLoja: 'Nome teste teste teste 1',
-    },
-    {
-      id: '2',
-      imagemLoja: '',
-      nomeLoja: 'Nome teste 2',
-    },
-    {
-      id: '3',
-      imagemLoja: '',
-      nomeLoja: 'Nome teste 3',
-    },
-    {
-      id: '4',
-      imagemLoja: '',
-      nomeLoja: 'Nome teste 4',
-    },
-    {
-      id: '5',
-      imagemLoja: '',
-      nomeLoja: 'Nome teste 1',
-    },
-  ];
-
-  private parceiros: CardParceiroModel[] = [
-    {
-      id: '1',
-      nomeLoja: 'Nome teste 1 Nome teste 1 Nome teste 1 Nome teste 1 Nome teste 1',
-      descricaoLoja: 'Descricao teste 1',
-      imagemLoja: '',
-      frete: 'Frete grátis',
-      descricaoAcessibilidade: '',
-    },
-    {
-      id: '2',
-      nomeLoja: 'Nome teste 2',
-      descricaoLoja: 'Descricao teste 2',
-      imagemLoja: '',
-      frete: 'Frete grátis',
-      descricaoAcessibilidade: '',
-    },
-    {
-      id: '3',
-      nomeLoja: 'Nome teste 3',
-      descricaoLoja: 'Descricao teste 3',
-      imagemLoja: '',
-      frete: 'Frete grátis',
-      descricaoAcessibilidade: '',
-    },
-    {
-      id: '4',
-      nomeLoja: 'Nome teste 4',
-      descricaoLoja: 'Descricao teste 4',
-      imagemLoja: '',
-      frete: 'Frete grátis',
-      descricaoAcessibilidade: '',
-    },
-    {
-      id: '5',
-      nomeLoja: 'Nome teste 5',
-      descricaoLoja: 'Descricao teste 5',
-      imagemLoja: '',
-      frete: 'Frete grátis',
-      descricaoAcessibilidade: '',
-    },
-  ];
+  private parceiros: BuscarParceiroModel[];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -124,6 +23,7 @@ export class ParceiroPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.obterParceirosResolver();
     this.construirViewModel();
   }
 
@@ -147,9 +47,9 @@ export class ParceiroPageComponent implements OnInit {
   private construirViewModel(): void {
     this.viewModel = {
       orientacaoLista: 'horizontal',
-      parceirosSugeridos: this.listaParceiro,
-      parceirosDestaque: this.listaDestaque,
-      parceiros: this.parceiros,
+      parceirosSugeridos: this.construirParceirosSugeridos(),
+      parceirosDestaque: this.construirParceirosDestaque(),
+      parceiros: this.construirParceirosGeral(),
       menuFooter: {
         selecionado: 'home',
       },
@@ -157,8 +57,41 @@ export class ParceiroPageComponent implements OnInit {
         tipo: 'pesquisa',
       },
     };
+  }
 
-    const parceiroBff = this.activatedRoute.snapshot.data.parceiros;
-    console.log(parceiroBff);
+  private construirParceirosDestaque(): IconeDestaqueModel[] {
+    return this.parceiros
+      .filter(({ categoria }: BuscarParceiroModel) => categoria === 'destaque')
+      .map((parceiro: BuscarParceiroModel) => ({
+        id: parceiro.id,
+        imagemLoja: parceiro.imagemLoja,
+        nomeLoja: parceiro.nomeLoja,
+      }));
+  }
+
+  private construirParceirosSugeridos(): CardSugestaoModel[] {
+    return this.parceiros
+      .filter(({ categoria }: BuscarParceiroModel) => categoria === 'sugerido')
+      .map((parceiro: BuscarParceiroModel) => ({
+        id: parceiro.id,
+        nomeLoja: parceiro.nomeLoja,
+        descricaoLoja: parceiro.descricaoLoja,
+        imagemLoja: parceiro.imagemLoja,
+      }));
+  }
+
+  private construirParceirosGeral(): CardParceiroModel[] {
+    return this.parceiros.map((parceiro: BuscarParceiroModel) => ({
+      id: parceiro.id,
+      nomeLoja: parceiro.nomeLoja,
+      descricaoLoja: parceiro.descricaoLoja,
+      descricaoAcessibilidade: `${parceiro.nomeLoja} ${parceiro.descricaoLoja}`,
+      frete: 'Frete grátis',
+      imagemLoja: parceiro.imagemLoja,
+    }));
+  }
+
+  private obterParceirosResolver(): void {
+    this.parceiros = this.activatedRoute.snapshot.data.parceiros;
   }
 }
