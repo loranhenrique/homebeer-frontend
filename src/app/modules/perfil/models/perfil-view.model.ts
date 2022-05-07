@@ -6,14 +6,14 @@ import { ListaPedidosModel } from './lista-pedidos.model';
 
 export interface PerfilViewModel {
   textoBotaoSair: string;
-  exibeModal?: 'sair' | 'historico' | 'pedidos';
-  pedidosAndamento: ListaPedidosModel;
-  historicoPedidos: ListaPedidosModel;
-  pedidos: IconePedidoModel;
   menuHeader: MenuHeaderModel;
   menuFooter: MenuFooterModel;
   modalParcialModel: ModalModel;
   modalIntegralModel: ModalModel;
+  exibirTelaLogada: boolean;
+  exibeModal?: 'sair' | 'historico' | 'pedidos';
+  pedidosAndamento?: ListaPedidosModel;
+  historicoPedidos?: ListaPedidosModel;
+  pedidos?: IconePedidoModel;
   exibeErroLogin?: boolean;
-  exibirTelaLogada?: boolean;
 }

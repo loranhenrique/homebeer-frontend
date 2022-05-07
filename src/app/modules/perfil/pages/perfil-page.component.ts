@@ -2,13 +2,16 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateConstantes } from '@config/state-constantes.const';
 import { LoginComponent } from '@perfil/components/login/login.component';
+import { IconePedidoModel } from '@perfil/models/icone-pedido.model';
+import { ListaPedidosModel } from '@perfil/models/lista-pedidos.model';
 import { LoginModel } from '@perfil/models/login.model';
 import { PerfilViewModel } from '@perfil/models/perfil-view.model';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
 import { StateService } from '@service/app/state/state.service';
-import { LoginService } from '@service/http/login/login.service';
+import { AuthenticationService } from '@service/http/authentication/authentication.service';
 import { modalAnimation } from '@shared/components/modal/modal-animation';
 import { CardPedidoModel } from '@shared/models/card-pedido.model';
+import { MenuHeaderModel } from '@shared/models/menu-header.model';
 import { UsuarioResponse } from '@shared/models/usuario-response.model';
 
 @Component({
@@ -65,15 +68,17 @@ export class PerfilPageComponent implements OnInit {
       statusPedido: 'pagamento',
     },
   ];
+  private usuario: UsuarioResponse;
 
   constructor(
     private readonly router: Router,
     private readonly redirecionarMenuFooterService: RedirecionarMenuFooterService,
-    private readonly loginService: LoginService,
+    private readonly authenticationService: AuthenticationService,
     private readonly stateService: StateService
   ) {}
 
   ngOnInit(): void {
+    this.buscarUsuarioState();
     this.construirViewModel();
   }
 
@@ -97,7 +102,7 @@ export class PerfilPageComponent implements OnInit {
   public clickSair(sair?: string): void {
     if (sair) {
       this.fecharModal('parcial');
-      this.stateService.sessao.delete(StateConstantes.USUARIO_LOGADO);
+      this.authenticationService.logout();
       this.viewModel.exibirTelaLogada = false;
       this.viewModel.menuHeader = {
         tipo: 'default',
@@ -120,9 +125,9 @@ export class PerfilPageComponent implements OnInit {
     if (!(login.email && login.senha)) return;
     this.viewModel.exibeErroLogin = false;
 
-    this.loginService.execute({ email: login.email, senha: login.senha }).subscribe(
-      (usuario: UsuarioResponse) => {
-        this.sucessoLogin(usuario);
+    this.authenticationService.login({ email: login.email, senha: login.senha }).subscribe(
+      _ => {
+        this.sucessoLogin();
       },
       _ => {
         this.viewModel.exibeErroLogin = true;
@@ -135,38 +140,32 @@ export class PerfilPageComponent implements OnInit {
     this.router.navigate([rota]);
   }
 
-  private sucessoLogin(usuario: UsuarioResponse): void {
-    this.stateService.sessao.set(StateConstantes.USUARIO_LOGADO, usuario);
+  private sucessoLogin(): void {
+    this.buscarUsuarioState();
+    this.setarViewModelSucessoLogin();
+  }
+
+  private setarViewModelSucessoLogin(): void {
+    this.viewModel.menuHeader = {
+      tipo: 'perfil',
+      titulo: this.usuario.nomeCompleto,
+      descricao: this.usuario.dataNascimento,
+    };
+
+    this.viewModel.exibirTelaLogada = this.construirExibirTelaLogada();
     this.viewModel.modalIntegralModel.mostrar = false;
-    this.viewModel.menuHeader.tipo = 'perfil';
-    this.viewModel.menuHeader.titulo = usuario.nomeCompleto;
-    this.viewModel.menuHeader.descricao = usuario.dataNascimento;
-    this.viewModel.exibirTelaLogada = true;
   }
 
   private construirViewModel(): void {
     this.viewModel = {
       textoBotaoSair: 'PERFIL__LABEL--BOTAO-SAIR',
-      pedidos: {
-        pagamento: 1,
-        envio: 0,
-        recebimento: 0,
-        recebido: 1,
-      },
+      exibirTelaLogada: this.construirExibirTelaLogada(),
+      pedidosAndamento: this.construirPedidosAndamento(),
+      historicoPedidos: this.construirHistoricoPedidos(),
+      pedidos: this.construirPedidos(),
+      menuHeader: this.construirMenuHeader(),
       menuFooter: {
         selecionado: 'perfil',
-      },
-      menuHeader: {
-        tipo: 'default',
-        titulo: 'APP__LABEL-TITULO',
-      },
-      pedidosAndamento: {
-        titulo: 'PERFIL__LABEL--TITULO-PEDIDOS-ANDAMENTO',
-        pedidos: this.cardsPedido,
-      },
-      historicoPedidos: {
-        titulo: 'PERFIL__LABEL--TITULO-HISTORICO-PEDIDOS',
-        pedidos: this.cardsPedido,
       },
       modalParcialModel: {
         mostrar: false,
@@ -176,6 +175,52 @@ export class PerfilPageComponent implements OnInit {
         mostrar: false,
         tipo: 'integral',
       },
+    };
+  }
+
+  private buscarUsuarioState(): void {
+    this.usuario = this.stateService.sessao.get(StateConstantes.USUARIO_LOGADO);
+  }
+
+  private construirExibirTelaLogada(): boolean {
+    return this.usuario ? true : false;
+  }
+
+  private construirMenuHeader(): MenuHeaderModel {
+    if (this.usuario) {
+      return {
+        tipo: 'perfil',
+        titulo: this.usuario.nomeCompleto,
+        descricao: this.usuario.dataNascimento,
+      };
+    }
+
+    return {
+      tipo: 'default',
+      titulo: 'APP__LABEL-TITULO',
+    };
+  }
+
+  private construirPedidos(): IconePedidoModel | undefined {
+    return {
+      pagamento: 1,
+      envio: 0,
+      recebimento: 1,
+      recebido: 0,
+    };
+  }
+
+  private construirHistoricoPedidos(): ListaPedidosModel | undefined {
+    return {
+      titulo: 'PERFIL__LABEL--TITULO-HISTORICO-PEDIDOS',
+      pedidos: this.cardsPedido,
+    };
+  }
+
+  private construirPedidosAndamento(): ListaPedidosModel | undefined {
+    return {
+      titulo: 'PERFIL__LABEL--TITULO-PEDIDOS-ANDAMENTO',
+      pedidos: this.cardsPedido,
     };
   }
 }
