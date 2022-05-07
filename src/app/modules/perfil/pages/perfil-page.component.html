@@ -2,12 +2,12 @@
   <div class="perfil__container">
     <bra-menu-header [menuHeader]="viewModel.menuHeader"></bra-menu-header>
 
-    <div *ngIf="false"
-      class="perfil__content">
+    <div class="perfil__content">
       <bra-acesso-app (clickAction)="clickAcesso($event)"></bra-acesso-app>
     </div>
 
-    <div class="perfil__content">
+    <div *ngIf="false"
+      class="perfil__content">
       <bra-pedidos-andamento [icone]="viewModel.pedidos"
         (clickAction)="clickPedidosAndamento()"></bra-pedidos-andamento>
 
@@ -27,7 +27,7 @@
 </div>
 
 <bra-modal [ngSwitch]="viewModel.exibeModal"
-  [modal]="viewModel.modalModel"
+  [modal]="viewModel.modalParcialModel"
   (clickActionFecharModal)="fecharModal()"
   [@modalAnimation]>
   <bra-confirmar-sair *ngSwitchCase="'sair'"
@@ -41,4 +41,8 @@
   <bra-lista-pedidos *ngSwitchCase="'historico'"
     [listaPedidos]="viewModel.historicoPedidos">
   </bra-lista-pedidos>
+</bra-modal>
+
+<bra-modal [modal]="viewModel.modalIntegralModel">
+  Modal integral teste
 </bra-modal>

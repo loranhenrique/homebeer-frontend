@@ -11,6 +11,7 @@ export interface PerfilViewModel {
   historicoPedidos: ListaPedidosModel;
   pedidos: IconePedidoModel;
   menuHeader: MenuHeaderModel;
-  modalModel: ModalModel;
   menuFooter: MenuFooterModel;
+  modalParcialModel: ModalModel;
+  modalIntegralModel: ModalModel;
 }

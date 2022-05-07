@@ -66,12 +66,12 @@ export class PerfilPageComponent implements OnInit {
 
   public clickHistoricoCompras(): void {
     this.viewModel.exibeModal = 'historico';
-    this.viewModel.modalModel.mostrar = true;
+    this.viewModel.modalParcialModel.mostrar = true;
   }
 
   public clickPedidosAndamento(): void {
     this.viewModel.exibeModal = 'pedidos';
-    this.viewModel.modalModel.mostrar = true;
+    this.viewModel.modalParcialModel.mostrar = true;
   }
 
   public clickAcesso(valor: string): void {
@@ -86,11 +86,11 @@ export class PerfilPageComponent implements OnInit {
     }
 
     this.viewModel.exibeModal = 'sair';
-    this.viewModel.modalModel.mostrar = true;
+    this.viewModel.modalParcialModel.mostrar = true;
   }
 
   public fecharModal(): void {
-    this.viewModel.modalModel.mostrar = false;
+    this.viewModel.modalParcialModel.mostrar = false;
   }
 
   public menuFooterClick(value: string): void {
@@ -111,13 +111,8 @@ export class PerfilPageComponent implements OnInit {
         selecionado: 'perfil',
       },
       menuHeader: {
-        tipo: 'perfil',
-        titulo: 'Loran Henrique',
-        descricao: '18/02/2022',
-      },
-      modalModel: {
-        mostrar: false,
-        tipo: 'parcial',
+        tipo: 'default',
+        titulo: 'Home Beer',
       },
       pedidosAndamento: {
         titulo: 'PERFIL__LABEL--TITULO-PEDIDOS-ANDAMENTO',
@@ -126,6 +121,15 @@ export class PerfilPageComponent implements OnInit {
       historicoPedidos: {
         titulo: 'PERFIL__LABEL--TITULO-HISTORICO-PEDIDOS',
         pedidos: this.cardsPedido,
+      },
+      modalParcialModel: {
+        mostrar: false,
+        tipo: 'parcial',
+      },
+      modalIntegralModel: {
+        mostrar: true,
+        tipo: 'integral',
+        titulo: 'Login',
       },
     };
   }
