@@ -6,7 +6,7 @@
     <li *ngFor="let parceiro of viewModel.parceiros"
       class="lista-parceiros__card-parceiro">
       <bra-card-parceiro [cardParceiro]="parceiro"
-        (clickAction)="selecionarIcone($event)"></bra-card-parceiro>
+        (clickAction)="selecionarCard($event)"></bra-card-parceiro>
     </li>
   </bra-lista>
 </div>

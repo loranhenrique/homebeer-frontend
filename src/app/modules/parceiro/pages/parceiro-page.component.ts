@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StateConstantes } from '@config/state-constantes.const';
 import { CardSugestaoModel } from '@parceiro/models/card-sugestao.model';
 import { IconeDestaqueModel } from '@parceiro/models/icone-destaque.model';
 import { ParceiroViewModel } from '@parceiro/models/parceiro-view.model';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
+import { StateService } from '@service/app/state/state.service';
 import { BuscarParceiroModel } from '@service/models/buscar-parceiro.model';
 import { CardParceiroModel } from '@shared/models/card-parceiro.model';
 
@@ -19,7 +21,8 @@ export class ParceiroPageComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private redirecionarMenuFooterService: RedirecionarMenuFooterService
+    private redirecionarMenuFooterService: RedirecionarMenuFooterService,
+    private stateService: StateService
   ) {}
 
   ngOnInit(): void {
@@ -27,16 +30,9 @@ export class ParceiroPageComponent implements OnInit {
     this.construirViewModel();
   }
 
-  public cardSugestaoClick(id: string): void {
-    console.log(id);
-  }
-
-  public iconeDestaqueClick(id: string): void {
-    console.log(id);
-  }
-
-  public parceiroClick(id: string): void {
-    console.log(id);
+  public cardParceiroClickHandle(id: string): void {
+    this.stateService.sessao.set(StateConstantes.ID_PARCEIRO, id);
+    this.router.navigate(['/experiencia']);
   }
 
   public menuFooterClick(value: string): void {

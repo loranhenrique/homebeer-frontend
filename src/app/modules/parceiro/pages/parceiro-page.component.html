@@ -4,16 +4,16 @@
     <div class="parceiro__content">
       <bra-sugestao *ngIf="viewModel.parceirosSugeridos.length > 0"
         [parceirosSugeridos]="viewModel.parceirosSugeridos"
-        (clickAction)="cardSugestaoClick($event)">
+        (clickAction)="cardParceiroClickHandle($event)">
       </bra-sugestao>
 
       <bra-destaque *ngIf="viewModel.parceirosDestaque.length > 0"
         [parceirosDestaque]="viewModel.parceirosDestaque"
-        (clickAction)="cardSugestaoClick($event)">
+        (clickAction)="cardParceiroClickHandle($event)">
       </bra-destaque>
 
       <bra-lista-parceiros [parceiros]="viewModel.parceiros"
-        (clickAction)="parceiroClick($event)">
+        (clickAction)="cardParceiroClickHandle($event)">
       </bra-lista-parceiros>
     </div>
     <bra-menu-footer [conteudoFooter]="viewModel.menuFooter"
