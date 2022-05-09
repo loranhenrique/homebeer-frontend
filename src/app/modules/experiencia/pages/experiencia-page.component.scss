@@ -1,0 +1,67 @@
+@import 'base-styles';
+@import 'base-64';
+
+.experiencia {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+
+  &__imagem {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40vh;
+    mask-image: linear-gradient(to top, transparent 2%, $color-preto-escuro 100%);
+    -webkit-mask-image: linear-gradient(to top, transparent 2%, $color-preto-escuro 100%);
+  }
+
+  &__fechar {
+    position: absolute;
+    top: 2vh;
+    margin: 0 $spacing-s;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $color-preto-escuro;
+    background-color: $color-preto-escuro;
+    background-image: $fechar-base-64;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__nome-parceiro {
+    margin: 0 $spacing-s;
+    position: absolute;
+    top: 25vh;
+    font-size: to-vw(22px);
+    font-family: $font-roboto-medium;
+
+    &::before {
+      content: '';
+      background: $color-branco-default;
+      display: inline-block;
+      width: 16px;
+      height: 1px;
+      vertical-align: middle;
+      margin-right: $spacing-xs;
+    }
+  }
+
+  &__descricao {
+    display: flex;
+    margin-top: 4px;
+    font-size: to-vw(16px);
+    font-family: $font-roboto-light;
+  }
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+  }
+}

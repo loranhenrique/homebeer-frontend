@@ -1,0 +1,92 @@
+@import 'base-styles';
+@import 'base-64';
+
+.card-cerveja {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: $color-branco-default;
+  margin: $spacing-xs 0;
+
+  &__icone-container {
+    display: flex;
+    min-width: 68px;
+    max-width: 68px;
+    height: 68px;
+    margin: $spacing-m $spacing-s 0;
+  }
+
+  &__icone {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-color: $color-preto-acinzentado;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $color-preto-claro;
+  }
+
+  &__detalhes {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $spacing-s $spacing-s $spacing-s 0;
+  }
+
+  &__titulo,
+  &__descricao,
+  &__quantidade {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+  }
+
+  &__titulo,
+  &__descricao,
+  &__preco {
+    font-size: to-vw(16px);
+    font-family: $font-roboto-light;
+  }
+
+  &__titulo {
+    color: $color-preto-claro;
+  }
+
+  &__descricao {
+    color: $color-preto-acinzentado;
+  }
+
+  &__preco {
+    color: $color-preto-escuro;
+    text-align: center;
+  }
+
+  &__quantidade-item {
+    display: flex;
+    width: 100%;
+    background: $color-preto-acinzentado;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4px;
+  }
+
+  &__menos,
+  &__mais {
+    width: 30%;
+    text-align: center;
+  }
+
+  &__adicionar-carrinho {
+    display: flex;
+    width: 100%;
+    background-color: rgb(196, 44, 44);
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+  }
+}

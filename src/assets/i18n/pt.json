@@ -65,5 +65,6 @@
   "LOGIN__LABEL--BOTAO": "Continuar",
   "FAVORITO__MENSAGEM--LOADING": "Estamos buscando seus parceiros favoritos!",
   "PERFIL__MENSAGEM--LOADING": "Estamos buscando suas informações!",
-  "CARRINHO__MENSAGEM--LOADING": "Estamos buscando suas compras!"
+  "CARRINHO__MENSAGEM--LOADING": "Estamos buscando suas compras!",
+  "EXPERIENCIA__MENSAGEM--LOADING": "Estamos buscando as informações do parceiro!"
 }

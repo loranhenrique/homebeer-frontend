@@ -8,5 +8,6 @@ export const environment = {
     buscarFavoritos: `${urlBff}/favorito`,
     buscarPedidos: `${urlBff}/pedido`,
     buscarCarrinho: `${urlBff}/carrinho`,
+    buscarProduto: `${urlBff}/produto`,
   },
 };

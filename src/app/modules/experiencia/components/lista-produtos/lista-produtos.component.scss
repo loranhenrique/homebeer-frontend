@@ -1,0 +1,7 @@
+@import 'base-styles';
+
+.lista-produtos {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-xs 0;
+}

@@ -1,0 +1,25 @@
+<div class="experiencia">
+  <div class="experiencia__header">
+    <div class="experiencia__imagem"
+      [style.background-image]="viewModel.imagemParceiro"
+      [style.background-position]="'center top'"
+      [style.background-size]="'cover'"></div>
+
+    <button class="experiencia__fechar"
+      role="button"
+      tabindex="0"></button>
+
+    <label class="experiencia__nome-parceiro">
+      {{ viewModel.nomeParceiro }}<br />
+      <span class="experiencia__descricao">
+        {{ viewModel.descricaoParceiro }}</span>
+    </label>
+  </div>
+
+  <div class="experiencia__fade"></div>
+
+  <div class="experiencia__content">
+    <bra-lista-produtos [cervejas]="viewModel.cervejas"
+      (clickAction)="clickHandle($event)"></bra-lista-produtos>
+  </div>
+</div>

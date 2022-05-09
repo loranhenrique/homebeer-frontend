@@ -1,0 +1,34 @@
+<div class="card-cerveja">
+
+  <div class="card-cerveja__icone-container">
+    <div class="card-cerveja__icone"
+      [style.background-image]="viewModel.imagem"
+      [style.background-position]="'center top'"
+      [style.background-size]="'cover'"></div>
+  </div>
+
+  <div class="card-cerveja__detalhes">
+    <label class="card-cerveja__titulo">{{ viewModel.nome }}</label>
+    <label class="card-cerveja__descricao">{{ viewModel.descricao }}</label>
+
+    <div class="card-cerveja__quantidade-item">
+      <div class="card-cerveja__menos"
+        role="button"
+        (click)="clickHandler('-')">-</div>
+      <div class="card-cerveja__valor-quantidade"
+        role="text">{{ viewModel.quantidade }}</div>
+      <div class="card-cerveja__mais"
+        role="button"
+        (click)="clickHandler('+')">+</div>
+    </div>
+
+    <div class="card-cerveja__adicionar-carrinho"
+      role="button"
+      (click)="clickAdionarCarrinhoHandle()">Adicionar no carrinho</div>
+
+    <bra-linha [tipo]="'completa'"></bra-linha>
+
+    <label
+      class="card-cerveja__preco">{{ viewModel.valorTotal | braCurrency }}</label>
+  </div>
+</div>

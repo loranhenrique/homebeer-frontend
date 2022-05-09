@@ -29,4 +29,8 @@ export const productionRoutes = [
     path: 'perfil',
     loadChildren: () => import('./modules/perfil/perfil.module').then(module => module.PerfilModule),
   },
+  {
+    path: 'experiencia',
+    loadChildren: () => import('./modules/experiencia/experiencia.module').then(module => module.ExperienciaModule),
+  },
 ];

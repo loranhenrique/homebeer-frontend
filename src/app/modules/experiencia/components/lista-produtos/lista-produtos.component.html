@@ -1,0 +1,9 @@
+<div class="lista-produtos">
+  <bra-lista>
+    <li *ngFor="let cerveja of viewModel.cervejas"
+      class="lista-produtos__card-cerveja">
+      <bra-card-cerveja [inputModel]="cerveja"
+        (clickAction)="clickHandle($event)"></bra-card-cerveja>
+    </li>
+  </bra-lista>
+</div>

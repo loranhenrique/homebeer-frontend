@@ -28,6 +28,7 @@
       "@favorito/*": ["src/app/modules/favorito/*"],
       "@carrinho/*": ["src/app/modules/carrinho/*"],
       "@perfil/*": ["src/app/modules/perfil/*"],
+      "@experiencia/*": ["src/app/modules/experiencia/*"],
       "@interceptors/*": ["src/app/core/interceptors/*"],
       "@service/*": ["src/app/core/services/*"],
       "@env/*": ["src/environments/*"],
