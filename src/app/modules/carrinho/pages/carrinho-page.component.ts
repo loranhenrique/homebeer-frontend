@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CarrinhoViewModel } from '@carrinho/models/carrinho-view.model';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
+import { CarrinhoModel } from '@service/models/carrinho.model';
 import { modalAnimation } from '@shared/components/modal/modal-animation';
 import { CardProdutoModel } from '@shared/models/card-produto.model';
 import { InfoProdutoModel } from '@shared/models/info-produto.model';
@@ -15,67 +16,17 @@ import { InfoProdutoModel } from '@shared/models/info-produto.model';
 export class CarrinhoPageComponent implements OnInit {
   public viewModel: CarrinhoViewModel;
   public carrinhoVazio: CardProdutoModel[] = [];
-  public carrinho: CardProdutoModel[] = [
-    {
-      idParceiro: '1',
-      idProduto: '1',
-      imagemProduto: '',
-      nomeParceiro: 'Cervejaria dos amigos',
-      nomeProduto: 'Cerveja artesanal 350ml',
-      quantidade: 1,
-      valorUnitario: 2.49,
-    },
-    {
-      idParceiro: '2',
-      idProduto: '2',
-      imagemProduto: '',
-      nomeParceiro: 'Cervejaria dos amigos',
-      nomeProduto: 'Cerveja artesanal 350ml',
-      quantidade: 1,
-      valorUnitario: 3.49,
-    },
-    {
-      idParceiro: '1',
-      idProduto: '2',
-      imagemProduto: '',
-      nomeParceiro: 'Cervejaria dos amigos',
-      nomeProduto: 'Cerveja artesanal 350ml',
-      quantidade: 1,
-      valorUnitario: 1.49,
-    },
-    {
-      idParceiro: '3',
-      idProduto: '1',
-      imagemProduto: '',
-      nomeParceiro: 'Cervejaria dos amigos',
-      nomeProduto: 'Cerveja artesanal 350ml',
-      quantidade: 1,
-      valorUnitario: 0.49,
-    },
-    {
-      idParceiro: '3',
-      idProduto: '2',
-      imagemProduto: '',
-      nomeParceiro: 'Cervejaria dos amigos',
-      nomeProduto: 'Cerveja artesanal 350ml',
-      quantidade: 1,
-      valorUnitario: 2.49,
-    },
-    {
-      idParceiro: '2',
-      idProduto: '5',
-      imagemProduto: '',
-      nomeParceiro: 'Cervejaria dos amigos',
-      nomeProduto: 'Cerveja artesanal 350ml',
-      quantidade: 1,
-      valorUnitario: 5.49,
-    },
-  ];
+  private carrinho: CarrinhoModel[];
   private TEMPO_ESPERA_CARRINHO_VAZIO = 600;
 
-  constructor(private router: Router, private redirecionarMenuFooterService: RedirecionarMenuFooterService) {}
+  constructor(
+    private readonly router: Router,
+    private readonly redirecionarMenuFooterService: RedirecionarMenuFooterService,
+    private readonly activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.obterCarrinhoResolver();
     this.construirViewModel();
   }
 
@@ -116,7 +67,7 @@ export class CarrinhoPageComponent implements OnInit {
       tituloErro: 'CARRINHO__LABEL--TITULO-ERRO',
       descricaoErro: 'CARRINHO__LABEL--DESCRICAO-ERRO',
       textoBotaoErro: 'CARRINHO__LABEL--BOTAO-ERRO',
-      compras: this.carrinho,
+      compras: this.construirCarrinho(),
       valorTotalCompra: this.calcularValorTotalCompra(),
       carrinhoVazio: this.validarCarrinhoVazio(),
       exibeListaCompra: this.validarCarrinhoVazio(),
@@ -135,11 +86,23 @@ export class CarrinhoPageComponent implements OnInit {
     };
   }
 
+  private construirCarrinho(): CardProdutoModel[] {
+    return this.carrinho.map((item: CarrinhoModel) => ({
+      idParceiro: item.idParceiro,
+      idProduto: item.idProduto,
+      nomeParceiro: item.nomeParceiro,
+      nomeProduto: item.nomeProduto,
+      imagemProduto: item.imagemProduto,
+      valorUnitario: item.precoProduto,
+      quantidade: item.quantidade,
+    }));
+  }
+
   private calcularValorTotalCompra(): number {
     let valorTotalCompra = 0;
 
-    this.carrinho.forEach((produto: CardProdutoModel) => {
-      valorTotalCompra += produto.quantidade * produto.valorUnitario;
+    this.carrinho.forEach((produto: CarrinhoModel) => {
+      valorTotalCompra += produto.quantidade * produto.precoProduto;
     });
 
     return valorTotalCompra;
@@ -147,7 +110,7 @@ export class CarrinhoPageComponent implements OnInit {
 
   private atualizarCarrinho(infoProduto: InfoProdutoModel): void {
     const produtoEncontrado = this.carrinho.find(
-      (produto: CardProdutoModel) =>
+      (produto: CarrinhoModel) =>
         produto.idParceiro === infoProduto.idParceiro && produto.idProduto === infoProduto.idProduto
     );
 
@@ -158,5 +121,9 @@ export class CarrinhoPageComponent implements OnInit {
 
   private validarCarrinhoVazio(): boolean {
     return this.carrinho.length < 1 || this.calcularValorTotalCompra() === 0;
+  }
+
+  private obterCarrinhoResolver(): void {
+    this.carrinho = this.activatedRoute.snapshot.data.carrinho;
   }
 }
