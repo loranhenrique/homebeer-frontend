@@ -13,6 +13,6 @@ export class BuscarProdutoService {
   public execute(idParceiro: string): Observable<ProdutoModel[]> {
     let httpParams = new HttpParams();
     httpParams = httpParams.append('idParceiro', idParceiro);
-    return this.httpClient.get<ProdutoModel[]>(environment.api.buscarProduto, { params: httpParams });
+    return this.httpClient.get<ProdutoModel[]>(environment.api.produto, { params: httpParams });
   }
 }

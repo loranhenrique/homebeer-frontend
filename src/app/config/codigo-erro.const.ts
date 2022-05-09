@@ -3,4 +3,6 @@ export class CodigoErroConstantes {
   public static ERRO_BUSCAR_PARCEIROS = 'BPAF-503';
   public static ERRO_BUSCAR_FAVORITOS = 'BFAF-503';
   public static ERRO_BUSCAR_PEDIDOS = 'BPEF-503';
+  public static ERRO_BUSCAR_CARRINHO = 'BCAF-503';
+  public static ERRO_BUSCAR_PRODUTO = 'BPRF-503';
 }

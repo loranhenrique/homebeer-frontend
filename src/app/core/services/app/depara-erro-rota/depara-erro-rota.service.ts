@@ -16,35 +16,53 @@ export class DeparaErroRotaService {
 
   public execute(rota: string): ErroModel {
     switch (rota) {
-      case environment.api.buscarParceiros:
-        return this.construirErroBuscarParceiros();
-      case environment.api.buscarFavoritos:
-        return this.construirErroBuscarFavoritos();
-      case environment.api.buscarPedidos:
-        return this.construirErroBuscarPedidos();
+      case environment.api.parceiro:
+        return this.construirErroParceiros();
+      case environment.api.favoritos:
+        return this.construirErroFavoritos();
+      case environment.api.pedidos:
+        return this.construirErroPedidos();
+      case environment.api.carrinho:
+        return this.construirErroCarrinho();
+      case environment.api.produto:
+        return this.construirErroProduto();
       default:
         return this.erroModelPadrao;
     }
   }
 
-  private construirErroBuscarParceiros(): ErroModel {
+  private construirErroParceiros(): ErroModel {
     return {
       ...this.erroModelPadrao,
       codigoErro: CodigoErroConstantes.ERRO_BUSCAR_PARCEIROS,
     };
   }
 
-  private construirErroBuscarFavoritos(): ErroModel {
+  private construirErroFavoritos(): ErroModel {
     return {
       ...this.erroModelPadrao,
       codigoErro: CodigoErroConstantes.ERRO_BUSCAR_FAVORITOS,
     };
   }
 
-  private construirErroBuscarPedidos(): ErroModel {
+  private construirErroPedidos(): ErroModel {
     return {
       ...this.erroModelPadrao,
       codigoErro: CodigoErroConstantes.ERRO_BUSCAR_PEDIDOS,
+    };
+  }
+
+  private construirErroCarrinho(): ErroModel {
+    return {
+      ...this.erroModelPadrao,
+      codigoErro: CodigoErroConstantes.ERRO_BUSCAR_CARRINHO,
+    };
+  }
+
+  private construirErroProduto(): ErroModel {
+    return {
+      ...this.erroModelPadrao,
+      codigoErro: CodigoErroConstantes.ERRO_BUSCAR_PRODUTO,
     };
   }
 }

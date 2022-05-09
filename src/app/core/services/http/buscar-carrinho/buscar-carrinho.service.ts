@@ -13,6 +13,6 @@ export class BuscarCarrinhoService {
   public execute(idUsuario: string): Observable<CarrinhoModel[]> {
     let httpParams = new HttpParams();
     httpParams = httpParams.append('idUsuario', idUsuario);
-    return this.httpClient.get<CarrinhoModel[]>(environment.api.buscarCarrinho, { params: httpParams });
+    return this.httpClient.get<CarrinhoModel[]>(environment.api.carrinho, { params: httpParams });
   }
 }

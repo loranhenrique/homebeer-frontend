@@ -13,6 +13,6 @@ export class BuscarFavoritosService {
   public execute(idUsuario: string): Observable<BuscarParceiroModel[]> {
     let httpParams = new HttpParams();
     httpParams = httpParams.append('idUsuario', idUsuario);
-    return this.httpClient.get<BuscarParceiroModel[]>(environment.api.buscarFavoritos, { params: httpParams });
+    return this.httpClient.get<BuscarParceiroModel[]>(environment.api.favoritos, { params: httpParams });
   }
 }

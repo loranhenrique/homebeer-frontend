@@ -15,7 +15,7 @@ export class BuscarParceirosService {
     httpParams = httpParams.append('idParceiro', idParceiro || '');
 
     return idParceiro
-      ? this.httpClient.get<BuscarParceiroModel[]>(environment.api.buscarParceiros, { params: httpParams })
-      : this.httpClient.get<BuscarParceiroModel[]>(environment.api.buscarParceiros);
+      ? this.httpClient.get<BuscarParceiroModel[]>(environment.api.parceiro, { params: httpParams })
+      : this.httpClient.get<BuscarParceiroModel[]>(environment.api.parceiro);
   }
 }

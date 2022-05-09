@@ -13,6 +13,6 @@ export class BuscarPedidosService {
   public execute(idUsuario: string): Observable<PedidosModel[]> {
     let httpParams = new HttpParams();
     httpParams = httpParams.append('idUsuario', idUsuario);
-    return this.httpClient.get<PedidosModel[]>(environment.api.buscarPedidos, { params: httpParams });
+    return this.httpClient.get<PedidosModel[]>(environment.api.pedidos, { params: httpParams });
   }
 }

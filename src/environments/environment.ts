@@ -3,11 +3,11 @@ const urlBff = '/api';
 export const environment = {
   production: true,
   api: {
-    buscarParceiros: `${urlBff}/parceiro`,
     autenticar: `${urlBff}/usuario/autenticar`,
-    buscarFavoritos: `${urlBff}/favorito`,
-    buscarPedidos: `${urlBff}/pedido`,
-    buscarCarrinho: `${urlBff}/carrinho`,
-    buscarProduto: `${urlBff}/produto`,
+    parceiro: `${urlBff}/parceiro`,
+    favoritos: `${urlBff}/favorito`,
+    pedidos: `${urlBff}/pedido`,
+    carrinho: `${urlBff}/carrinho`,
+    produto: `${urlBff}/produto`,
   },
 };
