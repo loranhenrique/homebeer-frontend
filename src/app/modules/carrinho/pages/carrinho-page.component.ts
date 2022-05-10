@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarrinhoViewModel } from '@carrinho/models/carrinho-view.model';
+import { StateConstantes } from '@config/state-constantes.const';
+import { LoadingService } from '@service/app/loading/loading.service';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
+import { StateService } from '@service/app/state/state.service';
+import { DeletarCarrinhoService } from '@service/http/deletar-carrinho/deletar-carrinho.service';
+import { SalvarCarrinhoService } from '@service/http/salvar-carrinho/salvar-carrinho.service';
 import { CarrinhoModel } from '@service/models/carrinho.model';
 import { modalAnimation } from '@shared/components/modal/modal-animation';
 import { CardProdutoModel } from '@shared/models/card-produto.model';
 import { InfoProdutoModel } from '@shared/models/info-produto.model';
+import { UsuarioResponse } from '@shared/models/usuario-response.model';
 
 @Component({
   selector: 'bra-carrinho-page',
@@ -22,7 +28,11 @@ export class CarrinhoPageComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly redirecionarMenuFooterService: RedirecionarMenuFooterService,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly salvarCarrinhoService: SalvarCarrinhoService,
+    private readonly deletarCarrinhoService: DeletarCarrinhoService,
+    private readonly loadingService: LoadingService,
+    private readonly stateService: StateService
   ) {}
 
   ngOnInit(): void {
@@ -35,18 +45,13 @@ export class CarrinhoPageComponent implements OnInit {
   }
 
   public infoProduto(infoProduto: InfoProdutoModel): void {
-    //salvar nova informacao do produto no banco
-    this.atualizarCarrinho(infoProduto);
-    this.viewModel.valorTotalCompra = this.calcularValorTotalCompra();
-    const carrinhoVazio: boolean = this.validarCarrinhoVazio();
+    this.definirPropriedadesLoading();
+    this.loadingService.ligar();
+    const usuario: UsuarioResponse = this.stateService.sessao.get(StateConstantes.USUARIO_LOGADO);
 
-    if (carrinhoVazio) {
-      this.viewModel.exibeListaCompra = carrinhoVazio;
-
-      setTimeout(() => {
-        this.viewModel.carrinhoVazio = carrinhoVazio;
-      }, this.TEMPO_ESPERA_CARRINHO_VAZIO);
-    }
+    infoProduto.operador === '+'
+      ? this.adicionarItemCarrinho(usuario.id, infoProduto.idProduto, infoProduto.idParceiro, infoProduto)
+      : this.deletarItemCarrinho(usuario.id, infoProduto.idProduto, infoProduto.idParceiro, infoProduto);
   }
 
   public clickBotaoErro(): void {
@@ -60,6 +65,53 @@ export class CarrinhoPageComponent implements OnInit {
   public menuFooterClick(value: string): void {
     const rota = this.redirecionarMenuFooterService.execute(value);
     this.router.navigate([rota]);
+  }
+
+  private adicionarItemCarrinho(
+    idUsuario: string,
+    idProduto: string,
+    idParceiro: string,
+    infoProduto: InfoProdutoModel
+  ): void {
+    this.salvarCarrinhoService.execute(idUsuario, idProduto, idParceiro).subscribe(
+      _ => {
+        this.rotinaClickMaisOuMenos(infoProduto);
+      },
+      _ => {
+        this.loadingService.desligar();
+      }
+    );
+  }
+
+  private deletarItemCarrinho(
+    idUsuario: string,
+    idProduto: string,
+    idParceiro: string,
+    infoProduto: InfoProdutoModel
+  ): void {
+    this.deletarCarrinhoService.execute(idUsuario, idProduto, idParceiro).subscribe(
+      _ => {
+        this.rotinaClickMaisOuMenos(infoProduto);
+      },
+      _ => {
+        this.loadingService.desligar();
+      }
+    );
+  }
+
+  private rotinaClickMaisOuMenos(infoProduto: InfoProdutoModel): void {
+    this.loadingService.desligar();
+    this.atualizarCarrinho(infoProduto);
+    this.viewModel.valorTotalCompra = this.calcularValorTotalCompra();
+    const carrinhoVazio: boolean = this.validarCarrinhoVazio();
+
+    if (carrinhoVazio) {
+      this.viewModel.exibeListaCompra = carrinhoVazio;
+
+      setTimeout(() => {
+        this.viewModel.carrinhoVazio = carrinhoVazio;
+      }, this.TEMPO_ESPERA_CARRINHO_VAZIO);
+    }
   }
 
   private construirViewModel(): void {
@@ -125,5 +177,10 @@ export class CarrinhoPageComponent implements OnInit {
 
   private obterCarrinhoResolver(): void {
     this.carrinho = this.activatedRoute.snapshot.data.carrinho;
+  }
+
+  private definirPropriedadesLoading(): void {
+    this.loadingService.atribuirMensagem('Salvando produto...');
+    this.loadingService.atribuirTipo('fade');
   }
 }

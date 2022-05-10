@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { StatusBotaoService } from '@service/app/status-botao/status-botao.service';
 import { CardProdutoViewModel } from '@shared/models/card-produto-view.model';
 import { CardProdutoModel } from '@shared/models/card-produto.model';
 import { InfoProdutoModel } from '@shared/models/info-produto.model';
@@ -15,20 +16,25 @@ export class CardProdutoComponent implements OnInit {
 
   public viewModel: CardProdutoViewModel;
 
-  constructor(private domSanitizer: DomSanitizer) {}
+  constructor(private readonly domSanitizer: DomSanitizer, private readonly statusBotaoService: StatusBotaoService) {}
 
   ngOnInit(): void {
     this.construirViewModel();
   }
 
   public clickHandler(operador: string): void {
+    let statusBotao = false;
+    this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
+
+    if (statusBotao) return;
+
     this.calcularQuantidade(operador);
 
     if (this.viewModel.exibeBotaoExcluirProduto) {
       return;
     }
 
-    this.emitirValores();
+    this.emitirValores(operador);
   }
 
   public excluirProduto(): void {
@@ -49,12 +55,13 @@ export class CardProdutoComponent implements OnInit {
     };
   }
 
-  private emitirValores(value?: string): void {
+  private emitirValores(operador: string, value?: string): void {
     this.clickAction.emit({
       idParceiro: this.cardProduto.idParceiro,
       idProduto: this.cardProduto.idProduto,
       quantidade: value ? 0 : this.viewModel.quantidade,
       valorTotal: value ? 0 : this.viewModel.valorTotal,
+      operador: operador,
     });
   }
 

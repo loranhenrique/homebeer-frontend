@@ -3,4 +3,5 @@ export interface InfoProdutoModel {
   idParceiro: string;
   quantidade: number;
   valorTotal: number;
+  operador: string;
 }

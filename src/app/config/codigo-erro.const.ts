@@ -1,8 +1,8 @@
 export class CodigoErroConstantes {
   public static ERRO_DEFAULT_FRONT = 'SIMF-400';
-  public static ERRO_BUSCAR_PARCEIROS = 'BPAF-503';
-  public static ERRO_BUSCAR_FAVORITOS = 'BFAF-503';
-  public static ERRO_BUSCAR_PEDIDOS = 'BPEF-503';
-  public static ERRO_BUSCAR_CARRINHO = 'BCAF-503';
-  public static ERRO_BUSCAR_PRODUTO = 'BPRF-503';
+  public static ERRO_PARCEIROS = 'PAF-503';
+  public static ERRO_FAVORITOS = 'FAF-503';
+  public static ERRO_PEDIDOS = 'PEF-503';
+  public static ERRO_CARRINHO = 'CAF-503';
+  public static ERRO_PRODUTO = 'PRF-503';
 }

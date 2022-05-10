@@ -34,35 +34,35 @@ export class DeparaErroRotaService {
   private construirErroParceiros(): ErroModel {
     return {
       ...this.erroModelPadrao,
-      codigoErro: CodigoErroConstantes.ERRO_BUSCAR_PARCEIROS,
+      codigoErro: CodigoErroConstantes.ERRO_PARCEIROS,
     };
   }
 
   private construirErroFavoritos(): ErroModel {
     return {
       ...this.erroModelPadrao,
-      codigoErro: CodigoErroConstantes.ERRO_BUSCAR_FAVORITOS,
+      codigoErro: CodigoErroConstantes.ERRO_FAVORITOS,
     };
   }
 
   private construirErroPedidos(): ErroModel {
     return {
       ...this.erroModelPadrao,
-      codigoErro: CodigoErroConstantes.ERRO_BUSCAR_PEDIDOS,
+      codigoErro: CodigoErroConstantes.ERRO_PEDIDOS,
     };
   }
 
   private construirErroCarrinho(): ErroModel {
     return {
       ...this.erroModelPadrao,
-      codigoErro: CodigoErroConstantes.ERRO_BUSCAR_CARRINHO,
+      codigoErro: CodigoErroConstantes.ERRO_CARRINHO,
     };
   }
 
   private construirErroProduto(): ErroModel {
     return {
       ...this.erroModelPadrao,
-      codigoErro: CodigoErroConstantes.ERRO_BUSCAR_PRODUTO,
+      codigoErro: CodigoErroConstantes.ERRO_PRODUTO,
     };
   }
 }

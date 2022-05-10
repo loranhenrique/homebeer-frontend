@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { StatusBotaoService } from '../status-botao/status-botao.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class LoadingService {
   private tipoBehavior: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private loadingBehavior: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor() {}
+  constructor(private readonly statusBotaoService: StatusBotaoService) {}
 
   public atribuirMensagem(mensagem: string): void {
     this.mensagemBehavior.next(mensagem);
@@ -32,10 +33,12 @@ export class LoadingService {
   }
 
   public ligar(): void {
+    this.statusBotaoService.desabilitar();
     this.loadingBehavior.next(true);
   }
 
   public desligar(): void {
+    this.statusBotaoService.habilitar();
     this.loadingBehavior.next(false);
   }
 }

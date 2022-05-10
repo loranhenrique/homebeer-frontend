@@ -45,6 +45,7 @@ export class AppComponent implements OnInit {
       )
       .subscribe((event: Event) => {
         if (event instanceof NavigationStart) {
+          this.loadingService.atribuirTipo('fixo');
           this.loadingService.ligar();
           this.ariaHidden = true;
         } else {

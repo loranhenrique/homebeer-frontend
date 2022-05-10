@@ -9,6 +9,7 @@ import { PerfilViewModel } from '@perfil/models/perfil-view.model';
 import { LoadingService } from '@service/app/loading/loading.service';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
 import { StateService } from '@service/app/state/state.service';
+import { StatusBotaoService } from '@service/app/status-botao/status-botao.service';
 import { AuthenticationService } from '@service/http/authentication/authentication.service';
 import { PedidosModel } from '@service/models/pedidos.model';
 import { modalAnimation } from '@shared/components/modal/modal-animation';
@@ -35,7 +36,8 @@ export class PerfilPageComponent implements OnInit {
     private readonly authenticationService: AuthenticationService,
     private readonly stateService: StateService,
     private readonly loadingService: LoadingService,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly statusBotaoService: StatusBotaoService
   ) {}
 
   ngOnInit(): void {
@@ -84,6 +86,10 @@ export class PerfilPageComponent implements OnInit {
   }
 
   public clickLoginHandle(login: LoginModel): void {
+    let statusBotao = false;
+    this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
+    if (statusBotao) return;
+
     if (!(login.email && login.senha)) return;
     this.viewModel.exibeErroLogin = false;
     this.definirPropriedadesLoading();

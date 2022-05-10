@@ -4,6 +4,7 @@ import { StateConstantes } from '@config/state-constantes.const';
 import { FavoritoViewModel } from '@favorito/models/favorito-view.model';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
 import { StateService } from '@service/app/state/state.service';
+import { StatusBotaoService } from '@service/app/status-botao/status-botao.service';
 import { BuscarParceiroModel } from '@service/models/buscar-parceiro.model';
 import { CardParceiroModel } from '@shared/models/card-parceiro.model';
 
@@ -20,7 +21,8 @@ export class FavoritoPageComponent implements OnInit {
     private readonly router: Router,
     private readonly redirecionarMenuFooterService: RedirecionarMenuFooterService,
     private readonly activatedRoute: ActivatedRoute,
-    private readonly stateService: StateService
+    private readonly stateService: StateService,
+    private readonly statusBotaoService: StatusBotaoService
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +31,10 @@ export class FavoritoPageComponent implements OnInit {
   }
 
   public clickCardFavorito(id: string): void {
+    let statusBotao = false;
+    this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
+    if (statusBotao) return;
+
     this.stateService.sessao.set(StateConstantes.ID_PARCEIRO, id);
     this.router.navigate(['/experiencia']);
   }

@@ -6,6 +6,7 @@ import { IconeDestaqueModel } from '@parceiro/models/icone-destaque.model';
 import { ParceiroViewModel } from '@parceiro/models/parceiro-view.model';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
 import { StateService } from '@service/app/state/state.service';
+import { StatusBotaoService } from '@service/app/status-botao/status-botao.service';
 import { BuscarParceiroModel } from '@service/models/buscar-parceiro.model';
 import { CardParceiroModel } from '@shared/models/card-parceiro.model';
 
@@ -22,7 +23,8 @@ export class ParceiroPageComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private redirecionarMenuFooterService: RedirecionarMenuFooterService,
-    private stateService: StateService
+    private stateService: StateService,
+    private statusBotaoService: StatusBotaoService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,10 @@ export class ParceiroPageComponent implements OnInit {
   }
 
   public cardParceiroClickHandle(id: string): void {
+    let statusBotao = false;
+    this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
+    if (statusBotao) return;
+
     this.stateService.sessao.set(StateConstantes.ID_PARCEIRO, id);
     this.router.navigate(['/experiencia']);
   }
