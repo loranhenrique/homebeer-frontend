@@ -37,6 +37,7 @@ export class ParceiroPageComponent implements OnInit {
     this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
     if (statusBotao) return;
 
+    this.stateService.sessao.set(StateConstantes.DE_ONDE_VEIO, '/parceiro');
     this.stateService.sessao.set(StateConstantes.ID_PARCEIRO, id);
     this.router.navigate(['/experiencia']);
   }

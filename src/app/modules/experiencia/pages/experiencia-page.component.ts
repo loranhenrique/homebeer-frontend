@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StateConstantes } from '@config/state-constantes.const';
 import { CardCervejaModel } from '@experiencia/models/card-cerveja.model';
 import { ExperienciaViewModel } from '@experiencia/models/experiencia-view.model';
 import { IdentificadorCervejaModel } from '@experiencia/models/identificador-cerveja.model';
+import { LoadingService } from '@service/app/loading/loading.service';
+import { StateService } from '@service/app/state/state.service';
+import { StatusBotaoService } from '@service/app/status-botao/status-botao.service';
+import { SalvarCarrinhoService } from '@service/http/salvar-carrinho/salvar-carrinho.service';
 import { BuscarParceiroModel } from '@service/models/buscar-parceiro.model';
 import { ProdutoModel } from '@service/models/produto.model';
+import { UsuarioResponse } from '@shared/models/usuario-response.model';
 
 @Component({
   selector: 'app-experiencia-page',
@@ -17,15 +23,64 @@ export class ExperienciaPageComponent implements OnInit {
   private produtos: ProdutoModel[];
   public viewModel: ExperienciaViewModel;
 
-  constructor(private readonly activatedRoute: ActivatedRoute, private readonly domSanitizer: DomSanitizer) {}
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly domSanitizer: DomSanitizer,
+    private readonly statusBotaoService: StatusBotaoService,
+    private readonly salvarCarrinhoService: SalvarCarrinhoService,
+    private readonly stateService: StateService,
+    private readonly loadingService: LoadingService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {
     this.carregarDadosResolver();
     this.construirViewModel();
   }
 
+  public clickFecharHandle(): void {
+    if (!this.definirContinuacaoClick()) return;
+    const rota = this.stateService.sessao.get(StateConstantes.DE_ONDE_VEIO);
+    this.router.navigate([rota]);
+  }
+
   public clickHandle(identificadorCerveja: IdentificadorCervejaModel): void {
-    console.log(identificadorCerveja);
+    if (!this.definirContinuacaoClick()) return;
+    this.adicionarProdutoCarrinho(identificadorCerveja);
+  }
+
+  private definirContinuacaoClick(): boolean {
+    let statusBotao = false;
+    this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
+    if (statusBotao) return false;
+
+    return true;
+  }
+
+  private adicionarProdutoCarrinho(identificadorCerveja: IdentificadorCervejaModel): void {
+    const usuario: UsuarioResponse = this.stateService.sessao.get(StateConstantes.USUARIO_LOGADO);
+    this.definindoPropriedadesLoading(identificadorCerveja.quantidade);
+    this.loadingService.ligar();
+    let quantidadeRetornos = 1;
+
+    for (let index = 0; index < identificadorCerveja.quantidade; index++) {
+      this.salvarCarrinhoService.execute(usuario.id, identificadorCerveja.id, this.parceiro.id).subscribe(
+        _ => {
+          if (quantidadeRetornos === identificadorCerveja.quantidade) {
+            this.loadingService.desligar();
+          }
+
+          quantidadeRetornos++;
+        },
+        _ => {
+          if (quantidadeRetornos === identificadorCerveja.quantidade) {
+            this.loadingService.desligar();
+          }
+
+          quantidadeRetornos++;
+        }
+      );
+    }
   }
 
   private construirViewModel(): void {
@@ -51,5 +106,12 @@ export class ExperienciaPageComponent implements OnInit {
   private carregarDadosResolver(): void {
     this.parceiro = this.activatedRoute.snapshot.data.parceiro;
     this.produtos = this.activatedRoute.snapshot.data.produto;
+  }
+
+  private definindoPropriedadesLoading(quantidadeProdutos: number): void {
+    const mensagemLoading =
+      quantidadeProdutos > 1 ? 'Adionando produtos ao carrinho!' : 'Adionando produto ao carrinho!';
+    this.loadingService.atribuirMensagem(mensagemLoading);
+    this.loadingService.atribuirTipo('fade');
   }
 }

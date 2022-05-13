@@ -19,13 +19,9 @@ export class ErroInterceptor implements HttpInterceptor {
         const rotaAtual = this.tratarRota(request.url);
         const rotaIgnorada = this.validarRota(rotaAtual);
 
-        console.log('antes');
-
         if (rotaIgnorada) {
           return next.handle(request);
         }
-
-        console.log('depois');
 
         const erroModel = error.error ? this.deParaErro.execute(rotaAtual) : this.deParaErro.execute(request.url);
 

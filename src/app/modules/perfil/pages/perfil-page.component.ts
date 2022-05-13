@@ -221,6 +221,8 @@ export class PerfilPageComponent implements OnInit {
       pedidos.itensPedido
         .map(item => item.parceiro)
         .map(parceiro => {
+          if (parceiro.status === 'Recebido') return;
+
           let totalCompra = 0;
 
           parceiro.produtos.map(({ precoProduto }) => {
