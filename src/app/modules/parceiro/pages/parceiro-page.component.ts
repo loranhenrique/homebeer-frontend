@@ -43,6 +43,7 @@ export class ParceiroPageComponent implements OnInit {
   }
 
   public menuFooterClick(value: string): void {
+    if (!this.definirContinuacaoClick()) return;
     const rota = this.redirecionarMenuFooterService.execute(value);
     this.router.navigate([rota]);
   }
@@ -96,5 +97,13 @@ export class ParceiroPageComponent implements OnInit {
 
   private obterParceirosResolver(): void {
     this.parceiros = this.activatedRoute.snapshot.data.parceiros;
+  }
+
+  private definirContinuacaoClick(): boolean {
+    let statusBotao = false;
+    this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
+    if (statusBotao) return false;
+
+    return true;
   }
 }

@@ -5,6 +5,7 @@ import { StateConstantes } from '@config/state-constantes.const';
 import { LoadingService } from '@service/app/loading/loading.service';
 import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-footer/redirecionar-menu-footer.service';
 import { StateService } from '@service/app/state/state.service';
+import { StatusBotaoService } from '@service/app/status-botao/status-botao.service';
 import { DeletarCarrinhoService } from '@service/http/deletar-carrinho/deletar-carrinho.service';
 import { SalvarCarrinhoService } from '@service/http/salvar-carrinho/salvar-carrinho.service';
 import { CarrinhoModel } from '@service/models/carrinho.model';
@@ -32,7 +33,8 @@ export class CarrinhoPageComponent implements OnInit {
     private readonly salvarCarrinhoService: SalvarCarrinhoService,
     private readonly deletarCarrinhoService: DeletarCarrinhoService,
     private readonly loadingService: LoadingService,
-    private readonly stateService: StateService
+    private readonly stateService: StateService,
+    private readonly statusBotaoService: StatusBotaoService
   ) {}
 
   ngOnInit(): void {
@@ -41,10 +43,12 @@ export class CarrinhoPageComponent implements OnInit {
   }
 
   public clickComprar(): void {
+    if (!this.definirContinuacaoClick()) return;
     this.viewModel.modalPagamento.mostrar = true;
   }
 
   public infoProduto(infoProduto: InfoProdutoModel): void {
+    if (!this.definirContinuacaoClick()) return;
     this.definirPropriedadesLoading();
     this.loadingService.ligar();
     const usuario: UsuarioResponse = this.stateService.sessao.get(StateConstantes.USUARIO_LOGADO);
@@ -59,10 +63,12 @@ export class CarrinhoPageComponent implements OnInit {
   }
 
   public fecharModalPagamento(): void {
+    if (!this.definirContinuacaoClick()) return;
     this.viewModel.modalPagamento.mostrar = false;
   }
 
   public menuFooterClick(value: string): void {
+    if (!this.definirContinuacaoClick()) return;
     const rota = this.redirecionarMenuFooterService.execute(value);
     this.router.navigate([rota]);
   }
@@ -182,5 +188,13 @@ export class CarrinhoPageComponent implements OnInit {
   private definirPropriedadesLoading(): void {
     this.loadingService.atribuirMensagem('Salvando produto...');
     this.loadingService.atribuirTipo('fade');
+  }
+
+  private definirContinuacaoClick(): boolean {
+    let statusBotao = false;
+    this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
+    if (statusBotao) return false;
+
+    return true;
   }
 }

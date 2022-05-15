@@ -109,6 +109,7 @@ export class PerfilPageComponent implements OnInit {
   }
 
   public menuFooterClick(value: string): void {
+    if (!this.definirContinuacaoClick()) return;
     const rota = this.redirecionarMenuFooterService.execute(value);
     this.router.navigate([rota]);
   }
@@ -252,5 +253,13 @@ export class PerfilPageComponent implements OnInit {
   private recarregarPagina(): void {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.navigate(['/perfil']);
+  }
+
+  private definirContinuacaoClick(): boolean {
+    let statusBotao = false;
+    this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
+    if (statusBotao) return false;
+
+    return true;
   }
 }

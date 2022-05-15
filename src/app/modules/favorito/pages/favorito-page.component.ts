@@ -45,6 +45,7 @@ export class FavoritoPageComponent implements OnInit {
   }
 
   public menuFooterClick(value: string): void {
+    if (!this.definirContinuacaoClick()) return;
     const rota = this.redirecionarMenuFooterService.execute(value);
     this.router.navigate([rota]);
   }
@@ -80,5 +81,13 @@ export class FavoritoPageComponent implements OnInit {
 
   private obterParceirosResolver(): void {
     this.favoritos = this.activatedRoute.snapshot.data.favoritos;
+  }
+
+  private definirContinuacaoClick(): boolean {
+    let statusBotao = false;
+    this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
+    if (statusBotao) return false;
+
+    return true;
   }
 }
