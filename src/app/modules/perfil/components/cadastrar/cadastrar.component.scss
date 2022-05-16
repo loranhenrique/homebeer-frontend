@@ -1,16 +1,18 @@
 @import 'base-styles';
 
-.login {
+.cadastrar {
   display: flex;
   flex-direction: column;
   padding: $spacing-m $spacing-m;
 
+  &__data-nascimento,
+  &__email,
   &__senha,
   &__botao {
     margin-top: $spacing-m;
   }
 
-  &__falha-login {
+  &__falha-cadastrar {
     font-size: to-vw(16px);
     color: rgb(196, 44, 44);
   }

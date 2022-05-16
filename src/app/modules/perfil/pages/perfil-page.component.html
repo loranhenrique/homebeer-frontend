@@ -44,9 +44,15 @@
   </bra-lista-pedidos>
 </bra-modal>
 
-<bra-modal [modal]="viewModel.modalIntegralModel"
+<bra-modal [ngSwitch]="viewModel.exibeModalIntegral"
+  [modal]="viewModel.modalIntegralModel"
   (clickActionFecharModal)="fecharModal('integral')">
-  <bra-login #paginaLogin
+  <bra-login *ngSwitchCase="'login'"
+    #paginaLogin
     [exibirErroLogin]="viewModel?.exibeErroLogin"
     (clickAction)="clickLoginHandle($event)"></bra-login>
+
+  <bra-cadastrar *ngSwitchCase="'cadastrar'"
+    [exibirErroCadastrar]="'Erro email'"
+    (clickAction)="clickCadastrarHandle($event)"></bra-cadastrar>
 </bra-modal>

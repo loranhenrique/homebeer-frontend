@@ -14,14 +14,15 @@ import { ProdutoModel } from '@service/models/produto.model';
 import { UsuarioResponse } from '@shared/models/usuario-response.model';
 
 @Component({
-  selector: 'app-experiencia-page',
+  selector: 'bra-experiencia-page',
   templateUrl: './experiencia-page.component.html',
   styleUrls: ['./experiencia-page.component.scss'],
 })
 export class ExperienciaPageComponent implements OnInit {
+  public viewModel: ExperienciaViewModel;
+
   private parceiro: BuscarParceiroModel;
   private produtos: ProdutoModel[];
-  public viewModel: ExperienciaViewModel;
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,

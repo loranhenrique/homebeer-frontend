@@ -11,6 +11,7 @@ import { HistoricoComprasComponent } from './components/historico-compras/histor
 import { ConfirmarSairComponent } from './components/confirmar-sair/confirmar-sair.component';
 import { ListaPedidosComponent } from './components/lista-pedidos/lista-pedidos.component';
 import { LoginComponent } from './components/login/login.component';
+import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LoginComponent } from './components/login/login.component';
     ConfirmarSairComponent,
     ListaPedidosComponent,
     LoginComponent,
+    CadastrarComponent,
   ],
   imports: [CommonModule, PerfilRoutingModule, SharedModule, TranslateModule],
 })

@@ -12,8 +12,10 @@ export interface PerfilViewModel {
   modalIntegralModel: ModalModel;
   exibirTelaLogada: boolean;
   exibeModal?: 'sair' | 'historico' | 'pedidos';
+  exibeModalIntegral?: 'login' | 'cadastrar';
   pedidosAndamento?: ListaPedidosModel;
   historicoPedidos?: ListaPedidosModel;
   pedidos?: IconePedidoModel;
   exibeErroLogin?: boolean;
+  exibeErroCadastrar?: string;
 }

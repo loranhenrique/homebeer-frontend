@@ -7,7 +7,7 @@ import { PagamentoViewModel } from '@carrinho/models/pagamento-view.model';
   styleUrls: ['./pagamento.component.scss'],
 })
 export class PagamentoComponent implements OnInit {
-  @Input() valorTotal: number = 199.9;
+  @Input() valorTotal: number;
   public viewModel: PagamentoViewModel;
 
   constructor() {}

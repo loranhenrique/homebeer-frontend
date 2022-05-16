@@ -66,5 +66,10 @@
   "FAVORITO__MENSAGEM--LOADING": "Estamos buscando seus parceiros favoritos!",
   "PERFIL__MENSAGEM--LOADING": "Estamos buscando suas informações!",
   "CARRINHO__MENSAGEM--LOADING": "Estamos buscando suas compras!",
-  "EXPERIENCIA__MENSAGEM--LOADING": "Estamos buscando as informações do parceiro!"
+  "EXPERIENCIA__MENSAGEM--LOADING": "Estamos buscando as informações do parceiro!",
+  "CADASTRAR__LABEL--EMAIL": "Digite seu e-mail:",
+  "CADASTRAR__LABEL--SENHA": "Digite sua senha:",
+  "CADASTRAR__LABEL--BOTAO": "Cadastrar",
+  "CADASTRAR__LABEL--NOME-COMPLETO": "Digite seu nome completo:",
+  "CADASTRAR__LABEL--DATA-NASCIMENTO": "Digite sua data de nascimento:"
 }

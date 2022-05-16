@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StateConstantes } from '@config/state-constantes.const';
 import { LoginComponent } from '@perfil/components/login/login.component';
+import { CadastrarModel } from '@perfil/models/cadastrar.model';
 import { IconePedidoModel } from '@perfil/models/icone-pedido.model';
 import { ListaPedidosModel } from '@perfil/models/lista-pedidos.model';
 import { LoginModel } from '@perfil/models/login.model';
@@ -58,9 +59,15 @@ export class PerfilPageComponent implements OnInit {
 
   public clickAcesso(valor: 'Entrar' | 'Registrar'): void {
     if (valor === 'Entrar') {
+      this.viewModel.exibeModalIntegral = 'login';
       this.viewModel.modalIntegralModel.titulo = 'Login';
       this.viewModel.modalIntegralModel.mostrar = true;
+      return;
     }
+
+    this.viewModel.exibeModalIntegral = 'cadastrar';
+    this.viewModel.modalIntegralModel.titulo = 'Cadastrar';
+    this.viewModel.modalIntegralModel.mostrar = true;
   }
 
   public clickSair(sair?: string): void {
@@ -86,13 +93,11 @@ export class PerfilPageComponent implements OnInit {
   }
 
   public clickLoginHandle(login: LoginModel): void {
-    let statusBotao = false;
-    this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
-    if (statusBotao) return;
-
+    if (!this.definirContinuacaoClick()) return;
     if (!(login.email && login.senha)) return;
+
     this.viewModel.exibeErroLogin = false;
-    this.definirPropriedadesLoading();
+    this.definirPropriedadesLoading('Autenticando...');
     this.loadingService.ligar();
 
     this.authenticationService.login({ email: login.email, senha: login.senha }).subscribe(
@@ -108,14 +113,21 @@ export class PerfilPageComponent implements OnInit {
     );
   }
 
+  public clickCadastrarHandle(cadastrar: CadastrarModel): void {
+    console.log(cadastrar);
+    if (!(cadastrar.nomeCompleto && cadastrar.email && cadastrar.dataNascimento && cadastrar.senha)) return;
+    this.definirPropriedadesLoading('Cadastrando...');
+    this.loadingService.ligar();
+  }
+
   public menuFooterClick(value: string): void {
     if (!this.definirContinuacaoClick()) return;
     const rota = this.redirecionarMenuFooterService.execute(value);
     this.router.navigate([rota]);
   }
 
-  private definirPropriedadesLoading(): void {
-    this.loadingService.atribuirMensagem('Autenticando...');
+  private definirPropriedadesLoading(mensagem: string): void {
+    this.loadingService.atribuirMensagem(mensagem);
     this.loadingService.atribuirTipo('fade');
   }
 
@@ -185,7 +197,7 @@ export class PerfilPageComponent implements OnInit {
   }
 
   private construirHistoricoPedidos(): ListaPedidosModel {
-    let cardsPedido: CardPedidoModel[] = [];
+    const cardsPedido: CardPedidoModel[] = [];
 
     this.pedidos.map((pedidos: PedidosModel) => {
       pedidos.itensPedido
@@ -216,7 +228,7 @@ export class PerfilPageComponent implements OnInit {
   }
 
   private construirPedidosAndamento(): ListaPedidosModel {
-    let cardsPedido: CardPedidoModel[] = [];
+    const cardsPedido: CardPedidoModel[] = [];
 
     this.pedidos.map((pedidos: PedidosModel) => {
       pedidos.itensPedido
