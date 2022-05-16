@@ -53,6 +53,6 @@
     (clickAction)="clickLoginHandle($event)"></bra-login>
 
   <bra-cadastrar *ngSwitchCase="'cadastrar'"
-    [exibirErroCadastrar]="'Erro email'"
+    [exibirErroCadastrar]="viewModel.exibeErroCadastrar"
     (clickAction)="clickCadastrarHandle($event)"></bra-cadastrar>
 </bra-modal>

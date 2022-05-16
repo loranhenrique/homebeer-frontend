@@ -7,6 +7,9 @@ export class MapRotasIgnoradas {
       {
         rota: environment.api.autenticar,
       },
+      {
+        rota: environment.api.cadastrar,
+      },
     ] as RotaModel[];
   }
 }

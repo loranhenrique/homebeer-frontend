@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StateConstantes } from '@config/state-constantes.const';
@@ -12,6 +13,7 @@ import { RedirecionarMenuFooterService } from '@service/app/redirecionar-menu-fo
 import { StateService } from '@service/app/state/state.service';
 import { StatusBotaoService } from '@service/app/status-botao/status-botao.service';
 import { AuthenticationService } from '@service/http/authentication/authentication.service';
+import { CadastrarService } from '@service/http/cadastrar/cadastrar.service';
 import { PedidosModel } from '@service/models/pedidos.model';
 import { modalAnimation } from '@shared/components/modal/modal-animation';
 import { CardPedidoModel } from '@shared/models/card-pedido.model';
@@ -35,6 +37,7 @@ export class PerfilPageComponent implements OnInit {
     private readonly router: Router,
     private readonly redirecionarMenuFooterService: RedirecionarMenuFooterService,
     private readonly authenticationService: AuthenticationService,
+    private readonly cadastrarService: CadastrarService,
     private readonly stateService: StateService,
     private readonly loadingService: LoadingService,
     private readonly activatedRoute: ActivatedRoute,
@@ -114,10 +117,24 @@ export class PerfilPageComponent implements OnInit {
   }
 
   public clickCadastrarHandle(cadastrar: CadastrarModel): void {
-    console.log(cadastrar);
+    if (!this.definirContinuacaoClick()) return;
     if (!(cadastrar.nomeCompleto && cadastrar.email && cadastrar.dataNascimento && cadastrar.senha)) return;
     this.definirPropriedadesLoading('Cadastrando...');
     this.loadingService.ligar();
+
+    this.cadastrarService
+      .execute(cadastrar.email, cadastrar.senha, cadastrar.nomeCompleto, cadastrar.dataNascimento)
+      .subscribe(
+        _ => {
+          this.loadingService.desligar();
+          this.viewModel.modalIntegralModel.mostrar = false;
+          this.recarregarPagina();
+        },
+        (response: HttpErrorResponse) => {
+          this.viewModel.exibeErroCadastrar = response.error.mensagem || 'Existem dados inconsistentes.';
+          this.loadingService.desligar();
+        }
+      );
   }
 
   public menuFooterClick(value: string): void {
