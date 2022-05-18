@@ -39,7 +39,7 @@ export class CardProdutoComponent implements OnInit {
 
   public excluirProduto(): void {
     this.viewModel.exibeCardProduto = false;
-    this.emitirValores('remover produto');
+    this.emitirValores('-', 'remover produto');
   }
 
   private construirViewModel(): void {

@@ -24,7 +24,6 @@ export class CarrinhoPageComponent implements OnInit {
   public viewModel: CarrinhoViewModel;
   public carrinhoVazio: CardProdutoModel[] = [];
   private carrinho: CarrinhoModel[];
-  private TEMPO_ESPERA_CARRINHO_VAZIO = 600;
 
   constructor(
     private readonly router: Router,
@@ -49,9 +48,15 @@ export class CarrinhoPageComponent implements OnInit {
 
   public infoProduto(infoProduto: InfoProdutoModel): void {
     if (!this.definirContinuacaoClick()) return;
+
+    const usuario: UsuarioResponse = this.stateService.sessao.get(StateConstantes.USUARIO_LOGADO);
+    if (!usuario) {
+      this.router.navigate(['/perfil']);
+      return;
+    }
+
     this.definirPropriedadesLoading();
     this.loadingService.ligar();
-    const usuario: UsuarioResponse = this.stateService.sessao.get(StateConstantes.USUARIO_LOGADO);
 
     infoProduto.operador === '+'
       ? this.adicionarItemCarrinho(usuario.id, infoProduto.idProduto, infoProduto.idParceiro, infoProduto)
@@ -106,18 +111,16 @@ export class CarrinhoPageComponent implements OnInit {
   }
 
   private rotinaClickMaisOuMenos(infoProduto: InfoProdutoModel): void {
-    this.loadingService.desligar();
     this.atualizarCarrinho(infoProduto);
     this.viewModel.valorTotalCompra = this.calcularValorTotalCompra();
     const carrinhoVazio: boolean = this.validarCarrinhoVazio();
 
     if (carrinhoVazio) {
       this.viewModel.exibeListaCompra = carrinhoVazio;
-
-      setTimeout(() => {
-        this.viewModel.carrinhoVazio = carrinhoVazio;
-      }, this.TEMPO_ESPERA_CARRINHO_VAZIO);
+      this.viewModel.carrinhoVazio = carrinhoVazio;
     }
+
+    this.loadingService.desligar();
   }
 
   private construirViewModel(): void {

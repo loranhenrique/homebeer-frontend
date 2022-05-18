@@ -60,6 +60,11 @@ export class ExperienciaPageComponent implements OnInit {
 
   private adicionarProdutoCarrinho(identificadorCerveja: IdentificadorCervejaModel): void {
     const usuario: UsuarioResponse = this.stateService.sessao.get(StateConstantes.USUARIO_LOGADO);
+    if (!usuario) {
+      this.router.navigate(['/perfil']);
+      return;
+    }
+
     this.definindoPropriedadesLoading(identificadorCerveja.quantidade);
     this.loadingService.ligar();
     let quantidadeRetornos = 1;
