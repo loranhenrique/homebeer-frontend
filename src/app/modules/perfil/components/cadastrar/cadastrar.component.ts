@@ -30,6 +30,8 @@ export class CadastrarComponent implements OnInit, OnChanges {
   }
 
   public clickContinuarHandle(): void {
+    if (!this.formGroup.valid) return;
+
     const email = this.viewModel.controlEmail.value;
     const senha = this.viewModel.controlSenha.value;
     const nomeCompleto = this.viewModel.controlNomeCompleto.value;
@@ -66,9 +68,9 @@ export class CadastrarComponent implements OnInit, OnChanges {
 
   private criarFormulario(): void {
     this.formGroup = this.formBuilder.group({
-      email: this.formBuilder.control('', [Validators.required]),
-      senha: this.formBuilder.control('', [Validators.required]),
-      dataNascimento: this.formBuilder.control('', [Validators.required]),
+      email: this.formBuilder.control('', [Validators.pattern(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i)]),
+      senha: this.formBuilder.control('', [Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)]),
+      dataNascimento: this.formBuilder.control('', [Validators.pattern(/^(\d{2})\/(\d{2})\/(\d{4})$/)]),
       nomeCompleto: this.formBuilder.control('', [Validators.required]),
     });
   }

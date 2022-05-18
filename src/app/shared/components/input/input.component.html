@@ -10,6 +10,6 @@
       class="input-text__titulo">{{ viewModel.titulo | translate }}</label>
   </div>
 
-  <small *ngIf="inputControl.errors?.required"
+  <small *ngIf="!viewModel.inputControl.valid"
     class="input-text__mensagemErro">{{ viewModel.textoCampoObrigatorio | translate }}</small>
 </div>
