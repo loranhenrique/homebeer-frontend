@@ -34,6 +34,7 @@ export class DeparaErroRotaService {
   private construirErroParceiros(): ErroModel {
     return {
       ...this.erroModelPadrao,
+      urlVoltar: '/parceiro',
       codigoErro: CodigoErroConstantes.ERRO_PARCEIROS,
     };
   }
@@ -62,6 +63,7 @@ export class DeparaErroRotaService {
   private construirErroProduto(): ErroModel {
     return {
       ...this.erroModelPadrao,
+      urlVoltar: '/parceiro',
       codigoErro: CodigoErroConstantes.ERRO_PRODUTO,
     };
   }
