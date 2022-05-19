@@ -1,0 +1,10 @@
+@import 'base-styles';
+
+.pesquisa-page {
+  &__voltar {
+    font-size: to-vw(16px);
+    padding: $spacing-l $spacing-m 0;
+    color: blue;
+    text-decoration: underline;
+  }
+}

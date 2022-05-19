@@ -71,5 +71,6 @@
   "CADASTRAR__LABEL--SENHA": "Digite sua senha:",
   "CADASTRAR__LABEL--BOTAO": "Cadastrar",
   "CADASTRAR__LABEL--NOME-COMPLETO": "Digite seu nome completo:",
-  "CADASTRAR__LABEL--DATA-NASCIMENTO": "Digite sua data de nascimento:"
+  "CADASTRAR__LABEL--DATA-NASCIMENTO": "Digite sua data de nascimento:",
+  "LISTA-PESQUISA__LABEL--TITULO": "Faça uma busca para filtrar parceiros"
 }

@@ -1,0 +1,14 @@
+<div class="pesquisa-page">
+  <bra-menu-header [menuHeader]="viewModel.menuHeader"
+    (valorPesquisado)="pesquisaHandle($event)"></bra-menu-header>
+
+  <div class="pesquisa-page__voltar"
+    role="text"
+    (click)="clickVoltarHandle()">Voltar para a home</div>
+
+  <div class="pesquisa-page__content">
+    <bra-lista-pesquisa [parceiros]="viewModel.parceiros"
+      (clickAction)="cardParceiroClickHandle($event)">
+    </bra-lista-pesquisa>
+  </div>
+</div>

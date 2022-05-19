@@ -42,6 +42,10 @@ export class ParceiroPageComponent implements OnInit {
     this.router.navigate(['/experiencia']);
   }
 
+  public clickPesquisaHandle(): void {
+    this.router.navigate(['/pesquisar']);
+  }
+
   public menuFooterClick(value: string): void {
     if (!this.definirContinuacaoClick()) return;
     const rota = this.redirecionarMenuFooterService.execute(value);

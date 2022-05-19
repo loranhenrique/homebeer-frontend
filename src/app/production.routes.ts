@@ -33,4 +33,8 @@ export const productionRoutes = [
     path: 'experiencia',
     loadChildren: () => import('./modules/experiencia/experiencia.module').then(module => module.ExperienciaModule),
   },
+  {
+    path: 'pesquisar',
+    loadChildren: () => import('./modules/pesquisa/pesquisa.module').then(module => module.PesquisaModule),
+  },
 ];

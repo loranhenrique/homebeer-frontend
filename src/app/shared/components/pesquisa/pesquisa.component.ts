@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   OnInit,
   Output,
   Renderer2,
@@ -18,6 +19,7 @@ import { PesquisaViewModel } from '@shared/models/pesquisa-view.model';
 export class PesquisaComponent implements OnInit, AfterViewInit {
   @ViewChild('campoBusca', { static: false }) campoBuscaRef: ElementRef;
   @Output() valorPesquisado = new EventEmitter();
+  @Input() habilitar: boolean = false;
 
   public viewModel: PesquisaViewModel;
   public valorInput: string;
@@ -29,6 +31,7 @@ export class PesquisaComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.ativaFocoCampoBusca();
     this.capturarEventoEnter();
   }
 
@@ -40,6 +43,18 @@ export class PesquisaComponent implements OnInit, AfterViewInit {
     this.viewModel = {
       placeholder: 'PESQUISA-INPUT-PLACEHOLDER',
     };
+  }
+
+  private ativaFocoCampoBusca(): void {
+    if (this.habilitar) {
+      const pesquisar = document.getElementById('pesquisar');
+
+      if (pesquisar) {
+        window.onload = function () {
+          pesquisar.focus();
+        };
+      }
+    }
   }
 
   private capturarEventoEnter(): void {

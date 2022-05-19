@@ -6,7 +6,8 @@
 
   <div *ngSwitchCase="'pesquisa'"
     class="menu-header__pesquisa">
-    <bra-pesquisa></bra-pesquisa>
+    <bra-pesquisa (valorPesquisado)="pesquisaHandle($event)"
+      [habilitar]="menuHeader?.habilitar"></bra-pesquisa>
   </div>
 
   <div *ngSwitchCase="'perfil'"

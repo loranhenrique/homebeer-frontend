@@ -1,0 +1,12 @@
+@import 'base-styles';
+
+.lista-pesquisa {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: $spacing-l;
+
+  &__titulo {
+    font-size: to-vw(16px);
+    padding: $spacing-l $spacing-m $spacing-xs;
+  }
+}

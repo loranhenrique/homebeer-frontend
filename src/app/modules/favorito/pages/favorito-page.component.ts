@@ -31,9 +31,7 @@ export class FavoritoPageComponent implements OnInit {
   }
 
   public clickCardFavorito(id: string): void {
-    let statusBotao = false;
-    this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
-    if (statusBotao) return;
+    if (!this.definirContinuacaoClick()) return;
 
     this.stateService.sessao.set(StateConstantes.DE_ONDE_VEIO, '/favorito');
     this.stateService.sessao.set(StateConstantes.ID_PARCEIRO, id);
