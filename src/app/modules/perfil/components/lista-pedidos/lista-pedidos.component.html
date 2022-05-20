@@ -5,5 +5,7 @@
       class="lista-pedidos__card-pedido">
       <bra-card-pedido [cardPedido]="pedido"></bra-card-pedido>
     </li>
+
+    <bra-alerta *ngIf="viewModel.pedidos.length < 1"></bra-alerta>
   </bra-lista>
 </div>

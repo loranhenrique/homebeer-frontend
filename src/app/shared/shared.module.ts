@@ -17,6 +17,7 @@ import { CardPedidoComponent } from './components/card-pedido/card-pedido.compon
 import { ControleModalDirective } from './directives/controle-modal/controle-modal.directive';
 import { ButtonPagamentoComponent } from './components/button-pagamento/button-pagamento.component';
 import { InputComponent } from './components/input/input.component';
+import { AlertaComponent } from './components/alerta/alerta.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { InputComponent } from './components/input/input.component';
     ControleModalDirective,
     ButtonPagamentoComponent,
     InputComponent,
+    AlertaComponent,
   ],
   imports: [CommonModule, TranslateModule, FormsModule, ReactiveFormsModule],
   exports: [
@@ -52,6 +54,7 @@ import { InputComponent } from './components/input/input.component';
     CardPedidoComponent,
     ButtonPagamentoComponent,
     InputComponent,
+    AlertaComponent,
   ],
 })
 export class SharedModule {}

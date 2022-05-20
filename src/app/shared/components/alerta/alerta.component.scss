@@ -1,0 +1,38 @@
+@import 'base-styles';
+@import 'base-64';
+
+.alerta {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 160px;
+  background-color: $color-branco-default;
+  color: $color-preto-escuro;
+  padding: 24px 24px;
+
+  &__icone {
+    min-width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    background-image: $alerta-amarelo-base-64;
+    background-position: center top;
+    background-size: cover;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__titulo {
+    font-family: $font-roboto-medium;
+    font-size: to-vw(18px);
+  }
+
+  &__descricao {
+    font-family: $font-roboto-light;
+    font-size: to-vw(14px);
+    color: $color-preto-acinzentado;
+    margin-top: 8px;
+  }
+}
