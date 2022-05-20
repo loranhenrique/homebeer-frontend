@@ -37,5 +37,5 @@
   [modal]="viewModel.modalPagamento"
   (clickActionFecharModal)="fecharModalPagamento()"
   [@modalAnimation]>
-  <bra-pagamento></bra-pagamento>
+  <bra-pagamento (finalizarHandler)="finalizarCompraHandle()"></bra-pagamento>
 </bra-modal>

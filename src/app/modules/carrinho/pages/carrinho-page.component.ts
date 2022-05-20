@@ -8,7 +8,9 @@ import { StateService } from '@service/app/state/state.service';
 import { StatusBotaoService } from '@service/app/status-botao/status-botao.service';
 import { DeletarCarrinhoService } from '@service/http/deletar-carrinho/deletar-carrinho.service';
 import { SalvarCarrinhoService } from '@service/http/salvar-carrinho/salvar-carrinho.service';
+import { SalvarPedidoService } from '@service/http/salvar-pedido/salvar-pedido.service';
 import { CarrinhoModel } from '@service/models/carrinho.model';
+import { SalvarPedidoModel } from '@service/models/salvar-pedido.model';
 import { modalAnimation } from '@shared/components/modal/modal-animation';
 import { CardProdutoModel } from '@shared/models/card-produto.model';
 import { InfoProdutoModel } from '@shared/models/info-produto.model';
@@ -33,12 +35,25 @@ export class CarrinhoPageComponent implements OnInit {
     private readonly deletarCarrinhoService: DeletarCarrinhoService,
     private readonly loadingService: LoadingService,
     private readonly stateService: StateService,
-    private readonly statusBotaoService: StatusBotaoService
+    private readonly statusBotaoService: StatusBotaoService,
+    private readonly salvarPedidosService: SalvarPedidoService
   ) {}
 
   ngOnInit(): void {
     this.obterCarrinhoResolver();
     this.construirViewModel();
+  }
+
+  public finalizarCompraHandle(): void {
+    const pedidos = this.construirPedidos();
+
+    this.definirPropriedadesLoading('Finalizando compra...');
+    this.loadingService.ligar();
+
+    this.salvarPedidosService.execute(pedidos).subscribe(_ => {
+      this.loadingService.desligar();
+      this.router.navigate(['/perfil']);
+    });
   }
 
   public clickComprar(): void {
@@ -54,8 +69,8 @@ export class CarrinhoPageComponent implements OnInit {
       this.router.navigate(['/perfil']);
       return;
     }
-
-    this.definirPropriedadesLoading();
+    const mensagem = infoProduto.operador === '-' ? 'Removendo produto...' : 'Salvando produto...';
+    this.definirPropriedadesLoading(mensagem);
     this.loadingService.ligar();
 
     infoProduto.operador === '+'
@@ -76,6 +91,27 @@ export class CarrinhoPageComponent implements OnInit {
     if (!this.definirContinuacaoClick()) return;
     const rota = this.redirecionarMenuFooterService.execute(value);
     this.router.navigate([rota]);
+  }
+
+  private construirPedidos(): SalvarPedidoModel[] {
+    const usuario: UsuarioResponse = this.stateService.sessao.get(StateConstantes.USUARIO_LOGADO);
+    const listagemCompras: SalvarPedidoModel[] = [];
+
+    this.viewModel.compras.map((produto: CardProdutoModel) => {
+      let quantidade = 0;
+
+      while (quantidade !== produto.quantidade) {
+        listagemCompras.push({
+          idParceiro: produto.idParceiro,
+          idProduto: produto.idProduto,
+          idUsuario: usuario.id,
+        });
+
+        quantidade++;
+      }
+    });
+
+    return listagemCompras;
   }
 
   private adicionarItemCarrinho(
@@ -188,8 +224,8 @@ export class CarrinhoPageComponent implements OnInit {
     this.carrinho = this.activatedRoute.snapshot.data.carrinho;
   }
 
-  private definirPropriedadesLoading(): void {
-    this.loadingService.atribuirMensagem('Salvando produto...');
+  private definirPropriedadesLoading(mensagem: string): void {
+    this.loadingService.atribuirMensagem(mensagem);
     this.loadingService.atribuirTipo('fade');
   }
 

@@ -11,6 +11,8 @@
       <p class="pagamento__titulo">
         {{ viewModel.tituloDadosPagamento | translate }}</p>
     </div>
-
   </div>
+  <br /><br />
+  <bra-button [texto]="'Finalizar'"
+    (clickAction)="clickFinalizar()"></bra-button>
 </div>
