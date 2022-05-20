@@ -9,6 +9,7 @@ import { LoadingService } from '@service/app/loading/loading.service';
 import { StateService } from '@service/app/state/state.service';
 import { StatusBotaoService } from '@service/app/status-botao/status-botao.service';
 import { SalvarCarrinhoService } from '@service/http/salvar-carrinho/salvar-carrinho.service';
+import { SalvarFavoritoService } from '@service/http/salvar-favorito/salvar-favorito.service';
 import { BuscarParceiroModel } from '@service/models/buscar-parceiro.model';
 import { ProdutoModel } from '@service/models/produto.model';
 import { UsuarioResponse } from '@shared/models/usuario-response.model';
@@ -31,7 +32,8 @@ export class ExperienciaPageComponent implements OnInit {
     private readonly salvarCarrinhoService: SalvarCarrinhoService,
     private readonly stateService: StateService,
     private readonly loadingService: LoadingService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly salvarFavoritoService: SalvarFavoritoService
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +45,17 @@ export class ExperienciaPageComponent implements OnInit {
     if (!this.definirContinuacaoClick()) return;
     const rota = this.stateService.sessao.get(StateConstantes.DE_ONDE_VEIO);
     this.router.navigate([rota]);
+  }
+
+  public clickFavoritarHandle(): void {
+    if (!this.definirContinuacaoClick()) return;
+    this.loadingService.atribuirMensagem('Salvando favorito...');
+    this.loadingService.atribuirTipo('fade');
+    const usuario: UsuarioResponse = this.stateService.sessao.get(StateConstantes.USUARIO_LOGADO);
+    this.loadingService.ligar();
+    this.salvarFavoritoService.execute(usuario.id, this.parceiro.id).subscribe(_ => {
+      this.loadingService.desligar();
+    });
   }
 
   public clickHandle(identificadorCerveja: IdentificadorCervejaModel): void {

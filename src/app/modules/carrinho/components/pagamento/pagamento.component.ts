@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PagamentoViewModel } from '@carrinho/models/pagamento-view.model';
+import { StatusBotaoService } from '@service/app/status-botao/status-botao.service';
 
 @Component({
   selector: 'bra-pagamento',
@@ -12,7 +13,7 @@ export class PagamentoComponent implements OnInit {
 
   public viewModel: PagamentoViewModel;
 
-  constructor() {}
+  constructor(private readonly statusBotaoService: StatusBotaoService) {}
 
   ngOnInit(): void {
     this.construirViewModel();
@@ -23,6 +24,8 @@ export class PagamentoComponent implements OnInit {
   }
 
   public clickPagamento(pagamento: string): void {
+    if (!this.definirContinuacaoClick()) return;
+
     this.viewModel.formaPagamento = {
       selecionado: pagamento as 'boleto' | 'cartao' | 'pix',
     };
@@ -35,5 +38,13 @@ export class PagamentoComponent implements OnInit {
       tituloTotal: 'PAGAMENTO__LABEL--TITULO-TOTAL',
       labelBotao: 'PAGAMENTO__LABEL--BOTAO',
     };
+  }
+
+  private definirContinuacaoClick(): boolean {
+    let statusBotao = false;
+    this.statusBotaoService.obterStatus().subscribe(status => (statusBotao = status));
+    if (statusBotao) return false;
+
+    return true;
   }
 }

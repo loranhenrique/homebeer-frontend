@@ -45,6 +45,7 @@ export class CarrinhoPageComponent implements OnInit {
   }
 
   public finalizarCompraHandle(): void {
+    if (!this.definirContinuacaoClick()) return;
     const pedidos = this.construirPedidos();
 
     this.definirPropriedadesLoading('Finalizando compra...');
