@@ -11,11 +11,12 @@ import { CacheService } from '../cache/cache.service';
 export class BuscarParceirosService {
   constructor(private readonly cacheService: CacheService) {}
 
-  public execute(idParceiro?: string): Observable<BuscarParceiroModel[]> {
+  public execute(idParceiro?: string, idUsuario?: string): Observable<BuscarParceiroModel[]> {
     let httpParams = new HttpParams();
     httpParams = httpParams.append('idParceiro', idParceiro || '');
+    httpParams = httpParams.append('idUsuario', idUsuario || '');
 
-    return idParceiro
+    return idParceiro && idUsuario
       ? this.cacheService.buscarCache<BuscarParceiroModel[]>(environment.api.parceiro, httpParams)
       : this.cacheService.buscarCache<BuscarParceiroModel[]>(environment.api.parceiro);
   }

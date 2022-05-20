@@ -7,4 +7,5 @@ export interface BuscarParceiroModel {
   nomeLoja: string;
   descricaoLoja: string;
   categoria: string;
+  favorito?: boolean;
 }

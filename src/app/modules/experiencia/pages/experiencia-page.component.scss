@@ -36,7 +36,8 @@
     background-size: cover;
   }
 
-  &__favorito {
+  &__favorito,
+  &__favorito--selecionado {
     position: absolute;
     top: 2vh;
     right: 0;
@@ -47,11 +48,18 @@
     border-width: 1px;
     border-style: solid;
     border-color: $color-preto-escuro;
-    background-color: transparent;
-    background-image: $icon-favorito-amarelo;
+    background-color: $color-preto-escuro;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  &__favorito {
+    background-image: $icon-favorito-preto;
+  }
+
+  &__favorito--selecionado {
+    background-image: $icon-favorito-amarelo;
   }
 
   &__nome-parceiro {

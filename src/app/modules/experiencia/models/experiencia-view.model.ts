@@ -6,4 +6,5 @@ export interface ExperienciaViewModel {
   nomeParceiro: string;
   descricaoParceiro: string;
   cervejas: CardCervejaModel[];
+  favorito: boolean;
 }

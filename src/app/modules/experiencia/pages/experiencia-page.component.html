@@ -10,7 +10,7 @@
       tabindex="0"
       (click)="clickFecharHandle()"></button>
 
-    <button class="experiencia__favorito"
+    <button [ngClass]="definirClasseFavorito()"
       role="button"
       tabindex="0"
       (click)="clickFavoritarHandle()"></button>

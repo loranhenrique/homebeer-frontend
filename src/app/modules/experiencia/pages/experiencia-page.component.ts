@@ -54,6 +54,8 @@ export class ExperienciaPageComponent implements OnInit {
     const usuario: UsuarioResponse = this.stateService.sessao.get(StateConstantes.USUARIO_LOGADO);
     this.loadingService.ligar();
     this.salvarFavoritoService.execute(usuario.id, this.parceiro.id).subscribe(_ => {
+      this.viewModel.favorito ? (this.viewModel.favorito = false) : (this.viewModel.favorito = true);
+
       this.loadingService.desligar();
     });
   }
@@ -61,6 +63,10 @@ export class ExperienciaPageComponent implements OnInit {
   public clickHandle(identificadorCerveja: IdentificadorCervejaModel): void {
     if (!this.definirContinuacaoClick()) return;
     this.adicionarProdutoCarrinho(identificadorCerveja);
+  }
+
+  public definirClasseFavorito(): string {
+    return this.viewModel.favorito ? 'experiencia__favorito--selecionado' : 'experiencia__favorito';
   }
 
   private definirContinuacaoClick(): boolean {
@@ -108,6 +114,7 @@ export class ExperienciaPageComponent implements OnInit {
       nomeParceiro: this.parceiro.nomeLoja,
       descricaoParceiro: this.parceiro.descricaoLoja,
       cervejas: this.construirCervejas(),
+      favorito: this.parceiro.favorito ? true : false,
     };
   }
 
