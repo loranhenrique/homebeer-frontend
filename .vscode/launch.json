@@ -8,7 +8,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "Chrome",
-      "url": "http://localhost:4200",
+      "url": "https://homebeer-backend.herokuapp.com",
       "webRoot": "${workspaceFolder}"
     },
     //Caso ocorra o problema "Cannot find runtime 'node' on PATH:
@@ -21,14 +21,10 @@
       "name": "Jest All",
       "program": "${workspaceFolder}/node_modules/@angular/cli/bin/ng",
       "cwd": "${workspaceFolder}",
-      "args": [
-        "test",
-        "--testMatch=\"**/+(*.)+(spec|test).+(ts|js)?(x)\"",
-        "--runInBand"
-      ],
+      "args": ["test", "--testMatch=\"**/+(*.)+(spec|test).+(ts|js)?(x)\"", "--runInBand"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
-      "disableOptimisticBPs": true,
+      "disableOptimisticBPs": true
     },
     {
       "type": "node",
